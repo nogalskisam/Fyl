@@ -11,9 +11,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Tenant.Site.Tests</RootNamespace>
     <AssemblyName>Tenant.Site.Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -92,6 +93,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Tenant.Service\Tenant.Service.csproj">
+      <Project>{10ba23b0-d770-4431-b41f-152a20ebfcf0}</Project>
+      <Name>Tenant.Service</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Tenant.Site\Tenant.Site.csproj">
       <Project>{D2808DBF-9940-4835-BADA-5DA341B58B13}</Project>
       <Name>Tenant.Site</Name>

@@ -69,6 +69,7 @@
     <Compile Include="Entities\Property.cs" />
     <Compile Include="Entities\Tenant.cs" />
     <Compile Include="Entities\User.cs" />
+    <Compile Include="Mappings\AddressMappings.cs" />
     <Compile Include="Migrations\201507281703141_Initial.cs" />
     <Compile Include="Migrations\201507281703141_Initial.Designer.cs">
       <DependentUpon>201507281703141_Initial.cs</DependentUpon>
