@@ -20,24 +20,7 @@ namespace Tenant.Site
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
-            //SimpleInjectorSetup.Start();
-
-            var container = new Container();
-
-            // 2. Configure the container (register)
-            // See below for more configuration examples
-            container.RegisterSingle<ITenantService, TenantService>();
-
-            container.RegisterMvcControllers(System.Reflection.Assembly.GetExecutingAssembly());
-
-            container.RegisterMvcIntegratedFilterProvider();
-
-            // 3. Optionally verify the container's configuration.
-            container.Verify();
-
-            // 4. Store the container for use by the application
-            DependencyResolver.SetResolver(
-                new SimpleInjectorDependencyResolver(container));
+            SimpleInjectorSetup.Start();
         }
     }
 }

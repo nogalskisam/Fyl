@@ -1,7 +1,7 @@
 ﻿using Fyl.DataLayer.Repositories;
 using Fyl.Entities;
 using SimpleInjector;
-using SimpleInjector.Integration.Web.Mvc;
+using SimpleInjector.Integration.Wcf;
 using System.Web.Mvc;
 
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(Tenant.Service.App_Start.SimpleInjector), "Start")]
@@ -13,14 +13,26 @@ namespace Tenant.Service.App_Start
     {
         public static void Start()
         {
+            CreateKernel();
+        }
+
+        private static void CreateKernel()
+        {
+            // Create the container as usual.
             var container = new Container();
 
-            container.Register<IAddressRepository, AddressRepository>(Lifestyle.Transient);
+            // Register your types, for instance:
+            RegisterServices(container);
+
+            // Register the container to the SimpleInjectorServiceHostFactory.
+            SimpleInjectorServiceHostFactory.SetContainer(container);
+        }
+
+        private static void RegisterServices(Container container)
+        {
             container.Register<IFylEntities>(() => new FylEntities());
 
-            container.Verify();
-
-            DependencyResolver.SetResolver(new SimpleInjectorDependencyResolver(container));
+            container.RegisterPerWcfOperation<IAddressRepository, AddressRepository>();
         }
 
         public static void Stop()

@@ -12,6 +12,7 @@ using log4net;
 using Castle.DynamicProxy;
 using System.Web.Http;
 using Tenant.Service;
+using System.ServiceModel;
 
 //[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(Tenant.Site.App_Start.SimpleInjectorSetup), "Start")]
 //[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(Tenant.Site.App_Start.SimpleInjectorSetup), "Stop")]
@@ -22,17 +23,51 @@ namespace Tenant.Site.App_Start
     {
         public static void Start()
         {
-            var container = new Container();
-
-            container.Register<ITenantService, TenantService>(Lifestyle.Transient);
-
-            container.Verify();
-
-            DependencyResolver.SetResolver(new SimpleInjectorDependencyResolver(container));
+            var container = SetupContainer();
         }
 
         public static void Stop()
         {
+        }
+
+        private static Container SetupContainer()
+        {
+            // Create the container as usual.
+            var container = new Container();
+
+            // Register your types, for instance:
+            RegisterServices(container);
+
+            // Setup MVC.
+            container.RegisterMvcControllers(Assembly.GetExecutingAssembly());
+            container.RegisterMvcIntegratedFilterProvider();
+            DependencyResolver.SetResolver(new SimpleInjectorDependencyResolver(container));
+
+            // Setup WebApi.
+            container.RegisterWebApiControllers(GlobalConfiguration.Configuration);
+            GlobalConfiguration.Configuration.DependencyResolver = new SimpleInjectorWebApiDependencyResolver(container);
+
+            // Register filters.
+            RegisterGlobalFilters(GlobalFilters.Filters, container);
+            RegisterWebApiFilters(GlobalConfiguration.Configuration.Filters, container);
+
+            container.Verify();
+
+            return container;
+        }
+
+        public static void RegisterGlobalFilters(GlobalFilterCollection filters, Container container)
+        {
+        }
+
+        private static void RegisterWebApiFilters(System.Web.Http.Filters.HttpFilterCollection httpFilterCollection, Container container)
+        {
+
+        }
+
+        private static void RegisterServices(Container container)
+        {
+            container.RegisterSingle<ITenantService>(() => new ChannelFactory<ITenantService>("*").CreateChannel());
         }
     }
 }
