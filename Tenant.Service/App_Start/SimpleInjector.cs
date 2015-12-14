@@ -33,6 +33,7 @@ namespace Tenant.Service.App_Start
             container.Register<IFylEntities>(() => new FylEntities());
 
             container.RegisterPerWcfOperation<IAddressRepository, AddressRepository>();
+            container.RegisterPerWcfOperation<IAccountRepository, AccountRepository>();
         }
 
         public static void Stop()

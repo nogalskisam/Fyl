@@ -78,6 +78,10 @@
     <Compile Include="Migrations\201507281811149_AddBasicEntities.Designer.cs">
       <DependentUpon>201507281811149_AddBasicEntities.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201512141358552_AddUserRoleAndDateRegistered.cs" />
+    <Compile Include="Migrations\201512141358552_AddUserRoleAndDateRegistered.Designer.cs">
+      <DependentUpon>201512141358552_AddUserRoleAndDateRegistered.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -94,6 +98,15 @@
     <EmbeddedResource Include="Migrations\201507281811149_AddBasicEntities.resx">
       <DependentUpon>201507281811149_AddBasicEntities.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512141358552_AddUserRoleAndDateRegistered.resx">
+      <DependentUpon>201512141358552_AddUserRoleAndDateRegistered.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Fyl.Library\Fyl.Library.csproj">
+      <Project>{6cb997c6-ec24-48c6-bcd8-11adc23c71e9}</Project>
+      <Name>Fyl.Library</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets" Condition="Exists('..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets')" />

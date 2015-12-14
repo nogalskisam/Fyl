@@ -8,6 +8,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Tenant.Service
 {
@@ -17,11 +18,13 @@ namespace Tenant.Service
     {
         //private ILog _logger;
         private IAddressRepository _addressRepository;
+        private IAccountRepository _accountRepository;
 
-        public TenantService(/*ILog logger,*/ IAddressRepository addressRepository)
+        public TenantService(/*ILog logger,*/ IAddressRepository addressRepository, IAccountRepository accountRepository)
         {
             //_logger = logger;
             _addressRepository = addressRepository;
+            _accountRepository = accountRepository;
         }
 
         public List<AddressDto> GetAllAddresses()
@@ -29,6 +32,11 @@ namespace Tenant.Service
             var dtos = _addressRepository.GetAllAddresses();
 
             return dtos;
+        }
+
+        public async Task RegisterUser(RegisterDto dto)
+        {
+            await _accountRepository.RegisterUser(dto);
         }
     }
 }

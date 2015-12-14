@@ -6,6 +6,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace Tenant.Service
 {
@@ -16,5 +17,8 @@ namespace Tenant.Service
         // TODO: Add your service operations here
         [OperationContract]
         List<AddressDto> GetAllAddresses();
+
+        [OperationContract]
+        Task RegisterUser(RegisterDto dto);
     }
 }

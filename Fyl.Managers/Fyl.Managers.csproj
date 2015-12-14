@@ -52,10 +52,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Managers\Account\AccountManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Fyl.DataLayer\Fyl.DataLayer.csproj">
+      <Project>{585f15a1-0ea9-40db-aea4-06cb638c648d}</Project>
+      <Name>Fyl.DataLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Fyl.Helpers\Fyl.Helpers.csproj">
+      <Project>{3b969c28-4dbd-45a9-90be-380312f3ba1f}</Project>
+      <Name>Fyl.Helpers</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Fyl.Library\Fyl.Library.csproj">
+      <Project>{6cb997c6-ec24-48c6-bcd8-11adc23c71e9}</Project>
+      <Name>Fyl.Library</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets" Condition="Exists('..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets')" />
