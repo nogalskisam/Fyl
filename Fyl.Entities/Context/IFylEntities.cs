@@ -19,6 +19,8 @@ namespace Fyl.Entities
 
         IDbSet<User> Users { get; set; }
 
+        IDbSet<PasswordAuthorisation> PasswordAuthorisations { get; set; }
+
         Database Database { get; }
 
         int SaveChanges();

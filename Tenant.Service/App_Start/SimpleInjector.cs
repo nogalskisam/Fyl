@@ -1,5 +1,7 @@
 ﻿using Fyl.DataLayer.Repositories;
 using Fyl.Entities;
+using Fyl.Library.Helpers;
+using Fyl.Managers;
 using SimpleInjector;
 using SimpleInjector.Integration.Wcf;
 using System.Web.Mvc;
@@ -34,6 +36,8 @@ namespace Tenant.Service.App_Start
 
             container.RegisterPerWcfOperation<IAddressRepository, AddressRepository>();
             container.RegisterPerWcfOperation<IAccountRepository, AccountRepository>();
+            container.RegisterPerWcfOperation<IAccountManager, AccountManager>();
+            //container.RegisterPerWcfOperation<IHasher, Hasher>();
         }
 
         public static void Stop()

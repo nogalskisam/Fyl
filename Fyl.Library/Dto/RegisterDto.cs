@@ -26,5 +26,7 @@ namespace Fyl.Library.Dto
         public DateTime DateRegistered { get; set; }
 
         public RoleEnum Role { get; set; }
+
+        public Guid? PasswordAuthorisationId { get; set; }
     }
 }

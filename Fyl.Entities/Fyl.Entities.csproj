@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Fyl.Entities</RootNamespace>
     <AssemblyName>Fyl.Entities</AssemblyName>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>
@@ -66,6 +66,7 @@
     <Compile Include="Context\IFylEntities.cs" />
     <Compile Include="Entities\Address.cs" />
     <Compile Include="Entities\Landlord.cs" />
+    <Compile Include="Entities\PasswordAuthorisation.cs" />
     <Compile Include="Entities\Property.cs" />
     <Compile Include="Entities\Tenant.cs" />
     <Compile Include="Entities\User.cs" />
@@ -81,6 +82,10 @@
     <Compile Include="Migrations\201512141358552_AddUserRoleAndDateRegistered.cs" />
     <Compile Include="Migrations\201512141358552_AddUserRoleAndDateRegistered.Designer.cs">
       <DependentUpon>201512141358552_AddUserRoleAndDateRegistered.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201512231325336_AddPasswordAuthorisationField.cs" />
+    <Compile Include="Migrations\201512231325336_AddPasswordAuthorisationField.Designer.cs">
+      <DependentUpon>201512231325336_AddPasswordAuthorisationField.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -100,6 +105,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201512141358552_AddUserRoleAndDateRegistered.resx">
       <DependentUpon>201512141358552_AddUserRoleAndDateRegistered.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512231325336_AddPasswordAuthorisationField.resx">
+      <DependentUpon>201512231325336_AddPasswordAuthorisationField.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

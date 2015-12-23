@@ -30,6 +30,24 @@
 
         <div class="row margin-bottom-small">
             <div class="col-md-3">
+                @Html.LabelFor(m => m.Password)
+            </div>
+            <div class="col-md-3">
+                @Html.TextBoxFor(m => m.Password)
+            </div>
+        </div>
+
+        <div class="row margin-bottom-small">
+            <div class="col-md-3">
+                @Html.LabelFor(m => m.PasswordConfirm)
+            </div>
+            <div class="col-md-3">
+                @Html.TextBoxFor(m => m.PasswordConfirm)
+            </div>
+        </div>
+
+        <div class="row margin-bottom-small">
+            <div class="col-md-3">
                 @Html.LabelFor(m => m.ContactNumber)
             </div>
             <div class="col-md-3">

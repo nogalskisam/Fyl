@@ -32,7 +32,9 @@ namespace Fyl.DataLayer.Repositories
                     ContactNumber = dto.ContactNumber,
                     EmailAddress = dto.EmailAddress,
                     DateOfBirth = dto.DateOfBirth,
-                    Role = dto.Role
+                    Role = dto.Role,
+                    PasswordAuthorisationId = dto.PasswordAuthorisationId.Value,
+                    DateRegistered = DateTime.UtcNow
                 };
 
                 _entities.Users.Add(newUser);
@@ -43,6 +45,20 @@ namespace Fyl.DataLayer.Repositories
             {
                 throw new Exception("A user with that email address already exists!");
             }
+        }
+
+        public async Task<Guid> AddPasswordAuthorisation(string password)
+        {
+            var newPassword = new PasswordAuthorisation()
+            {
+                Hash = password,
+                ExpiryDate = DateTime.UtcNow.AddYears(1)
+            };
+
+            _entities.PasswordAuthorisations.Add(newPassword);
+            await _entities.SaveChangesAsync();
+
+            return newPassword.PasswordAuthorisationId;
         }
     }
 }

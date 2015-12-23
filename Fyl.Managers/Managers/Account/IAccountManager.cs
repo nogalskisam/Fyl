@@ -5,12 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Fyl.DataLayer.Repositories
+namespace Fyl.Managers
 {
-    public interface IAccountRepository
+    public interface IAccountManager
     {
         Task RegisterUser(RegisterDto dto);
-
-        Task<Guid> AddPasswordAuthorisation(string password);
     }
 }

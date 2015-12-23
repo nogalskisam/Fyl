@@ -1,4 +1,5 @@
 ﻿using Fyl.Library.Dto;
+using Fyl.Library.Enum;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -21,6 +22,12 @@ namespace Tenant.Site.Models
         [Required]
         public string EmailAddress { get; set; }
 
+        [Required]
+        public string Password { get; set; }
+
+        [Required]
+        public string PasswordConfirm { get; set; }
+
         public DateTime DateOfBirth { get; set; }
 
         public RegisterDto ToDto()
@@ -29,9 +36,27 @@ namespace Tenant.Site.Models
             {
                 FirstName = FirstName,
                 LastName = LastName,
+                Password = Password,
+                PasswordConfirm = PasswordConfirm,
                 ContactNumber = ContactNumber,
                 EmailAddress = EmailAddress,
                 DateOfBirth = DateTime.UtcNow
+            };
+        }
+
+        public RegisterDto ToTenantDto()
+        {
+            return new RegisterDto()
+            {
+                FirstName = FirstName,
+                LastName = LastName,
+                Password = Password,
+                PasswordConfirm = PasswordConfirm,
+                ContactNumber = ContactNumber,
+                EmailAddress = EmailAddress,
+                DateOfBirth = DateTime.UtcNow,
+                DateRegistered = DateTime.UtcNow,
+                Role = RoleEnum.Tenant
             };
         }
     }

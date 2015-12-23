@@ -1,5 +1,6 @@
 ﻿using Fyl.DataLayer.Repositories;
 using Fyl.Library.Dto;
+using Fyl.Managers;
 using log4net;
 using System;
 using System.Collections.Generic;
@@ -19,12 +20,14 @@ namespace Tenant.Service
         //private ILog _logger;
         private IAddressRepository _addressRepository;
         private IAccountRepository _accountRepository;
+        private IAccountManager _accountManager;
 
-        public TenantService(/*ILog logger,*/ IAddressRepository addressRepository, IAccountRepository accountRepository)
+        public TenantService(/*ILog logger,*/ IAddressRepository addressRepository, IAccountRepository accountRepository, IAccountManager accountManager)
         {
             //_logger = logger;
             _addressRepository = addressRepository;
             _accountRepository = accountRepository;
+            _accountManager = accountManager;
         }
 
         public List<AddressDto> GetAllAddresses()
@@ -36,7 +39,7 @@ namespace Tenant.Service
 
         public async Task RegisterUser(RegisterDto dto)
         {
-            await _accountRepository.RegisterUser(dto);
+            await _accountManager.RegisterUser(dto);
         }
     }
 }

@@ -37,7 +37,7 @@ namespace Tenant.Site.Controllers
             }
             else
             {
-                var dto = model.ToDto();
+                var dto = model.ToTenantDto();
 
                 try
                 {

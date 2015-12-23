@@ -27,5 +27,10 @@ namespace Fyl.Entities
         public DateTime DateRegistered { get; set; }
 
         public RoleEnum Role { get; set; }
+
+        public Guid PasswordAuthorisationId { get; set; }
+
+        [ForeignKey("PasswordAuthorisationId")]
+        public PasswordAuthorisation PasswordAuthorisation { get; set; }
     }
 }
