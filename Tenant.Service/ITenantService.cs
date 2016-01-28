@@ -19,6 +19,9 @@ namespace Tenant.Service
         List<AddressDto> GetAllAddresses();
 
         [OperationContract]
-        Task RegisterUser(RegisterDto dto);
+        Task RegisterUser(RegistrationRequestDto dto);
+
+        [OperationContract]
+        Task<UserProfileSessionData> LoginUser(LoginDto dto);
     }
 }

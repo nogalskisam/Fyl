@@ -19,10 +19,10 @@ namespace Tenant.Service
     {
         //private ILog _logger;
         private IAddressRepository _addressRepository;
-        private IAccountRepository _accountRepository;
-        private IAccountManager _accountManager;
+        private IUserRepository _accountRepository;
+        private IUserManager _accountManager;
 
-        public TenantService(/*ILog logger,*/ IAddressRepository addressRepository, IAccountRepository accountRepository, IAccountManager accountManager)
+        public TenantService(/*ILog logger,*/ IAddressRepository addressRepository, IUserRepository accountRepository, IUserManager accountManager)
         {
             //_logger = logger;
             _addressRepository = addressRepository;
@@ -37,9 +37,16 @@ namespace Tenant.Service
             return dtos;
         }
 
-        public async Task RegisterUser(RegisterDto dto)
+        public async Task RegisterUser(RegistrationRequestDto dto)
         {
-            await _accountManager.RegisterUser(dto);
+            _accountManager.RegisterUser(dto);
+        }
+
+        public async Task<UserProfileSessionData> LoginUser(LoginDto dto)
+        {
+            var profileData = await _accountManager.LoginUser(dto);
+
+            return profileData;
         }
     }
 }

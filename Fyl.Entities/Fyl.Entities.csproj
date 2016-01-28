@@ -51,6 +51,14 @@
       <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -65,11 +73,10 @@
     <Compile Include="Context\FylEntities.cs" />
     <Compile Include="Context\IFylEntities.cs" />
     <Compile Include="Entities\Address.cs" />
-    <Compile Include="Entities\Landlord.cs" />
-    <Compile Include="Entities\PasswordAuthorisation.cs" />
     <Compile Include="Entities\Property.cs" />
-    <Compile Include="Entities\Tenant.cs" />
+    <Compile Include="Entities\Session.cs" />
     <Compile Include="Entities\User.cs" />
+    <Compile Include="Entities\UserAuthentication.cs" />
     <Compile Include="Mappings\AddressMappings.cs" />
     <Compile Include="Migrations\201507281703141_Initial.cs" />
     <Compile Include="Migrations\201507281703141_Initial.Designer.cs">
@@ -86,6 +93,10 @@
     <Compile Include="Migrations\201512231325336_AddPasswordAuthorisationField.cs" />
     <Compile Include="Migrations\201512231325336_AddPasswordAuthorisationField.Designer.cs">
       <DependentUpon>201512231325336_AddPasswordAuthorisationField.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201601141215156_RemoveUsersAndPasswordAuthEntities.cs" />
+    <Compile Include="Migrations\201601141215156_RemoveUsersAndPasswordAuthEntities.Designer.cs">
+      <DependentUpon>201601141215156_RemoveUsersAndPasswordAuthEntities.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -108,6 +119,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201512231325336_AddPasswordAuthorisationField.resx">
       <DependentUpon>201512231325336_AddPasswordAuthorisationField.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201601141215156_RemoveUsersAndPasswordAuthEntities.resx">
+      <DependentUpon>201601141215156_RemoveUsersAndPasswordAuthEntities.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

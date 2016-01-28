@@ -9,17 +9,18 @@ namespace Fyl.Entities
 {
     public interface IFylEntities
     {
-        IDbSet<Landlord> Landlords { get; set; }
+        // Users
+        IDbSet<User> Users { get; set; }
 
+        IDbSet<Session> Sessions { get; set; }
+
+        IDbSet<UserAuthentication> UserAuthentications { get; set; }
+
+        // Practical Data
         IDbSet<Address> Addresses { get; set; }
 
         IDbSet<Property> Properties { get; set; }
-
-        IDbSet<Tenant> Tenants { get; set; }
-
-        IDbSet<User> Users { get; set; }
-
-        IDbSet<PasswordAuthorisation> PasswordAuthorisations { get; set; }
+        //IDbSet<PasswordAuthorisation> PasswordAuthorisations { get; set; }
 
         Database Database { get; }
 

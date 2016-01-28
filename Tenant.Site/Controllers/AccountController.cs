@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Fyl.Library.Dto;
+using Fyl.Library.Enum;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -52,6 +54,48 @@ namespace Tenant.Site.Controllers
             }
 
             return RedirectToAction("Index", "Home");
+        }
+
+        [HttpGet]
+        public ActionResult Login()
+        {
+            var model = new LoginModel();
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> Login(LoginModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                ModelState.AddModelError(string.Empty, "Something went wrong! Please try again later");
+
+                return View(model);
+            }
+            else
+            {
+                UserProfileSessionData profileData = new UserProfileSessionData();
+                var dto = model.ToLoginDto();
+
+                profileData = await _tenantService.LoginUser(dto);
+
+                if (true)
+                {
+                    profileData = new UserProfileSessionData()
+                    {
+                        UserId = Guid.NewGuid(),
+                        FirstName = "Samuel",
+                        LastName = "Nogalski",
+                        EmailAddress = "test@test.co.uk",
+                        Role = RoleEnum.Tenant
+                    };
+
+                    this.Session["Profile"] = profileData;
+                }
+
+                return RedirectToAction("Index", "Home");
+            }
         }
     }
 }

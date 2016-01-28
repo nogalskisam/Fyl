@@ -30,9 +30,9 @@ namespace Tenant.Site.Models
 
         public DateTime DateOfBirth { get; set; }
 
-        public RegisterDto ToDto()
+        public RegistrationRequestDto ToDto()
         {
-            return new RegisterDto()
+            return new RegistrationRequestDto()
             {
                 FirstName = FirstName,
                 LastName = LastName,
@@ -44,9 +44,9 @@ namespace Tenant.Site.Models
             };
         }
 
-        public RegisterDto ToTenantDto()
+        public RegistrationRequestDto ToTenantDto()
         {
-            return new RegisterDto()
+            return new RegistrationRequestDto()
             {
                 FirstName = FirstName,
                 LastName = LastName,

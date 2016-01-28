@@ -2,6 +2,7 @@
 using Fyl.Entities;
 using Fyl.Library.Helpers;
 using Fyl.Managers;
+using Fyl.Session;
 using SimpleInjector;
 using SimpleInjector.Integration.Wcf;
 using System.Web.Mvc;
@@ -35,8 +36,10 @@ namespace Tenant.Service.App_Start
             container.Register<IFylEntities>(() => new FylEntities());
 
             container.RegisterPerWcfOperation<IAddressRepository, AddressRepository>();
-            container.RegisterPerWcfOperation<IAccountRepository, AccountRepository>();
-            container.RegisterPerWcfOperation<IAccountManager, AccountManager>();
+            container.RegisterPerWcfOperation<IUserRepository, UserRepository>();
+            container.RegisterPerWcfOperation<IUserManager, UserManager>();
+
+            container.RegisterPerWcfOperation<IPasswordHasher, PasswordHasher>();
             //container.RegisterPerWcfOperation<IHasher, Hasher>();
         }
 

@@ -20,12 +20,12 @@ namespace Fyl.Entities
 
         public int Beds { get; set; }
 
-        [ForeignKey("LandlordId")]
-        public virtual Landlord Landlord { get; set; }
+        [ForeignKey("LandlordId"),]
+        public virtual User Landlord { get; set; }
 
         public Guid LandlordId { get; set; }
 
-        public virtual List<Tenant> Tenants { get; set; }
+        public virtual List<User> Tenants { get; set; }
 
         public DateTime StartDate { get; set; }
 

@@ -1,0 +1,34 @@
+﻿@using Tenant.Site.Models
+
+@model LoginModel
+@{
+    ViewBag.Title = "Register";
+}
+
+<h2>Register</h2>
+
+<div class="container">
+
+    @using (Html.BeginForm("Login", "Account", FormMethod.Post))
+    {
+        <div class="row margin-bottom-small">
+            <div class="col-md-3">
+                @Html.LabelFor(m => m.EmailAddress)
+            </div>
+            <div class="col-md-3">
+                @Html.TextBoxFor(m => m.EmailAddress)
+            </div>
+        </div>
+
+        <div class="row margin-bottom-small">
+            <div class="col-md-3">
+                @Html.LabelFor(m => m.Password)
+            </div>
+            <div class="col-md-3">
+                @Html.TextBoxFor(m => m.Password)
+            </div>
+        </div>
+
+        <button type="submit">Login</button>
+    }
+</div>

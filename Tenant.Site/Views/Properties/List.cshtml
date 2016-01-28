@@ -1,0 +1,38 @@
+﻿@using Tenant.Site.Models
+
+@model PropertyListSearchModel
+
+<div class="container">
+    <div id="search">
+        <div class="margin-bottom-small">
+            <div class="col-md-3">
+                @Html.LabelFor(m => m.Area)
+            </div>
+            <div class="col-md-3">
+                @Html.TextBoxFor(m => m.Area)
+            </div>
+        </div>
+        <div class="margin-bottom-small">
+            <div class="col-md-3">
+                @Html.LabelFor(m => m.PostCode)
+            </div>
+            <div class="col-md-3">
+                @Html.TextBoxFor(m => m.PostCode)
+            </div>
+        </div>
+
+        <button id="searchButton" class="btn btn-default">Search</button>
+    </div>
+
+    <div id="results">
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    $("#searchButton").on('click', function (e) {
+        e.preventDefault();
+
+        $.ajax()
+    })
+</script>

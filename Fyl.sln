@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tenant.Service", "Tenant.Se
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fyl.Helpers", "Fyl.Helpers\Fyl.Helpers.csproj", "{3B969C28-4DBD-45A9-90BE-380312F3BA1F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Fyl.Session", "Fyl.Session\Fyl.Session.csproj", "{75B00DFF-AA12-4392-8358-2BDAC30302B9}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -67,6 +69,10 @@ Global
 		{3B969C28-4DBD-45A9-90BE-380312F3BA1F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B969C28-4DBD-45A9-90BE-380312F3BA1F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B969C28-4DBD-45A9-90BE-380312F3BA1F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75B00DFF-AA12-4392-8358-2BDAC30302B9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75B00DFF-AA12-4392-8358-2BDAC30302B9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75B00DFF-AA12-4392-8358-2BDAC30302B9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75B00DFF-AA12-4392-8358-2BDAC30302B9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -80,5 +86,6 @@ Global
 		{7BD121BC-8010-4EC0-B25D-56FEF8892C01} = {FC3FE322-268C-414A-9894-791C9465145C}
 		{10BA23B0-D770-4431-B41F-152A20EBFCF0} = {0AC89E37-426D-4DE9-A3CD-5F33579B9634}
 		{3B969C28-4DBD-45A9-90BE-380312F3BA1F} = {A7F675E6-8037-4968-81D5-BFFB90F02480}
+		{75B00DFF-AA12-4392-8358-2BDAC30302B9} = {A7F675E6-8037-4968-81D5-BFFB90F02480}
 	EndGlobalSection
 EndGlobal

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Fyl.Library.Dto
 {
-    public class RegisterDto
+    public class RegistrationRequestDto
     {
         public string FirstName { get; set; }
 

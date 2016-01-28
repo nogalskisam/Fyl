@@ -17,17 +17,22 @@ namespace Fyl.Entities
     {
         private ILog _Logger;
 
-        public IDbSet<Landlord> Landlords { get; set; }
+        // User Stuff
+        public IDbSet<User> Users { get; set; }
+
+        public IDbSet<Session> Sessions { get; set; }
+
+        public IDbSet<UserAuthentication> UserAuthentications { get; set; }
+
+        // Practical Data
 
         public IDbSet<Address> Addresses { get; set; }
 
         public IDbSet<Property> Properties { get; set; }
 
-        public IDbSet<Tenant> Tenants { get; set; }
+        //public IDbSet<User> Users { get; set; }
 
-        public IDbSet<User> Users { get; set; }
-
-        public IDbSet<PasswordAuthorisation> PasswordAuthorisations { get; set; }
+        //public IDbSet<PasswordAuthorisation> PasswordAuthorisations { get; set; }
 
         public ILog Logger
         {
@@ -56,9 +61,27 @@ namespace Fyl.Entities
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
-            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            ConfigureModel(modelBuilder);
             base.OnModelCreating(modelBuilder);
+        }
+
+        public static void ConfigureModel(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+
+            modelBuilder.Entity<User>()
+                .HasMany<Session>(u => u.Sessions)
+                .WithRequired(s => s.User)
+                .WillCascadeOnDelete(true);
+
+            modelBuilder.Entity<User>()
+                .HasOptional<UserAuthentication>(u => u.Authentication)
+                .WithRequired(a => a.User)
+                .WillCascadeOnDelete(true);
+
+            modelBuilder.Entity<Property>()
+                .HasRequired<User>(u => u.Landlord)
+                .WithRequiredPrincipal();
         }
 
         /// <summary>

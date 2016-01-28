@@ -1,4 +1,5 @@
-﻿using Fyl.Library.Enum;
+﻿using Fyl.Library.Dto;
+using Fyl.Library.Enum;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -14,23 +15,33 @@ namespace Fyl.Entities
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid UserId { get; set; }
 
-        public string Firstname { get; set; }
+        public virtual List<Session> Sessions { get; set; }
 
-        public string Lastname { get; set; }
+        public virtual UserAuthentication Authentication { get; set; }
 
-        public string ContactNumber { get; set; }
-
+        [Required, StringLength(256)]
         public string EmailAddress { get; set; }
+
+        public string FirstName { get; set; }
+
+        public string LastName { get; set; }
 
         public DateTime DateOfBirth { get; set; }
 
-        public DateTime DateRegistered { get; set; }
-
         public RoleEnum Role { get; set; }
 
-        public Guid PasswordAuthorisationId { get; set; }
+        public DateTime DateRegistered { get; set; }
 
-        [ForeignKey("PasswordAuthorisationId")]
-        public PasswordAuthorisation PasswordAuthorisation { get; set; }
+        public UserDto ToDto()
+        {
+            return new UserDto()
+            {
+                UserId = this.UserId,
+                EmailAddress = this.EmailAddress,
+                FirstName = this.FirstName,
+                LastName = this.LastName,
+                Role = this.Role
+            };
+        }
     }
 }
