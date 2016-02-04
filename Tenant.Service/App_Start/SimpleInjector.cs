@@ -5,7 +5,6 @@ using Fyl.Managers;
 using Fyl.Session;
 using SimpleInjector;
 using SimpleInjector.Integration.Wcf;
-using System.Web.Mvc;
 
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(Tenant.Service.App_Start.SimpleInjector), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(Tenant.Service.App_Start.SimpleInjector), "Stop")]

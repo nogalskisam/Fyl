@@ -23,11 +23,11 @@ namespace Fyl.Managers
             _passwordHasher = passwordHasher;
         }
 
-        public RegistrationResponseDto RegisterUser(RegistrationRequestDto dto)
+        public async Task<RegistrationResponseDto> RegisterUser(RegistrationRequestDto dto)
         {
             var response = new RegistrationResponseDto()
             {
-                EmailExists = true // check user repository
+                EmailExists = await _userRepository.EmailExists(dto.EmailAddress) // check user repository
             };
 
             if (!response.EmailExists)
@@ -36,7 +36,7 @@ namespace Fyl.Managers
 
                 try
                 {
-                    _userRepository.RegisterUser(dto, authentication);
+                    await _userRepository.RegisterUser(dto, authentication);
                     response.Success = true;
                 }
                 catch (Exception)
@@ -48,13 +48,32 @@ namespace Fyl.Managers
             return response;
         }
 
-        public async Task<UserProfileSessionData> LoginUser(LoginDto dto)
+        public async Task<LoginResponseDto> LoginUser(LoginRequestDto dto)
         {
-            //var profileData = await _accountRepository.LoginUser(dto);
+            UserAuthenticationDto auth = await _userRepository.GetUserAuthentication(dto.EmailAddress);
+            
+            if (auth == null)
+            {
+                return new LoginResponseDto() { IsSuccess = false };
+            }
 
-            //return profileData;
+            bool credentialsValid = _passwordHasher.PasswordMatches(dto.Password, auth.PasswordSalt, auth.PasswordHash);
 
-            return new UserProfileSessionData();
+            if (!credentialsValid)
+            {
+                return new LoginResponseDto() { IsSuccess = false };
+            }
+            else
+            {
+                var response = await _userRepository.LoginUser(auth.UserId, dto.IpAddress);
+
+                return response;
+            }
+        }
+
+        public SessionDetailDto GetValidSession(Guid sessionId)
+        {
+            return _userRepository.GetValidSession(sessionId);
         }
     }
 }

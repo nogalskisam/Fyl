@@ -12,9 +12,9 @@ namespace Tenant.Site.Models
 
         public string Password { get; set; }
 
-        public LoginDto ToLoginDto()
+        public LoginRequestDto ToLoginDto()
         {
-            return new LoginDto()
+            return new LoginRequestDto()
             {
                 EmailAddress = EmailAddress,
                 Password = Password

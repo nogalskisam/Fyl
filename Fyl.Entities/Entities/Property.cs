@@ -20,10 +20,10 @@ namespace Fyl.Entities
 
         public int Beds { get; set; }
 
-        [ForeignKey("LandlordId"),]
-        public virtual User Landlord { get; set; }
+        //[ForeignKey("UserId")]
+        //public virtual User Landlord { get; set; }
 
-        public Guid LandlordId { get; set; }
+        //public Guid LandlordId { get; set; }
 
         public virtual List<User> Tenants { get; set; }
 

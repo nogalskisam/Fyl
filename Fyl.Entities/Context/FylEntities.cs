@@ -78,10 +78,6 @@ namespace Fyl.Entities
                 .HasOptional<UserAuthentication>(u => u.Authentication)
                 .WithRequired(a => a.User)
                 .WillCascadeOnDelete(true);
-
-            modelBuilder.Entity<Property>()
-                .HasRequired<User>(u => u.Landlord)
-                .WithRequiredPrincipal();
         }
 
         /// <summary>

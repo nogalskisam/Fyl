@@ -69,8 +69,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Managers\Account\UserManager.cs" />
-    <Compile Include="Managers\Account\IUserManager.cs" />
+    <Compile Include="Managers\User\UserManager.cs" />
+    <Compile Include="Managers\User\IUserManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

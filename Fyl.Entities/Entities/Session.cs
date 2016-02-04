@@ -40,7 +40,7 @@ namespace Fyl.Entities
             };
         }
 
-        public SessionDetailDto SessionDetailDto()
+        public SessionDetailDto ToSessionDetailDto()
         {
             return new SessionDetailDto()
             {

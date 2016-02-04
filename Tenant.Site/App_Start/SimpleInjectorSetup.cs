@@ -13,6 +13,9 @@ using Castle.DynamicProxy;
 using System.Web.Http;
 using Tenant.Service;
 using System.ServiceModel;
+using Fyl.Library;
+using Fyl.Utilities;
+using Fyl.Session;
 
 //[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(Tenant.Site.App_Start.SimpleInjectorSetup), "Start")]
 //[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(Tenant.Site.App_Start.SimpleInjectorSetup), "Stop")]
@@ -67,7 +70,17 @@ namespace Tenant.Site.App_Start
 
         private static void RegisterServices(Container container)
         {
-            container.RegisterSingle<ITenantService>(() => new ChannelFactory<ITenantService>("*").CreateChannel());
+            container.RegisterPerWebRequest<ISessionDetails, SessionDetails>();
+            container.RegisterPerWebRequest<ISessionHelper, SessionHelper>();
+            container.RegisterPerWebRequest<ISessionFactory, SessionFactory>();
+            container.RegisterPerWebRequest<IHttpContextHelper, HttpContextHelper>();
+            container.RegisterPerWebRequest<IEncryptionHelper, EncryptionHelper>();
+            container.Register<HttpContextBase>(() =>
+                new HttpContextWrapper(HttpContext.Current),
+                Lifestyle.Singleton);
+
+            // WCF
+            container.RegisterSingleton<ITenantService>(() => new ChannelFactory<ITenantService>("*").CreateChannel());
         }
     }
 }

@@ -19,7 +19,7 @@ namespace Fyl.DataLayer.Repositories
             _entities = entities;
         }
 
-        public UserDto RegisterUser(RegistrationRequestDto dto, SaltedHashResult auth)
+        public async Task<UserDto> RegisterUser(RegistrationRequestDto dto, SaltedHashResult auth)
         {
             var user = new User()
             {
@@ -32,79 +32,77 @@ namespace Fyl.DataLayer.Repositories
                 {
                     PasswordHash = auth.Hash,
                     PasswordSalt = auth.Salt
-                }
+                },
+                Role = dto.Role
             };
 
             _entities.Users.Add(user);
 
-            _entities.SaveChanges();
+            await _entities.SaveChangesAsync();
 
             return user.ToDto();
         }
 
-        //public async Task RegisterUser(RegisterDto dto)
-        //{
-        //    var entity = await _entities.Users
-        //        .AnyAsync(s => s.EmailAddress == dto.EmailAddress);
+        public SessionDetailDto GetValidSession(Guid sessionId)
+        {
+            var session = _entities.Sessions
+                .Include(s => s.User)
+                .SingleOrDefault(s => s.SessionId == sessionId);
 
-        //    if (!entity)
-        //    {
-        //        var newUser = new User()
-        //        {
-        //            Firstname = dto.FirstName,
-        //            Lastname = dto.LastName,
-        //            ContactNumber = dto.ContactNumber,
-        //            EmailAddress = dto.EmailAddress,
-        //            DateOfBirth = dto.DateOfBirth,
-        //            Role = dto.Role,
-        //            PasswordAuthorisationId = dto.PasswordAuthorisationId.Value,
-        //            DateRegistered = DateTime.UtcNow
-        //        };
+            if (session != null && session.ValidUntilUtc > DateTime.UtcNow)
+            {
+                return session.ToSessionDetailDto();
+            }
+            else
+            {
+                return null;
+            }
+        }
 
-        //        _entities.Users.Add(newUser);
+        public async Task<bool> EmailExists(string emailAddress)
+        {
+            bool exists = await _entities.Users
+                .AnyAsync(a => a.EmailAddress.ToUpper().Equals(emailAddress.ToUpper()));
 
-        //        await _entities.SaveChangesAsync();
-        //    }
-        //    else
-        //    {
-        //        throw new Exception("A user with that email address already exists!");
-        //    }
-        //}
+            return exists;
+        }
 
-        //public async Task<Guid> AddPasswordAuthorisation(string password)
-        //{
-        //    var newPassword = new PasswordAuthorisation()
-        //    {
-        //        Hash = password,
-        //        ExpiryDate = DateTime.UtcNow.AddYears(1)
-        //    };
+        public async Task<LoginResponseDto> LoginUser(Guid userId, string ipAddress)
+        {
+            var user = await _entities.Users
+                .SingleAsync(s => s.UserId == userId);
 
-        //    _entities.PasswordAuthorisations.Add(newPassword);
-        //    await _entities.SaveChangesAsync();
+            var newSession = new Fyl.Entities.Session()
+            {
+                UserId = userId,
+                ValidFromUtc = DateTime.UtcNow,
+                ValidUntilUtc = DateTime.UtcNow.AddHours(1),
+                IpAddress = ipAddress
+            };
 
-        //    return newPassword.PasswordAuthorisationId;
-        //}
-        
-        //public async Task<UserProfileSessionData> LoginUser(LoginDto dto)
-        //{
-        //    UserProfileSessionData profileData = new UserProfileSessionData();
+            _entities.Sessions.Add(newSession);
+            await _entities.SaveChangesAsync();
 
-        //    var entity = await _entities.Users
-        //        .Where(u => u.EmailAddress == dto.EmailAddress)
-        //        .Where(u => u.PasswordAuthorisation.Hash == dto.Password)
-        //        .Where(u => u.PasswordAuthorisation.ExpiryDate > DateTime.UtcNow)
-        //        .SingleOrDefaultAsync();
+            var result = new LoginResponseDto()
+            {
+                User = user.ToDto(),
+                Session = newSession.ToDto(),
+                IsSuccess = true
+            };
 
-        //    if (entity != null)
-        //    {
-        //        profileData.UserId = entity.UserId;
-        //        profileData.EmailAddress = entity.EmailAddress;
-        //        profileData.FirstName = entity.Firstname;
-        //        profileData.LastName = entity.Lastname;
-        //        profileData.Role = entity.Role;
-        //    }
+            return result;
+        }
 
-        //    return profileData;
-        //}
+        public async Task<UserAuthenticationDto> GetUserAuthentication(string email)
+        {
+            email = email.ToLower();
+
+            var authentication = await _entities.UserAuthentications
+                .SingleOrDefaultAsync(s => s.User.EmailAddress.ToLower() == email);
+
+            var result = authentication != null ? authentication.ToDto() : null;
+
+            return result;
+        }
     }
 }

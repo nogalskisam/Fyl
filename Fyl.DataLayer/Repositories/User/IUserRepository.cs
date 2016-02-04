@@ -10,10 +10,14 @@ namespace Fyl.DataLayer.Repositories
 {
     public interface IUserRepository
     {
-        UserDto RegisterUser(RegistrationRequestDto dto, SaltedHashResult auth);
+        Task<UserDto> RegisterUser(RegistrationRequestDto dto, SaltedHashResult auth);
 
-        //Task<Guid> AddPasswordAuthorisation(string password);
+        SessionDetailDto GetValidSession(Guid sessionId);
 
-        //Task<UserProfileSessionData> LoginUser(LoginDto dto);
+        Task<bool> EmailExists(string emailAddress);
+
+        Task<LoginResponseDto> LoginUser(Guid userId, string ipAddress);
+
+        Task<UserAuthenticationDto> GetUserAuthentication(string email);
     }
 }

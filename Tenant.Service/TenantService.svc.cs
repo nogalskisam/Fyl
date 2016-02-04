@@ -1,4 +1,5 @@
 ﻿using Fyl.DataLayer.Repositories;
+using Fyl.Library;
 using Fyl.Library.Dto;
 using Fyl.Managers;
 using log4net;
@@ -20,14 +21,14 @@ namespace Tenant.Service
         //private ILog _logger;
         private IAddressRepository _addressRepository;
         private IUserRepository _accountRepository;
-        private IUserManager _accountManager;
+        private IUserManager _userManager;
 
-        public TenantService(/*ILog logger,*/ IAddressRepository addressRepository, IUserRepository accountRepository, IUserManager accountManager)
+        public TenantService(/*ILog logger,*/ IAddressRepository addressRepository, IUserRepository accountRepository, IUserManager userManager)
         {
             //_logger = logger;
             _addressRepository = addressRepository;
             _accountRepository = accountRepository;
-            _accountManager = accountManager;
+            _userManager = userManager;
         }
 
         public List<AddressDto> GetAllAddresses()
@@ -37,16 +38,23 @@ namespace Tenant.Service
             return dtos;
         }
 
-        public async Task RegisterUser(RegistrationRequestDto dto)
+        public async Task<RegistrationResponseDto> RegisterUser(RegistrationRequestDto dto)
         {
-            _accountManager.RegisterUser(dto);
+            var result = await _userManager.RegisterUser(dto);
+
+            return result;
         }
 
-        public async Task<UserProfileSessionData> LoginUser(LoginDto dto)
+        public async Task<LoginResponseDto> LoginUser(LoginRequestDto dto)
         {
-            var profileData = await _accountManager.LoginUser(dto);
+            var profileData = await _userManager.LoginUser(dto);
 
             return profileData;
+        }
+
+        public SessionDetailDto GetValidSession(Guid sessionId)
+        {
+            return _userManager.GetValidSession(sessionId);
         }
     }
 }
