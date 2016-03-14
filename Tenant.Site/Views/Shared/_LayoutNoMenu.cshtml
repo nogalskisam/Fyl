@@ -1,0 +1,29 @@
+﻿@using Tenant.Site.Helpers
+@using Fyl.Session
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>@if (IsSectionDefined("Title"))
+    { @RenderSection("Title", true) <text> | </text> }Find Your Landlord</title>
+
+    @Styles.Render("~/Content/css")
+
+</head>
+
+<body class="login">
+
+    <div class="main-container">
+        @RenderBody()
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jqueryval")
+
+</body>
+</html>

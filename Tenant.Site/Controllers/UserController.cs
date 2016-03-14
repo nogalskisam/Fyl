@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
 using Tenant.Service;
+using Tenant.Site.Attributes;
 using Tenant.Site.Models;
 
 namespace Tenant.Site.Controllers
@@ -29,14 +30,16 @@ namespace Tenant.Site.Controllers
         }
 
         [HttpGet]
+        [Unsecured]
         public ActionResult Register()
         {
             var model = new RegisterModel();
 
-            return View("Register/Register", model);
+            return View("Register", model);
         }
 
         [HttpPost]
+        [Unsecured]
         public async Task<ActionResult> Register(RegisterModel model)
         {
             if (model.Password != model.PasswordConfirm)
@@ -67,16 +70,18 @@ namespace Tenant.Site.Controllers
 
         public ViewResult Success()
         {
-            return View("Register/Success");
+            return View("Success");
         }
 
         [HttpGet]
+        [Unsecured]
         public ActionResult Login()
         {
-            return View("Login/Login");
+            return View("Login");
         }
 
         [HttpPost]
+        [Unsecured]
         public async Task<ActionResult> Login(LoginModel model)
         {
             if (ModelState.IsValid)

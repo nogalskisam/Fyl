@@ -1,0 +1,30 @@
+﻿@model LoginModel
+<div class="container">
+    <div class="row">
+        @*<img src="~/Content/img/logo.png" class="logo img-responsive sc-centered" alt="Responsive image">*@
+        <div class="col-md-4 login-content">            
+            <h2>Login</h2>
+            @using (Html.BeginForm("Login", "User", FormMethod.Post, new { @class = "form-horizontal" }))
+            {
+                @Html.CustomValidationSummary().PropertyErrors(false)
+
+                @(Html.CustomTextBoxFor(m => m.EmailAddress)
+                    .InputAttributes(new { @class = "sc-transparent" })
+                    .Label(false)
+                    .Placeholder()
+                    .Icon("fa fa-fw fa-user")
+                );
+
+                @(Html.CustomTextBoxFor(m => m.Password)
+                    .Password()
+                    .InputAttributes(new { @class = "sc-transparent" })
+                    .Label(false)
+                    .Placeholder()
+                    .Icon("fa fa-fw fa-key")
+                );
+
+                <button type="submit" class="btn btn-default"><i class="fa fa-arrow-circle-right"></i> Login</button>
+            }
+        </div>
+    </div>
+</div>

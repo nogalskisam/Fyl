@@ -182,8 +182,10 @@
     <Compile Include="App_Start\MapperConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\SimpleInjectorSetup.cs" />
+    <Compile Include="Attributes\UnsecuredAttribute.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Filters\LoginFilter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -196,6 +198,7 @@
     <Compile Include="Helpers\BootstrapHelpers\Interfaces\ICustomTextBox.cs" />
     <Compile Include="Helpers\BootstrapHelpers\Interfaces\ICustomValidationSummary.cs" />
     <Compile Include="Helpers\HtmlHelpers.cs" />
+    <Compile Include="Helpers\SessionDataHelpers.cs" />
     <Compile Include="Models\Account\LoginModel.cs" />
     <Compile Include="Models\Account\RegisterModel.cs" />
     <Compile Include="Models\HomeModel.cs" />
@@ -208,6 +211,8 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\font-awesome\css\font-awesome.css" />
     <Content Include="Content\font-awesome\css\font-awesome.min.css" />
+    <Content Include="Content\img\city-night.jpg" />
+    <Content Include="Content\img\logo.png" />
     <Content Include="favicon.ico" />
     <Content Include="Content\font-awesome\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
@@ -250,11 +255,12 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\User\Register\Register.cshtml" />
-    <Content Include="Views\User\Login\Login.cshtml" />
+    <Content Include="Views\User\Register.cshtml" />
+    <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\Properties\View.cshtml" />
     <Content Include="Views\Properties\List.cshtml" />
-    <Content Include="Views\User\Register\Success.cshtml" />
+    <Content Include="Views\User\Success.cshtml" />
+    <Content Include="Views\Shared\_LayoutNoMenu.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

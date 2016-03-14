@@ -1,4 +1,20 @@
-﻿body {
+﻿body.login{
+    background-color: #91b48a;
+    background-image: url("img/city-night.jpg");
+    background-attachment: fixed;
+    background-position: right top; /* Make background prefer being attached at the right and top sides */
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: 0 0 60px rgba(0, 0, 0, 0.7) inset;
+    position: relative;
+}
+
+body, html {
+    height: 100%;
+    overflow-x: hidden;
+}
+
+body {
     padding-top: 50px;
     padding-bottom: 20px;
 }
@@ -26,3 +42,24 @@ textarea {
 .margin-bottom-small {
     margin-bottom: 5px;
 }
+
+h2.light {
+    color: #FFF;
+}
+
+.login-content {
+    background-color:rgba(232, 232, 232, 0.89);
+    padding: 0 0 30px 30px;
+    border-radius: 13px;
+    box-shadow: 0 0 10px #232323;
+}
+
+.form-horizontal .form-group {
+    margin-left: 0px;
+}
+
+img.logo {
+    max-width: 25%;
+    margin-bottom: 10px;
+}
+

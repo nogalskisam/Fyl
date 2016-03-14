@@ -22,6 +22,7 @@ namespace Fyl.Library
         [OperationContract]
         Task<LoginResponseDto> LoginUser(LoginRequestDto dto);
 
+        [OperationContract]
         SessionDetailDto GetValidSession(Guid sessionId);
     }
 }
