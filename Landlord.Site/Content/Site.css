@@ -1,5 +1,9 @@
-﻿body.login{
-    background-color: #91b48a;
+﻿body {
+    background-image: url("img/wet_snow.png");
+}
+
+body.login{
+    background-color: #CECECE;
     background-image: url("img/notepad.jpg");
     background-attachment: fixed;
     background-position: right top; /* Make background prefer being attached at the right and top sides */
@@ -8,6 +12,8 @@
     box-shadow: 0 0 60px rgba(0, 0, 0, 0.7) inset;
     position: relative;
 }
+
+
 
 body, html {
     height: 100%;

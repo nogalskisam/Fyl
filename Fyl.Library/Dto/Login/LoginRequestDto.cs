@@ -18,5 +18,8 @@ namespace Fyl.Library.Dto
 
         [DataMember]
         public string IpAddress { get; set; }
+
+        [DataMember]
+        public bool IsLandlord { get; set; }
     }
 }

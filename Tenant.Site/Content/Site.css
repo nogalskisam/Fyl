@@ -1,5 +1,9 @@
-﻿body.login{
-    background-color: #91b48a;
+﻿body {
+    background-image: url("img/school.png");
+}
+
+body.login{
+    background-color: #808080;
     background-image: url("img/city-night.jpg");
     background-attachment: fixed;
     background-position: right top; /* Make background prefer being attached at the right and top sides */
