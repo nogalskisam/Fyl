@@ -17,6 +17,7 @@ using Fyl.Library;
 using Fyl.Utilities;
 using Fyl.Session;
 using Tenant.Site.Filters;
+using Tenant.Site.Attributes;
 
 //[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(Tenant.Site.App_Start.SimpleInjectorSetup), "Start")]
 //[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(Tenant.Site.App_Start.SimpleInjectorSetup), "Stop")]
@@ -62,7 +63,7 @@ namespace Tenant.Site.App_Start
 
         public static void RegisterGlobalFilters(GlobalFilterCollection filters, Container container)
         {
-            //filters.Add(container.GetInstance<LoginFilter>());
+            filters.Add(container.GetInstance<LoginFilter>());
         }
 
         private static void RegisterWebApiFilters(System.Web.Http.Filters.HttpFilterCollection httpFilterCollection, Container container)

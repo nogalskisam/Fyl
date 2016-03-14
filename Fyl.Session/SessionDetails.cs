@@ -11,6 +11,6 @@ namespace Fyl.Session
     {
         public UserDto User { get; set; }
 
-        public bool IsValid { get; set; }
+        public bool IsValid { get { return this.User != null; } }
     }
 }

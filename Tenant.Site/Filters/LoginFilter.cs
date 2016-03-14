@@ -20,18 +20,16 @@ namespace Tenant.Site.Filters
         public void OnAuthorization(AuthorizationContext filterContext)
         {
             var session = _sessionFactory.GetSession();
-            if (!_sessionFactory.GetSession().IsValid)
+            if (_sessionFactory.GetSession().IsValid)
             {
                 // Redirect
-                filterContext.Result = new RedirectToRouteResult(
-                    new RouteValueDictionary
-                    {
-                        { "controller", "User" },
-                        { "action", "Login" }
-                    });
-            }
-            else
-            {
+                //filterContext.Result = new RedirectToRouteResult(
+                //    new RouteValueDictionary
+                //    {
+                //        { "controller", "User" },
+                //        { "action", "Login" }
+                //    });
+
                 // Set ViewData values
                 filterContext.Controller.ViewData.Add(SessionDataKeys.USER_DISPLAY_NAME, string.Format("{0} {1}", session.User.FirstName, session.User.LastName));
                 filterContext.Controller.ViewData.Add(SessionDataKeys.USER, session.User);

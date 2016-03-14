@@ -21,5 +21,8 @@ namespace Fyl.Library
 
         [OperationContract]
         SessionDetailDto GetValidSession(Guid sessionId);
+
+        [OperationContract]
+        PropertyListResponseDto GetAvailablePropertiesForList(PropertyListRequestDto request);
     }
 }

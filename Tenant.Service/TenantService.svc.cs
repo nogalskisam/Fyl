@@ -22,13 +22,15 @@ namespace Tenant.Service
         private IAddressRepository _addressRepository;
         private IUserRepository _accountRepository;
         private IUserManager _userManager;
+        private IPropertyManager _propertyManager;
 
-        public TenantService(/*ILog logger,*/ IAddressRepository addressRepository, IUserRepository accountRepository, IUserManager userManager)
+        public TenantService(/*ILog logger,*/ IAddressRepository addressRepository, IUserRepository accountRepository, IUserManager userManager, IPropertyManager propertyManager)
         {
             //_logger = logger;
             _addressRepository = addressRepository;
             _accountRepository = accountRepository;
             _userManager = userManager;
+            _propertyManager = propertyManager;
         }
 
         public List<AddressDto> GetAllAddresses()
@@ -55,6 +57,13 @@ namespace Tenant.Service
         public SessionDetailDto GetValidSession(Guid sessionId)
         {
             return _userManager.GetValidSession(sessionId);
+        }
+
+        public PropertyListResponseDto GetAvailablePropertiesForList(PropertyListRequestDto request)
+        {
+            var result = _propertyManager.GetAvailablePropertiesForList(request);
+
+            return result;
         }
     }
 }

@@ -119,6 +119,10 @@
     <Compile Include="Migrations\201603141511597_PropertyImages_AddPrimaryAndInactiveFlags.Designer.cs">
       <DependentUpon>201603141511597_PropertyImages_AddPrimaryAndInactiveFlags.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603142238224_Properties_ChangeAvailableFlag.cs" />
+    <Compile Include="Migrations\201603142238224_Properties_ChangeAvailableFlag.Designer.cs">
+      <DependentUpon>201603142238224_Properties_ChangeAvailableFlag.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -152,6 +156,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201603141511597_PropertyImages_AddPrimaryAndInactiveFlags.resx">
       <DependentUpon>201603141511597_PropertyImages_AddPrimaryAndInactiveFlags.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603142238224_Properties_ChangeAvailableFlag.resx">
+      <DependentUpon>201603142238224_Properties_ChangeAvailableFlag.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

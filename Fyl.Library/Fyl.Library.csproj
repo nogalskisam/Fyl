@@ -64,6 +64,10 @@
     <Compile Include="Dto\Login\LoginRequestDto.cs" />
     <Compile Include="Dto\Login\LoginResponseDto.cs" />
     <Compile Include="Dto\PropertyImage\PropertyImageAddDto.cs" />
+    <Compile Include="Dto\PropertyImage\PropertyImageDto.cs" />
+    <Compile Include="Dto\Property\List\PropertyListRequestDto.cs" />
+    <Compile Include="Dto\Property\List\PropertyListItemDto.cs" />
+    <Compile Include="Dto\Property\List\PropertyListResponseDto.cs" />
     <Compile Include="Dto\Registration\RegistrationRequestDto.cs" />
     <Compile Include="Dto\Registration\RegistrationResponseDto.cs" />
     <Compile Include="Dto\Session\SessionDetailDto.cs" />

@@ -35,7 +35,7 @@ namespace Tenant.Site
 
             bundles.Add(new StyleBundle("~/Content/kendo/css").Include(
                 "~/Content/kendo/kendo.common.min.css",
-                "~/Content/kendo/kendo.default.min.css"));
+                "~/Content/kendo/kendo.bootstrap.min.css"));
 
             bundles.IgnoreList.Clear();
         }

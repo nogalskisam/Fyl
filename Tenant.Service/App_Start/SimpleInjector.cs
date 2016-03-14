@@ -37,6 +37,8 @@ namespace Tenant.Service.App_Start
             container.RegisterPerWcfOperation<IAddressRepository, AddressRepository>();
             container.RegisterPerWcfOperation<IUserRepository, UserRepository>();
             container.RegisterPerWcfOperation<IUserManager, UserManager>();
+            container.RegisterPerWcfOperation<IPropertyRepository, PropertyRepository>();
+            container.RegisterPerWcfOperation<IPropertyManager, PropertyManager>();
 
             container.RegisterPerWcfOperation<IPasswordHasher, PasswordHasher>();
             //container.RegisterPerWcfOperation<IHasher, Hasher>();

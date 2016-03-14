@@ -24,9 +24,24 @@
         <button id="searchButton" class="btn btn-default">Search</button>
     </div>
 
-    <div id="results">
+    <script type="text/x-kendo-tmpl" id="Properties">
+        <div class="Property">
+            <img src="#:ImagePath#" alt="#:PostCode# image" />
+            <h3>#:Beds# Beds, #:PostCode#</h3>
+        </div>
+    </script>
 
-    </div>
+        @(Html.Kendo().ListView<PropertyListModel>()
+            .Name("PropertyList")
+            .TagName("div")
+            .ClientTemplateId("Properties")
+            .DataSource(data =>
+            {
+                data.Read(read => read.Action("List_GetProperties", "Property"));
+                data.PageSize(21);
+            })
+            .Pageable()
+        )
 </div>
 
 <script type="text/javascript">

@@ -187,6 +187,7 @@
     <Compile Include="App_Start\SimpleInjectorSetup.cs" />
     <Compile Include="Attributes\UnsecuredAttribute.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PropertyController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Filters\LoginFilter.cs" />
     <Compile Include="Global.asax.cs">
@@ -207,6 +208,7 @@
     <Compile Include="Models\HomeModel.cs" />
     <Compile Include="Models\Properties\PropertyListModel.cs" />
     <Compile Include="Models\Properties\PropertyListSearchModel.cs" />
+    <Compile Include="Models\PropertyImages\PropertyImageModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1260,8 +1262,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\User\Register.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
-    <Content Include="Views\Properties\View.cshtml" />
-    <Content Include="Views\Properties\List.cshtml" />
+    <Content Include="Views\Property\View.cshtml" />
+    <Content Include="Views\Property\List.cshtml" />
     <Content Include="Views\User\Success.cshtml" />
     <Content Include="Views\Shared\_LayoutNoMenu.cshtml" />
     <Content Include="Scripts\kendo\jquery.min.map" />

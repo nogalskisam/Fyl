@@ -69,6 +69,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Managers\Property\IPropertyManager.cs" />
+    <Compile Include="Managers\Property\PropertyManager.cs" />
     <Compile Include="Managers\User\UserManager.cs" />
     <Compile Include="Managers\User\IUserManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -95,6 +97,7 @@
       <Name>Fyl.Session</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets" Condition="Exists('..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

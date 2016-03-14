@@ -68,6 +68,7 @@ namespace Tenant.Site.Controllers
             return View(model);
         }
 
+        [Unsecured]
         public ViewResult Success()
         {
             return View("Success");
@@ -100,7 +101,7 @@ namespace Tenant.Site.Controllers
                     if (response.IsSuccess)
                     {
                         _sessionHelper.SetSessionTicketCookie(response.Session.SessionId);
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("List", "Property");
                     }
 
                     ModelState.AddModelError("", "Invalid Credentials");

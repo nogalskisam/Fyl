@@ -24,7 +24,7 @@ namespace Fyl.Entities
 
         public DateTime? EndDate { get; set; }
 
-        public bool Available { get; set; }
+        public bool Available { get { return this.Tenants == null || this.Tenants.Count == 0; } }
 
         public List<PropertyImage> Images { get; set; }
 
