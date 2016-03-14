@@ -82,6 +82,7 @@
     <Compile Include="Context\IFylEntities.cs" />
     <Compile Include="Entities\Address.cs" />
     <Compile Include="Entities\Property.cs" />
+    <Compile Include="Entities\PropertyImage.cs" />
     <Compile Include="Entities\Session.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Entities\UserAuthentication.cs" />
@@ -110,6 +111,14 @@
     <Compile Include="Migrations\201601301906516_Entities_AddSessionsUserAuthAndChangeUsers.Designer.cs">
       <DependentUpon>201601301906516_Entities_AddSessionsUserAuthAndChangeUsers.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603141308322_Property_AddPropertyImages.cs" />
+    <Compile Include="Migrations\201603141308322_Property_AddPropertyImages.Designer.cs">
+      <DependentUpon>201603141308322_Property_AddPropertyImages.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603141511597_PropertyImages_AddPrimaryAndInactiveFlags.cs" />
+    <Compile Include="Migrations\201603141511597_PropertyImages_AddPrimaryAndInactiveFlags.Designer.cs">
+      <DependentUpon>201603141511597_PropertyImages_AddPrimaryAndInactiveFlags.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -137,6 +146,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201601301906516_Entities_AddSessionsUserAuthAndChangeUsers.resx">
       <DependentUpon>201601301906516_Entities_AddSessionsUserAuthAndChangeUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603141308322_Property_AddPropertyImages.resx">
+      <DependentUpon>201603141308322_Property_AddPropertyImages.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603141511597_PropertyImages_AddPrimaryAndInactiveFlags.resx">
+      <DependentUpon>201603141511597_PropertyImages_AddPrimaryAndInactiveFlags.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -20,7 +20,8 @@ namespace Fyl.Entities
         IDbSet<Address> Addresses { get; set; }
 
         IDbSet<Property> Properties { get; set; }
-        //IDbSet<PasswordAuthorisation> PasswordAuthorisations { get; set; }
+
+        IDbSet<PropertyImage> PropertyImages { get; set; }
 
         Database Database { get; }
 

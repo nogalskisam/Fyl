@@ -1,0 +1,65 @@
+﻿body.login{
+    background-color: #91b48a;
+    background-image: url("img/notepad.jpg");
+    background-attachment: fixed;
+    background-position: right top; /* Make background prefer being attached at the right and top sides */
+    background-repeat: no-repeat;
+    background-size: cover;
+    box-shadow: 0 0 60px rgba(0, 0, 0, 0.7) inset;
+    position: relative;
+}
+
+body, html {
+    height: 100%;
+    overflow-x: hidden;
+}
+
+body {
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+/* Set padding to keep content from hitting the edges */
+.body-content {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt {
+    white-space: normal;
+}
+
+/* Set width on the form input elements since they're 100% wide by default */
+input,
+select,
+textarea {
+    max-width: 280px;
+}
+
+.margin-bottom-small {
+    margin-bottom: 5px;
+}
+
+h2.light {
+    color: #FFF;
+}
+
+.login-content {
+    background-color:rgba(232, 232, 232, 0.89);
+    padding: 0 0 30px 30px;
+    border-radius: 13px;
+    box-shadow: 0 0 10px #232323;
+}
+
+.form-horizontal .form-group {
+    margin-left: 0px;
+}
+
+img.logo {
+    max-width: 25%;
+    margin-bottom: 10px;
+}
+

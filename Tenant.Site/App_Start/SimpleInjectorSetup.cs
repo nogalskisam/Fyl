@@ -74,7 +74,7 @@ namespace Tenant.Site.App_Start
         {
             container.RegisterPerWebRequest<ISessionDetails, SessionDetails>();
             container.RegisterPerWebRequest<ISessionHelper, SessionHelper>();
-            container.RegisterPerWebRequest<ISessionFactory, SessionFactory>();
+            container.RegisterPerWebRequest<ISessionFactory, TenantSessionFactory>();
             container.RegisterPerWebRequest<IHttpContextHelper, HttpContextHelper>();
             container.RegisterPerWebRequest<IEncryptionHelper, EncryptionHelper>();
             container.Register<HttpContextBase>(() =>

@@ -20,17 +20,20 @@ namespace Fyl.Entities
 
         public int Beds { get; set; }
 
-        //[ForeignKey("UserId")]
-        //public virtual User Landlord { get; set; }
-
-        //public Guid LandlordId { get; set; }
-
-        public virtual List<User> Tenants { get; set; }
-
         public DateTime StartDate { get; set; }
 
         public DateTime? EndDate { get; set; }
 
         public bool Available { get; set; }
+
+        public List<PropertyImage> Images { get; set; }
+
+        // People
+        //[ForeignKey("Landlord")]
+        //public virtual User Landlord { get; set; }
+
+        //public Guid LandlordId { get; set; }
+
+        public virtual List<User> Tenants { get; set; }
     }
 }

@@ -30,9 +30,7 @@ namespace Fyl.Entities
 
         public IDbSet<Property> Properties { get; set; }
 
-        //public IDbSet<User> Users { get; set; }
-
-        //public IDbSet<PasswordAuthorisation> PasswordAuthorisations { get; set; }
+        public IDbSet<PropertyImage> PropertyImages { get; set; }
 
         public ILog Logger
         {

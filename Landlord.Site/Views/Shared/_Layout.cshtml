@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>@if (IsSectionDefined("Title"))
+    {@RenderSection("Title", true) <text> | </text> } Find Your Landlord</title>
+
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/bundles/jquery")
+    @Styles.Render("~/bundles/bootstrap")
+    @Styles.Render("~/Content/kendo/css")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/kendo")
+
+
+</head>
+<body>
+    <div class="navbar navbar-default navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle Navigation</span>
+                    <i class="fa fa-bars"></i>
+                </button>
+                @Html.ActionLink("Find Your Landlord", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">@string.Format("{0} {1}", Html.GetSessionUser().FirstName, Html.GetSessionUser().LastName)</a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Profile</a></li>
+                            <li class="divider"></li>
+                            <li><a href="@Url.Action("Logout", "User")">Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="main-container">
+        @RenderBody()
+    </div>
+</body>
+</html>
