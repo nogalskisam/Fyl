@@ -67,11 +67,15 @@ img.logo {
     margin-bottom: 10px;
 }
 
+/*
+    Property List page
+*/
 #PropertyList {
     padding: 10px 5px;
     margin-bottom: -1px;
     min-height: 510px;
 }
+
 .Property {
     float: left;
     position: relative;
@@ -80,10 +84,12 @@ img.logo {
     margin: 0 5px;
     padding: 0;
 }
+
 .Property img {
     width: 110px;
     height: 110px;
 }
+
 .Property h3 {
     margin: 0;
     padding: 3px 5px 0 0;
@@ -95,9 +101,11 @@ img.logo {
     text-transform: uppercase;
     color: #999;
 }
+
 .Property p {
     visibility: hidden;
 }
+
 .Property:hover p {
     visibility: visible;
     position: absolute;
@@ -116,10 +124,20 @@ img.logo {
     -webkit-transition: background .2s linear, color .2s linear;
     -o-transition: background .2s linear, color .2s linear;
 }
+
+.k-listview {
+    background-color: rgba(255, 255, 255, 0.34);
+    border: 0;
+}
+
 .k-listview:after {
     content: ".";
     display: block;
     height: 0;
     clear: both;
     visibility: hidden;
+}
+
+.k-pager-wrap {
+    border: 0;
 }

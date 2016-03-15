@@ -23,11 +23,6 @@ namespace Tenant.Site
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
 
-            bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/font-awesome/css/font-awesome.css",
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css"));
-
             bundles.Add(new ScriptBundle("~/bundles/kendo").Include(
                 "~/Scripts/kendo/kendo.all.min.js",
                 // "~/Scripts/kendo/kendo.timezones.min.js", // uncomment if using the Scheduler
@@ -36,6 +31,11 @@ namespace Tenant.Site
             bundles.Add(new StyleBundle("~/Content/kendo/css").Include(
                 "~/Content/kendo/kendo.common.min.css",
                 "~/Content/kendo/kendo.bootstrap.min.css"));
+
+            bundles.Add(new StyleBundle("~/Content/css").Include(
+                      "~/Content/font-awesome/css/font-awesome.css",
+                      "~/Content/bootstrap.css",
+                      "~/Content/site.css"));
 
             bundles.IgnoreList.Clear();
         }

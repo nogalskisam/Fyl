@@ -1,10 +1,14 @@
 ﻿@{
     if (Html.UserIsLoggedIn())
     {
-        Layout = "~/Views/Shared/_Layout.cshtml";
+        Layout = "~/Views/Shared/_LayoutLoggedIn.cshtml";
+    }
+    else if (HttpContext.Current.Request.Url.AbsolutePath.Contains("User/Login"))
+    {
+        Layout = "~/Views/Shared/_LayoutNoMenu.cshtml";
     }
     else
     {
-        Layout = "~/Views/Shared/_LayoutNoMenu.cshtml";
+        Layout = "~/Views/Shared/_LayoutLoggedOut.cshtml";
     }
 }

@@ -32,22 +32,22 @@ namespace Tenant.Site.Controllers
 
         public ActionResult List_GetProperties([DataSourceRequest]DataSourceRequest datarequest, string postCode, int? beds)
         {
-            var request = new PropertyListRequestDto()
-            {
-                PostCode = postCode,
-                Beds = beds
-            };
+            return Json(Properties().ToDataSourceResult(datarequest));
+            //var request = new PropertyListRequestDto()
+            //{
+            //    PostCode = postCode,
+            //    Beds = beds
+            //};
 
-            var response = _tenantService.GetAvailablePropertiesForList(request);
+            //var response = _tenantService.GetAvailablePropertiesForList(request);
 
-            var result = new DataSourceResult()
-            {
-                Data = response != null ? response.Items : null,
-                Total = response != null ? response.Count : 0
-            };
+            //var result = new DataSourceResult()
+            //{
+            //    Data = response != null ? response.Items : null,
+            //    Total = response != null ? response.Count : 0
+            //};
 
             //return Json(result);
-            return Json(Properties().ToDataSourceResult(datarequest));
         }
 
         public List<PropertyListModel> Properties()
