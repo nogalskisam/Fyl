@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Fyl.Library.Enum;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -8,15 +9,13 @@ using System.Threading.Tasks;
 
 namespace Fyl.Entities
 {
-    public class PropertyImage
+    public class PropertyFeature
     {
         [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public Guid PropertyImageId { get; set; }
+        public Guid PropertyFeatureId { get; set; }
 
         public Guid PropertyId { get; set; }
 
-        public bool Primary { get; set; }
-
-        public bool Inactive { get; set; }
+        public PropertyFeatureEnum Feature { get; set; }
     }
 }

@@ -28,6 +28,10 @@ namespace Fyl.Entities
 
         public List<PropertyImage> Images { get; set; }
 
+        public List<PropertyFeature> PropertyFeatures { get; set; }
+
+        public List<PropertyRating> PropertyRatings { get; set; }
+
         // People
         //[ForeignKey("Landlord")]
         //public virtual User Landlord { get; set; }

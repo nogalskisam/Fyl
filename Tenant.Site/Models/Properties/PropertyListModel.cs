@@ -11,5 +11,7 @@ namespace Tenant.Site.Models
         public int Beds { get; set; }
 
         public string ImagePath { get; set; }
+
+        public decimal Rent { get; set; }
     }
 }

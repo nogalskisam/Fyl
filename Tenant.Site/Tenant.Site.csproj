@@ -186,7 +186,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\SimpleInjectorSetup.cs" />
     <Compile Include="Attributes\UnsecuredAttribute.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\PropertyController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Filters\LoginFilter.cs" />
@@ -201,6 +200,7 @@
     <Compile Include="Helpers\BootstrapHelpers\Interfaces\ICustomFormControl.cs" />
     <Compile Include="Helpers\BootstrapHelpers\Interfaces\ICustomTextBox.cs" />
     <Compile Include="Helpers\BootstrapHelpers\Interfaces\ICustomValidationSummary.cs" />
+    <Compile Include="Helpers\FormHelpers.cs" />
     <Compile Include="Helpers\HtmlHelpers.cs" />
     <Compile Include="Helpers\SessionDataHelpers.cs" />
     <Compile Include="Models\Account\LoginModel.cs" />
@@ -208,6 +208,7 @@
     <Compile Include="Models\HomeModel.cs" />
     <Compile Include="Models\Properties\PropertyListModel.cs" />
     <Compile Include="Models\Properties\PropertyListSearchModel.cs" />
+    <Compile Include="Models\Properties\PropertyModel.cs" />
     <Compile Include="Models\PropertyImages\PropertyImageModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -1257,9 +1258,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_LayoutLoggedIn.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\User\Register.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\Property\View.cshtml" />
@@ -1411,6 +1409,10 @@
     <ProjectReference Include="..\Fyl.Mapping\Fyl.Mapping.csproj">
       <Project>{e7c680f3-398b-4bb1-998e-463b527cea7c}</Project>
       <Name>Fyl.Mapping</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Fyl.Resources\Fyl.Resources.csproj">
+      <Project>{13687350-ae5e-4704-8ec9-fb07e13877f7}</Project>
+      <Name>Fyl.Resources</Name>
     </ProjectReference>
     <ProjectReference Include="..\Fyl.Session\Fyl.Session.csproj">
       <Project>{75b00dff-aa12-4392-8358-2bdac30302b9}</Project>

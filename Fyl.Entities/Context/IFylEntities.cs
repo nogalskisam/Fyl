@@ -23,6 +23,10 @@ namespace Fyl.Entities
 
         IDbSet<PropertyImage> PropertyImages { get; set; }
 
+        IDbSet<PropertyFeature> PropertyFeatures { get; set; }
+
+        IDbSet<PropertyRating> PropertyRatings { get; set; }
+
         Database Database { get; }
 
         int SaveChanges();

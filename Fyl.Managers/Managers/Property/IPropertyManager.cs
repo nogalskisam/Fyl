@@ -10,5 +10,7 @@ namespace Fyl.Managers
     public interface IPropertyManager
     {
         PropertyListResponseDto GetAvailablePropertiesForList(PropertyListRequestDto request);
+
+        PropertyDetailsDto GetPropertyDetails(Guid propertyId);
     }
 }

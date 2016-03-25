@@ -24,5 +24,8 @@ namespace Fyl.Library
 
         [OperationContract]
         PropertyListResponseDto GetAvailablePropertiesForList(PropertyListRequestDto request);
+
+        [OperationContract]
+        PropertyDetailsDto GetPropertyDetails(Guid propertyId);
     }
 }

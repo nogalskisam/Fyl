@@ -65,5 +65,12 @@ namespace Tenant.Service
 
             return result;
         }
+
+        public PropertyDetailsDto GetPropertyDetails(Guid propertyId)
+        {
+            var dto = _propertyManager.GetPropertyDetails(propertyId);
+
+            return dto;
+        }
     }
 }

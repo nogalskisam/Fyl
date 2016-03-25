@@ -68,12 +68,14 @@
     <Compile Include="Dto\Property\List\PropertyListRequestDto.cs" />
     <Compile Include="Dto\Property\List\PropertyListItemDto.cs" />
     <Compile Include="Dto\Property\List\PropertyListResponseDto.cs" />
+    <Compile Include="Dto\Property\PropertyDetailsDto.cs" />
     <Compile Include="Dto\Registration\RegistrationRequestDto.cs" />
     <Compile Include="Dto\Registration\RegistrationResponseDto.cs" />
     <Compile Include="Dto\Session\SessionDetailDto.cs" />
     <Compile Include="Dto\Session\SessionDto.cs" />
     <Compile Include="Dto\User\UserAuthenticationDto.cs" />
     <Compile Include="Dto\User\UserDto.cs" />
+    <Compile Include="Enum\PropertyFeatureEnum.cs" />
     <Compile Include="Enum\RoleEnum.cs" />
     <Compile Include="Helpers\CountryHelper.cs" />
     <Compile Include="Helpers\Encryption.cs" />

@@ -27,11 +27,11 @@ namespace Fyl.DataLayer.Repositories
                 PropertyId = s.PropertyId,
                 Beds = s.Beds,
                 Postcode = s.Address.Postcode,
-                ImagePath = s.Images
+                PropertyImageId = s.Images
+                                .Where(w => w.PropertyId == s.PropertyId)
                                 .Where(w => w.Primary)
-                                .Select(p =>
-                                    string.Format("{0}{1}{2}", p.Path, p.FileName, p.FileExtension)
-                                ).FirstOrDefault()
+                                .Select(w => w.PropertyImageId)
+                                .FirstOrDefault()
             }).ToList();
 
             return dtos;
@@ -61,6 +61,32 @@ namespace Fyl.DataLayer.Repositories
         public int GetAvailablePropertiesForListCount(PropertyListRequestDto request)
         {
             return GetAvailablePropertiesQuery(request).Count();
+        }
+
+        public PropertyDetailsDto GetPropertyDetails(Guid propertyId)
+        {
+            var property = _entities.Properties
+                .Include(i => i.Address)
+                .Include(i => i.Images)
+                .Include(i => i.PropertyRatings)
+                .Where(w => w.PropertyId == propertyId)
+                .Select(t => new PropertyDetailsDto()
+                {
+                    PropertyId = t.PropertyId,
+                    StartDate = t.StartDate,
+                    Address1 = t.Address.Address1,
+                    Area = t.Address.Area,
+                    City = t.Address.City,
+                    PostCode = t.Address.Postcode,
+                    PropertyImageIds = t.Images
+                        .Where(pi => pi.PropertyId == propertyId)
+                        .Select(pi => pi.PropertyImageId)
+                        .ToList(),
+                    Beds = t.Beds
+                })
+                .FirstOrDefault();
+
+            return property;
         }
     }
 }

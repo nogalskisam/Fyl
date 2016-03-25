@@ -82,7 +82,9 @@
     <Compile Include="Context\IFylEntities.cs" />
     <Compile Include="Entities\Address.cs" />
     <Compile Include="Entities\Property.cs" />
+    <Compile Include="Entities\PropertyFeature.cs" />
     <Compile Include="Entities\PropertyImage.cs" />
+    <Compile Include="Entities\PropertyRating.cs" />
     <Compile Include="Entities\Session.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Entities\UserAuthentication.cs" />
@@ -123,6 +125,18 @@
     <Compile Include="Migrations\201603142238224_Properties_ChangeAvailableFlag.Designer.cs">
       <DependentUpon>201603142238224_Properties_ChangeAvailableFlag.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603251659422_AddEntitiesForProperties.cs" />
+    <Compile Include="Migrations\201603251659422_AddEntitiesForProperties.Designer.cs">
+      <DependentUpon>201603251659422_AddEntitiesForProperties.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603251850135_RemoveUnnecessaryPropertiesFromPropertyImageEntity.cs" />
+    <Compile Include="Migrations\201603251850135_RemoveUnnecessaryPropertiesFromPropertyImageEntity.Designer.cs">
+      <DependentUpon>201603251850135_RemoveUnnecessaryPropertiesFromPropertyImageEntity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603251851347_PropertyImage_GivePrimaryKey.cs" />
+    <Compile Include="Migrations\201603251851347_PropertyImage_GivePrimaryKey.Designer.cs">
+      <DependentUpon>201603251851347_PropertyImage_GivePrimaryKey.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -159,6 +173,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201603142238224_Properties_ChangeAvailableFlag.resx">
       <DependentUpon>201603142238224_Properties_ChangeAvailableFlag.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603251659422_AddEntitiesForProperties.resx">
+      <DependentUpon>201603251659422_AddEntitiesForProperties.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603251850135_RemoveUnnecessaryPropertiesFromPropertyImageEntity.resx">
+      <DependentUpon>201603251850135_RemoveUnnecessaryPropertiesFromPropertyImageEntity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603251851347_PropertyImage_GivePrimaryKey.resx">
+      <DependentUpon>201603251851347_PropertyImage_GivePrimaryKey.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

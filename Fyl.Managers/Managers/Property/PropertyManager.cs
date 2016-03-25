@@ -30,5 +30,12 @@ namespace Fyl.Managers
 
             return result;
         }
+
+        public PropertyDetailsDto GetPropertyDetails(Guid propertyId)
+        {
+            var dto = _propertyRepository.GetPropertyDetails(propertyId);
+
+            return dto;
+        }
     }
 }

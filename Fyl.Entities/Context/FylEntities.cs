@@ -32,6 +32,10 @@ namespace Fyl.Entities
 
         public IDbSet<PropertyImage> PropertyImages { get; set; }
 
+        public IDbSet<PropertyFeature> PropertyFeatures { get; set; }
+
+        public IDbSet<PropertyRating> PropertyRatings { get; set; }
+
         public ILog Logger
         {
             get

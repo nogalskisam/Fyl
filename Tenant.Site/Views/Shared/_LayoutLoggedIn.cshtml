@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>@if (IsSectionDefined("Title")){@RenderSection("Title", true) <text> | </text> } Find Your Landlord</title>
 
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
     @Styles.Render("~/Content/css")
     @Styles.Render("~/bundles/jquery")
     @Styles.Render("~/bundles/bootstrap")
@@ -29,9 +30,7 @@
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Home", "List", "Property")</li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li class="dropdown">

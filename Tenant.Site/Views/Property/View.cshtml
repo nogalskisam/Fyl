@@ -1,7 +1,84 @@
-﻿
-@{
-    ViewBag.Title = "View";
-}
+﻿@model PropertyModel
 
-<h2>View</h2>
+<div class="container">
+    <br />
+    <div class="row">
+        <div class="sectionBanner"></div>
+            <div class="detailsSection">
 
+            <div class="col-md-8 carouselSection">
+                <div id="propertyCarousel" class="carousel slide" data-ride="carousel">
+                    <!-- Indicators -->
+                    <ol class="carousel-indicators">
+                        @{
+                            int i = 1;
+
+                            while (i <= Model.PropertyImageIds.Count)
+                            {
+                                <li data-target="#propertyCarousel" data-slide-to="i"></li>
+                                i++;
+                            }
+                        }
+                    </ol>
+
+                    <!-- Wrapper for slides -->
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            <img src="@string.Format("{0}{1}/{2}.jpg", ConfigurationManager.AppSettings["CDNPath"], Model.PropertyId, Model.PropertyImageIds.First())">
+                        </div>
+                        @foreach (var image in Model.PropertyImageIds.Skip(1))
+                        {
+                            <div class="item">
+                                <img src="@string.Format("{0}{1}/{2}.jpg", ConfigurationManager.AppSettings["CDNPath"], Model.PropertyId, image)" alt="...">
+                            </div>
+                        }
+                    </div>
+
+                    <!-- Controls -->
+                    <a class="left carousel-control" href="#propertyCarousel" role="button" data-slide="prev">
+                        @*<span class="fa fa-chevron-left" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>*@
+                    </a>
+                    <a class="right carousel-control" href="#propertyCarousel" role="button" data-slide="next">
+                        @*<span class="fa fa-chevron-right" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>*@
+                    </a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <h2>Property Details</h2>
+                @Html.FylDisplay(m => m.Address1)
+                @Html.FylDisplay(m => m.Area)
+                @Html.FylDisplay(m => m.City)
+                @Html.FylDisplay(m => m.PostCode)
+                @Html.FylDisplay(m => m.StartDateDisplay)
+                @Html.FylDisplay(m => m.RentDisplay)
+                @Html.FylDisplay(m => m.DepositDisplay)
+
+                <div class="progress margin-top-big">                    
+                    <div class="progress-bar progress-bar-info progress-bar-striped active" role="progressbar" aria-valuenow="@Model.RatingAverage" aria-valuemin="0" aria-valuemax="100" style="width: @(Model.RatingAverage)%;">
+                        Property Rating: @(Model.RatingAverage)% Satisfactory
+                    </div>
+                </div>
+                <div class="progress margin-bottom-small">
+                    <div class="progress-bar progress-bar-warning progress-bar-striped active" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width: 100%;">
+                        Landlord Rating: 100% Satisfactory
+                    </div>
+                </div>
+
+                @if (Html.UserIsLoggedIn())
+                {
+                    <div class="buttonPanel margin-top-big">
+                        @(Html.ActionLink("Request Viewing", "", "", new { }, new { @class = "btn btn-warning btn-fyl" }))
+                        @(Html.ActionLink("Request to Sign", "", "", new { }, new { @class = "btn btn-success btn-fyl" }))
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    $('.carousel').carousel({
+        interval: false
+    });
+</script>

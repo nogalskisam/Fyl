@@ -26,8 +26,10 @@
 
     <script type="text/x-kendo-tmpl" id="Properties">
         <div class="Property">
-            <img src="#:ImagePath#" alt="#:PostCode# image" />
-            <h3>#:Beds# Beds, #:PostCode#</h3>
+            <img src="@Url.Content(ConfigurationManager.AppSettings["CDNPath"] + "#= PropertyId #" + "/" + "#= PropertyImageId #" + ".jpg")" alt="#:PostCode# image" />
+            <h3>#:Beds# Beds, #:Postcode#</h3>
+            @*@(Html.ActionLink("View Property", "View", "#= PropertyId #"))*@
+            <a href="@(Url.Content(ConfigurationManager.AppSettings["SitePath"]+"Property/View/#= PropertyId #"))">View Property</a>
         </div>
     </script>
 
