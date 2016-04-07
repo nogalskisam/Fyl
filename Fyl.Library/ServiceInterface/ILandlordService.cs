@@ -16,5 +16,8 @@ namespace Fyl.Library
 
         [OperationContract]
         SessionDetailDto GetValidSession(Guid sessionId);
+
+        [OperationContract]
+        Guid AddProperty(PropertyAddDto dto);
     }
 }

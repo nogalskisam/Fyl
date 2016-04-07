@@ -1,4 +1,5 @@
-﻿using Fyl.DataLayer.Repositories;
+﻿using Fyl.DataLayer;
+using Fyl.DataLayer.Repositories;
 using Fyl.Library.Dto;
 using System;
 using System.Collections.Generic;
@@ -11,10 +12,12 @@ namespace Fyl.Managers
     public class PropertyManager : IPropertyManager
     {
         private readonly IPropertyRepository _propertyRepository;
+        private readonly IAddressRepository _addressRepository;
 
-        public PropertyManager(IPropertyRepository propertyRepository)
+        public PropertyManager(IPropertyRepository propertyRepository, IAddressRepository addressRepository)
         {
             _propertyRepository = propertyRepository;
+            _addressRepository = addressRepository;
         }
 
         public PropertyListResponseDto GetAvailablePropertiesForList(PropertyListRequestDto request)
@@ -36,6 +39,17 @@ namespace Fyl.Managers
             var dto = _propertyRepository.GetPropertyDetails(propertyId);
 
             return dto;
+        }
+
+        public Guid AddProperty(PropertyAddDto dto)
+        {
+            var addressId = _addressRepository.AddAddress(dto.Address);
+
+            dto.Property.AddressId = addressId;
+
+            var propertyId = _propertyRepository.AddNewProperty(dto.Property);
+
+            return propertyId;
         }
     }
 }

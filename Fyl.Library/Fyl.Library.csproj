@@ -61,6 +61,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dto\AddressDto.cs" />
+    <Compile Include="Dto\Address\AddressAddDto.cs" />
     <Compile Include="Dto\Login\LoginRequestDto.cs" />
     <Compile Include="Dto\Login\LoginResponseDto.cs" />
     <Compile Include="Dto\PropertyImage\PropertyImageAddDto.cs" />
@@ -68,6 +69,8 @@
     <Compile Include="Dto\Property\List\PropertyListRequestDto.cs" />
     <Compile Include="Dto\Property\List\PropertyListItemDto.cs" />
     <Compile Include="Dto\Property\List\PropertyListResponseDto.cs" />
+    <Compile Include="Dto\Property\PropertyAddBasicDto.cs" />
+    <Compile Include="Dto\Property\PropertyAddDto.cs" />
     <Compile Include="Dto\Property\PropertyDetailsDto.cs" />
     <Compile Include="Dto\Registration\RegistrationRequestDto.cs" />
     <Compile Include="Dto\Registration\RegistrationResponseDto.cs" />

@@ -39,5 +39,24 @@ namespace Fyl.DataLayer.Repositories
 
             return dtos;
         }
+
+        public Guid AddAddress(AddressAddDto dto)
+        {
+            var address = new Address()
+            {
+                HouseName = dto.HouseName,
+                Address1 = dto.Address1,
+                Address2 = dto.Address2,
+                Area = dto.Area,
+                City = dto.City,
+                Country = dto.Country,
+                County = dto.County,
+                Postcode = dto.PostCode
+            };
+
+            _entities.Addresses.Add(address);
+
+            return address.AddressId;
+        }
     }
 }

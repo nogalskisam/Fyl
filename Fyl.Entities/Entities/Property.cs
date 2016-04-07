@@ -20,6 +20,10 @@ namespace Fyl.Entities
 
         public int Beds { get; set; }
 
+        public decimal Rent { get; set; }
+
+        public decimal Deposit { get; set; }
+
         public DateTime StartDate { get; set; }
 
         public DateTime? EndDate { get; set; }

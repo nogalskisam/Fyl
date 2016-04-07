@@ -37,5 +37,12 @@ namespace Landlord.Service
         {
             return _userManager.GetValidSession(sessionId);
         }
+
+        public Guid AddProperty(PropertyAddDto dto)
+        {
+            var propertyId = _propertyManager.AddProperty(dto);
+
+            return propertyId;
+        }
     }
 }

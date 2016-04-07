@@ -10,5 +10,7 @@ namespace Fyl.DataLayer
     public interface IAddressRepository
     {
         List<AddressDto> GetAllAddresses();
+
+        Guid AddAddress(AddressAddDto dto);
     }
 }

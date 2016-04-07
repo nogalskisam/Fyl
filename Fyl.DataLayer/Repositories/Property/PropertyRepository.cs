@@ -88,5 +88,21 @@ namespace Fyl.DataLayer.Repositories
 
             return property;
         }
+
+        public Guid AddNewProperty(PropertyAddBasicDto dto)
+        {
+            var property = new Property()
+            {
+                Beds = dto.Beds,
+                StartDate = dto.StartTime,
+                Deposit = dto.Deposit,
+                Rent = dto.Rent,
+                AddressId = dto.AddressId ?? dto.AddressId.Value
+            };
+
+            _entities.Properties.Add(property);
+
+            return property.PropertyId;
+        }
     }
 }
