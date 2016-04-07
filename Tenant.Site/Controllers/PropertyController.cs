@@ -1,5 +1,6 @@
 ﻿using Fyl.Library;
 using Fyl.Library.Dto;
+using Fyl.Session;
 using Kendo.Mvc.Extensions;
 using Kendo.Mvc.UI;
 using System;
@@ -15,10 +16,12 @@ namespace Tenant.Site.Controllers
     public class PropertyController : Controller
     {
         private ITenantService _tenantService;
+        private ISessionDetails _sessionDetails;
 
-        public PropertyController(ITenantService tenantService)
+        public PropertyController(ITenantService tenantService, ISessionDetails sessionDetails)
         {
             _tenantService = tenantService;
+            _sessionDetails = sessionDetails;
         }
 
         public ActionResult Index()
@@ -28,7 +31,11 @@ namespace Tenant.Site.Controllers
 
         public ActionResult List()
         {
-            return View("List", new PropertyListSearchModel());
+            var model = new PropertyListSearchModel()
+            {
+                User = _sessionDetails.User
+            };
+            return View("List", model);
         }
 
         public ActionResult List_GetProperties([DataSourceRequest]DataSourceRequest datarequest, string postCode, int? beds)
@@ -181,6 +188,58 @@ namespace Tenant.Site.Controllers
             //};
 
             return View("View", model);
+        }
+
+        [HttpGet]
+        public ActionResult RequestSign(Guid id)
+        {
+            var dto = _tenantService.GetPropertyDetails(id);
+
+            var model = new PropertySignRequestModel()
+            {
+                PropertyId = dto.PropertyId,
+                Address1 = dto.Address1,
+                Area = dto.Area,
+                City = dto.City,
+                PostCode = dto.PostCode,
+                Beds = dto.Beds,
+                Deposit = dto.Deposit,
+                Rent = dto.Rent,
+                StartDate = dto.StartDate
+            };
+
+            return View("Sign/Request", model);
+        }
+
+        [HttpPost]
+        public ActionResult RequestSign(PropertySignRequestModel model)
+        {
+            if (model.AcceptTermsAndConditions)
+            {
+                if (ModelState.IsValid)
+                {
+                    try
+                    {
+                        _tenantService.AddNewPropertySignRequest(model.PropertyId, _sessionDetails.User.UserId);
+                    }
+                    catch (Exception)
+                    {
+                        ModelState.AddModelError("", "There was an issue sending your request. Please try again later");
+                    }
+
+                    return View("Sign/Request", model);
+                }
+                else
+                {
+                    ModelState.AddModelError("", "There was an issue sending your request. Please try again later");
+                }
+            }
+            else
+            {
+                ModelState.AddModelError("", "You must accept the Terms and Conditions to send the request");
+            }
+
+            return View("Sign/Request", model);
         }
     }
 }

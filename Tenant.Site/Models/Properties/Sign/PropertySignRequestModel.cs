@@ -1,12 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web;
 
-namespace Fyl.Library.Dto
+namespace Tenant.Site.Models
 {
-    public class PropertyBasicDetailsDto
+    public class PropertySignRequestModel
     {
         public Guid PropertyId { get; set; }
 
@@ -18,8 +18,6 @@ namespace Fyl.Library.Dto
 
         public DateTime StartDate { get; set; }
 
-        public List<Guid> PropertyImageIds { get; set; }
-
         public string Address1 { get; set; }
 
         public string Area { get; set; }
@@ -27,5 +25,8 @@ namespace Fyl.Library.Dto
         public string City { get; set; }
 
         public string PostCode { get; set; }
+
+        [Required]
+        public bool AcceptTermsAndConditions { get; set; }
     }
 }

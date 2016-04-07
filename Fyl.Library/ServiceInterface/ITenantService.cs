@@ -1,4 +1,5 @@
 ﻿using Fyl.Library.Dto;
+using Fyl.Library.Enum;
 using System;
 using System.Collections.Generic;
 using System.ServiceModel;
@@ -26,6 +27,15 @@ namespace Fyl.Library
         PropertyListResponseDto GetAvailablePropertiesForList(PropertyListRequestDto request);
 
         [OperationContract]
-        PropertyDetailsDto GetPropertyDetails(Guid propertyId);
+        PropertyBasicDetailsDto GetPropertyDetails(Guid propertyId);
+
+        [OperationContract]
+        void AddNewPropertySignRequest(Guid propertyId, Guid userId);
+
+        [OperationContract]
+        PropertyRequestStatusEnum GetPropertySignRequestForIdAndUser(Guid propertyId, Guid userId);
+
+        [OperationContract]
+        bool PropertySignRequestExists(Guid propertyId, Guid userId);
     }
 }

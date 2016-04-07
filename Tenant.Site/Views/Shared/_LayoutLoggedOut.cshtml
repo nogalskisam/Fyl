@@ -27,13 +27,11 @@
                     <span class="sr-only">Toggle Navigation</span>
                     <i class="fa fa-bars"></i>
                 </button>
-                @Html.ActionLink("Find Your Landlord", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Find Your Landlord", "List", "Property", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Home", "List", "Property")</li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li>@Html.ActionLink("Login", "Login", "User")</li>

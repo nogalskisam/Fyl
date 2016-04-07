@@ -1,0 +1,41 @@
+﻿@model PropertySignRequestModel
+
+<div class="container">
+    <h2>Request to Sign for Property</h2>
+    <h3>@Strings.Disclaimer</h3>
+    <p>@Strings.PropertyRequestDisclaimer</p>
+
+    <h3>Terms and Conditions</h3>
+    <p>By clicking accept, you are requesting to sign for the property at the address: @Model.Address1, @Model.Area, @Model.City, @Model.PostCode.</p>
+
+    <p>You accept that you will pay a deposit of £@Model.Deposit within Two Weeks (or Fourteen Days) via the payment portal that will be used to secure the property indefinitely. Further information of the deposit will be provided when you a required to sign the contractual agreement.</p>
+
+    <p>The rent of the property will be £@Model.Rent, payable Per Person Per Week, to be paid on the 22nd of each month either via Direct Debit, Credit or Debit Card or PayPal as nominated individually by each occupant.</p>
+
+    <p>The property will have @Model.Beds Beds and space for only this amount of occupiers only. Any extra people will not be able to reside at the property permanently unless agreed explicitly with the Landlord and/or Agent and extra charges may be applied if it is discovered that more people are occupying the property than agreed.</p>
+
+    <p>The occupancy of the property will begin on @Model.StartDate.ToLongDateString() and will end on @Model.StartDate.AddYears(1).AddDays(-1).ToLongDateString(). The first payment of rent will be required by @Model.StartDate.AddDays(-14).ToLongDateString() (Fourteen Days before the start of the Tenancy) unless agreed otherwise with the Landlord and/or Agent.</p>
+
+    @using (Html.BeginForm("RequestSign", "Property", new { id = Model.PropertyId }, FormMethod.Post, null))
+    {
+        <div class="check">
+            @Html.HiddenFor(m => m.PropertyId)
+            @Html.HiddenFor(m => m.Address1)
+            @Html.HiddenFor(m => m.Area)
+            @Html.HiddenFor(m => m.City)
+            @Html.HiddenFor(m => m.PostCode)
+            @Html.HiddenFor(m => m.Beds)
+            @Html.HiddenFor(m => m.Rent)
+            @Html.HiddenFor(m => m.Deposit)
+            @Html.HiddenFor(m => m.StartDate)
+
+            @Html.CheckBoxFor(m => m.AcceptTermsAndConditions)
+            <span>By checking this box you are accepted the Terms and Conditions for requesting the property as shown above.</span>
+
+            <p class="text-danger">@Html.ValidationMessageFor(m => m)</p>
+        </div>
+        <div class="buttonPanel margin-top-big">
+            <input class="btn btn-success btn-fyl" type="submit" value="Send Request" />
+        </div>
+    }
+</div>

@@ -69,6 +69,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Managers\PropertySignRequest\IPropertySignRequestManager.cs" />
+    <Compile Include="Managers\PropertySignRequest\PropertySignRequestManager.cs" />
     <Compile Include="Managers\Property\IPropertyManager.cs" />
     <Compile Include="Managers\Property\PropertyManager.cs" />
     <Compile Include="Managers\User\UserManager.cs" />

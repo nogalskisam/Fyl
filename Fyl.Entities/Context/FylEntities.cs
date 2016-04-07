@@ -36,6 +36,8 @@ namespace Fyl.Entities
 
         public IDbSet<PropertyRating> PropertyRatings { get; set; }
 
+        public IDbSet<PropertySignRequest> PropertySignRequests { get; set; }
+
         public ILog Logger
         {
             get

@@ -73,15 +73,17 @@ namespace Tenant.Site.App_Start
 
         private static void RegisterServices(Container container)
         {
-            container.RegisterPerWebRequest<ISessionDetails, SessionDetails>();
-            container.RegisterPerWebRequest<ISessionHelper, SessionHelper>();
-            container.RegisterPerWebRequest<ISessionFactory, TenantSessionFactory>();
+            //container.RegisterPerWebRequest<ISessionDetails, SessionDetails>();
             container.RegisterPerWebRequest<IHttpContextHelper, HttpContextHelper>();
-            container.RegisterPerWebRequest<IEncryptionHelper, EncryptionHelper>();
             container.Register<HttpContextBase>(() =>
                 new HttpContextWrapper(HttpContext.Current),
                 Lifestyle.Singleton);
+            container.RegisterPerWebRequest<ISessionFactory, TenantSessionFactory>();
+            //container.RegisterPerWebRequest<ISessionDetails, SessionDetails>();
+            container.RegisterPerWebRequest<ISessionHelper, SessionHelper>();
+            container.RegisterPerWebRequest<IEncryptionHelper, EncryptionHelper>();
 
+            container.RegisterPerWebRequest<ISessionDetails>(() => container.GetInstance<ISessionFactory>().GetSession());
             // WCF
             container.RegisterSingleton<ITenantService>(() => new ChannelFactory<ITenantService>("*").CreateChannel());
 

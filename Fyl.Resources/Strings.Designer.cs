@@ -106,11 +106,29 @@ namespace Fyl.Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Disclaimer.
+        /// </summary>
+        public static string Disclaimer {
+            get {
+                return ResourceManager.GetString("Disclaimer", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Postcode.
         /// </summary>
         public static string PostCode {
             get {
                 return ResourceManager.GetString("PostCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You are requesting to sign for a property. Please read the following Terms and Conditions and ensure they are correct. If so, then please press accept and continue. Your request will be sent to the Landlord of your selected property and they will accept or decline your property. Please note that other students may be requesting to sign for the same property as you and this may affect the Landlord&apos;s decision..
+        /// </summary>
+        public static string PropertyRequestDisclaimer {
+            get {
+                return ResourceManager.GetString("PropertyRequestDisclaimer", resourceCulture);
             }
         }
         

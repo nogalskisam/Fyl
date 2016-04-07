@@ -11,6 +11,6 @@ namespace Fyl.Managers
     {
         PropertyListResponseDto GetAvailablePropertiesForList(PropertyListRequestDto request);
 
-        PropertyDetailsDto GetPropertyDetails(Guid propertyId);
+        PropertyBasicDetailsDto GetPropertyDetails(Guid propertyId);
     }
 }

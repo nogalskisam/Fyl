@@ -18,22 +18,42 @@ namespace Fyl.Utilities
 
         public string GetVisitorIpAddress()
         {
-            return _httpContext.Request.UserHostAddress;
+            if (_httpContext.Request != null)
+            {
+                return _httpContext.Request.UserHostAddress;
+            }
+            else
+            {
+                return "";
+            }
         }
 
         public void SetHttpCookie(HttpCookie cookie)
         {
-            _httpContext.Response.Cookies.Set(cookie);
+            if (_httpContext.Request != null)
+            {
+                _httpContext.Response.Cookies.Set(cookie);
+            }
         }
 
         public HttpCookie GetHttpCookie(string name)
         {
-            return _httpContext.Request.Cookies[name];
+            if (_httpContext.Request != null)
+            {
+                return _httpContext.Request.Cookies[name];
+            }
+            else
+            {
+                return new HttpCookie(name);
+            }
         }
 
         public void RemoveHttpCookie(string name)
         {
-            _httpContext.Request.Cookies.Remove(name);
+            if (_httpContext.Request != null)
+            {
+                _httpContext.Request.Cookies.Remove(name);
+            }
         }
     }
 }

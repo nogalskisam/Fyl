@@ -32,6 +32,8 @@ namespace Fyl.Entities
 
         public List<PropertyRating> PropertyRatings { get; set; }
 
+        public List<PropertySignRequest> MyProperty { get; set; }
+
         // People
         //[ForeignKey("Landlord")]
         //public virtual User Landlord { get; set; }

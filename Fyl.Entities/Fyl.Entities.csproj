@@ -85,6 +85,7 @@
     <Compile Include="Entities\PropertyFeature.cs" />
     <Compile Include="Entities\PropertyImage.cs" />
     <Compile Include="Entities\PropertyRating.cs" />
+    <Compile Include="Entities\PropertySignRequest.cs" />
     <Compile Include="Entities\Session.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Entities\UserAuthentication.cs" />
@@ -137,6 +138,10 @@
     <Compile Include="Migrations\201603251851347_PropertyImage_GivePrimaryKey.Designer.cs">
       <DependentUpon>201603251851347_PropertyImage_GivePrimaryKey.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603261204469_AddPropertyRequestEntity.cs" />
+    <Compile Include="Migrations\201603261204469_AddPropertyRequestEntity.Designer.cs">
+      <DependentUpon>201603261204469_AddPropertyRequestEntity.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -182,6 +187,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201603251851347_PropertyImage_GivePrimaryKey.resx">
       <DependentUpon>201603251851347_PropertyImage_GivePrimaryKey.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603261204469_AddPropertyRequestEntity.resx">
+      <DependentUpon>201603261204469_AddPropertyRequestEntity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -27,6 +27,8 @@ namespace Fyl.Entities
 
         IDbSet<PropertyRating> PropertyRatings { get; set; }
 
+        IDbSet<PropertySignRequest> PropertySignRequests { get; set; }
+
         Database Database { get; }
 
         int SaveChanges();

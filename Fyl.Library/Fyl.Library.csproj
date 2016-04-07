@@ -76,6 +76,7 @@
     <Compile Include="Dto\User\UserAuthenticationDto.cs" />
     <Compile Include="Dto\User\UserDto.cs" />
     <Compile Include="Enum\PropertyFeatureEnum.cs" />
+    <Compile Include="Enum\PropertyRequestStatusEnum.cs" />
     <Compile Include="Enum\RoleEnum.cs" />
     <Compile Include="Helpers\CountryHelper.cs" />
     <Compile Include="Helpers\Encryption.cs" />

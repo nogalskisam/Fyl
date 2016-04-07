@@ -63,14 +63,14 @@ namespace Fyl.DataLayer.Repositories
             return GetAvailablePropertiesQuery(request).Count();
         }
 
-        public PropertyDetailsDto GetPropertyDetails(Guid propertyId)
+        public PropertyBasicDetailsDto GetPropertyDetails(Guid propertyId)
         {
             var property = _entities.Properties
                 .Include(i => i.Address)
                 .Include(i => i.Images)
                 .Include(i => i.PropertyRatings)
                 .Where(w => w.PropertyId == propertyId)
-                .Select(t => new PropertyDetailsDto()
+                .Select(t => new PropertyBasicDetailsDto()
                 {
                     PropertyId = t.PropertyId,
                     StartDate = t.StartDate,

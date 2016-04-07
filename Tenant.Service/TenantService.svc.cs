@@ -1,6 +1,7 @@
 ﻿using Fyl.DataLayer.Repositories;
 using Fyl.Library;
 using Fyl.Library.Dto;
+using Fyl.Library.Enum;
 using Fyl.Managers;
 using log4net;
 using System;
@@ -23,14 +24,16 @@ namespace Tenant.Service
         private IUserRepository _accountRepository;
         private IUserManager _userManager;
         private IPropertyManager _propertyManager;
+        private IPropertySignRequestManager _propertySignRequestManager;
 
-        public TenantService(/*ILog logger,*/ IAddressRepository addressRepository, IUserRepository accountRepository, IUserManager userManager, IPropertyManager propertyManager)
+        public TenantService(/*ILog logger,*/ IAddressRepository addressRepository, IUserRepository accountRepository, IUserManager userManager, IPropertyManager propertyManager, IPropertySignRequestManager propertySignRequestManager)
         {
             //_logger = logger;
             _addressRepository = addressRepository;
             _accountRepository = accountRepository;
             _userManager = userManager;
             _propertyManager = propertyManager;
+            _propertySignRequestManager = propertySignRequestManager;
         }
 
         public List<AddressDto> GetAllAddresses()
@@ -66,11 +69,30 @@ namespace Tenant.Service
             return result;
         }
 
-        public PropertyDetailsDto GetPropertyDetails(Guid propertyId)
+        public PropertyBasicDetailsDto GetPropertyDetails(Guid propertyId)
         {
             var dto = _propertyManager.GetPropertyDetails(propertyId);
 
             return dto;
+        }
+
+        public void AddNewPropertySignRequest(Guid propertyId, Guid userId)
+        {
+            _propertySignRequestManager.AddNewPropertySignRequest(propertyId, userId);
+        }
+
+        public PropertyRequestStatusEnum GetPropertySignRequestForIdAndUser(Guid propertyId, Guid userId)
+        {
+            var requestStatus = _propertySignRequestManager.GetPropertySignRequestForIdAndUser(propertyId, userId);
+
+            return requestStatus;
+        }
+
+        public bool PropertySignRequestExists(Guid propertyId, Guid userId)
+        {
+            bool exists = _propertySignRequestManager.PropertySignRequestExists(propertyId, userId);
+
+            return exists;
         }
     }
 }

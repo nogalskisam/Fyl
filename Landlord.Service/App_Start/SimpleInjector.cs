@@ -1,15 +1,18 @@
 ﻿using Fyl.DataLayer.Repositories;
 using Fyl.Entities;
-using Fyl.Library.Helpers;
 using Fyl.Managers;
 using Fyl.Session;
 using SimpleInjector;
 using SimpleInjector.Integration.Wcf;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
 
-[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(Tenant.Service.App_Start.SimpleInjector), "Start")]
-[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(Tenant.Service.App_Start.SimpleInjector), "Stop")]
+[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(Landlord.Service.App_Start.SimpleInjector), "Start")]
+[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(Landlord.Service.App_Start.SimpleInjector), "Stop")]
 
-namespace Tenant.Service.App_Start
+namespace Landlord.Service.App_Start
 {
     public static class SimpleInjector
     {
@@ -39,8 +42,6 @@ namespace Tenant.Service.App_Start
             container.RegisterPerWcfOperation<IUserManager, UserManager>();
             container.RegisterPerWcfOperation<IPropertyRepository, PropertyRepository>();
             container.RegisterPerWcfOperation<IPropertyManager, PropertyManager>();
-            container.RegisterPerWcfOperation<IPropertySignRequestManager, PropertySignRequestManager>();
-            container.RegisterPerWcfOperation<IPropertySignRequestRepository, PropertySignRequestRepository>();
 
             container.RegisterPerWcfOperation<IPasswordHasher, PasswordHasher>();
             //container.RegisterPerWcfOperation<IHasher, Hasher>();

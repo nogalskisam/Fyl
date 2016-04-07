@@ -1,8 +1,7 @@
 ﻿@model PropertyModel
 
 <div class="container">
-    <br />
-    <div class="row">
+    <div class="row margin-top-big">
         <div class="sectionBanner"></div>
             <div class="detailsSection">
 
@@ -70,7 +69,7 @@
                 {
                     <div class="buttonPanel margin-top-big">
                         @(Html.ActionLink("Request Viewing", "", "", new { }, new { @class = "btn btn-warning btn-fyl" }))
-                        @(Html.ActionLink("Request to Sign", "", "", new { }, new { @class = "btn btn-success btn-fyl" }))
+                        @(Html.ActionLink("Request to Sign", "RequestSign", "Property", new { id = Model.PropertyId }, new { @class = "btn btn-success btn-fyl" }))
                     </div>
                 }
             </div>

@@ -13,6 +13,6 @@ namespace Fyl.DataLayer.Repositories
 
         int GetAvailablePropertiesForListCount(PropertyListRequestDto request);
 
-        PropertyDetailsDto GetPropertyDetails(Guid propertyId);
+        PropertyBasicDetailsDto GetPropertyDetails(Guid propertyId);
     }
 }

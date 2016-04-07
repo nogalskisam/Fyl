@@ -72,6 +72,8 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\PropertyImage\PropertyImageRepository.cs" />
+    <Compile Include="Repositories\PropertySignRequest\IPropertySignRequestRepository.cs" />
+    <Compile Include="Repositories\PropertySignRequest\PropertySignRequestRepository.cs" />
     <Compile Include="Repositories\Property\IPropertyRepository.cs" />
     <Compile Include="Repositories\Property\PropertyRepository.cs" />
     <Compile Include="Repositories\User\UserRepository.cs" />
