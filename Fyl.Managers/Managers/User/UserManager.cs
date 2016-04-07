@@ -9,6 +9,7 @@ using Fyl.Helpers;
 using System.Security.Cryptography;
 using Fyl.Library.Helpers;
 using Fyl.Session;
+using Fyl.DataLayer;
 
 namespace Fyl.Managers
 {

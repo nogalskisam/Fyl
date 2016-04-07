@@ -1,4 +1,5 @@
-﻿using Fyl.DataLayer.Repositories;
+﻿using Fyl.DataLayer;
+using Fyl.DataLayer.Repositories;
 using Fyl.Entities;
 using Fyl.Library.Helpers;
 using Fyl.Managers;

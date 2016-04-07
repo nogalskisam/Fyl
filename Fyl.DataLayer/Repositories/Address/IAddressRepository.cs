@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Fyl.DataLayer.Repositories
+namespace Fyl.DataLayer
 {
     public interface IAddressRepository
     {

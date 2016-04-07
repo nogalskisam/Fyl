@@ -82,6 +82,7 @@
     <Compile Include="Helpers\Encryption.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ServiceInterface\ILandlordService.cs" />
+    <Compile Include="ServiceInterface\ILandlordService_Channel.cs" />
     <Compile Include="ServiceInterface\ITenantService.cs" />
   </ItemGroup>
   <ItemGroup>

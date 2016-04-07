@@ -1,4 +1,5 @@
-﻿using Fyl.Library;
+﻿using Fyl.DataLayer;
+using Fyl.Library;
 using Fyl.Library.Dto;
 using Fyl.Managers;
 using System;
@@ -10,11 +11,19 @@ namespace Landlord.Service
     // NOTE: In order to launch WCF Test Client for testing this service, please select LandlordService.svc or LandlordService.svc.cs at the Solution Explorer and start debugging.
     public class LandlordService : ILandlordService
     {
+        private IAddressRepository _addressRepository;
+        private IUserRepository _accountRepository;
         private IUserManager _userManager;
+        private IPropertyManager _propertyManager;
+        private IPropertySignRequestManager _propertySignRequestManager;
 
-        public LandlordService(IUserManager userManager)
+        public LandlordService(IAddressRepository addressRepository, IUserRepository accountRepository, IUserManager userManager, IPropertyManager propertyManager, IPropertySignRequestManager propertySignRequestManager)
         {
+            _addressRepository = addressRepository;
+            _accountRepository = accountRepository;
             _userManager = userManager;
+            _propertyManager = propertyManager;
+            _propertySignRequestManager = propertySignRequestManager;
         }
 
         public async Task<LoginResponseDto> LoginUser(LoginRequestDto dto)

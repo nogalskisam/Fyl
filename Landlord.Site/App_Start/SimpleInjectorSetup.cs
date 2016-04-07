@@ -1,6 +1,8 @@
 ﻿using Fyl.Library;
 using Fyl.Session;
 using Fyl.Utilities;
+using Landlord.Service;
+using Landlord.Site.Filters;
 using SimpleInjector;
 using SimpleInjector.Integration.Web.Mvc;
 using SimpleInjector.Integration.WebApi;
@@ -57,7 +59,7 @@ namespace Landlord.Site.App_Start
 
         public static void RegisterGlobalFilters(GlobalFilterCollection filters, Container container)
         {
-            //filters.Add(container.GetInstance<LoginFilter>());
+            filters.Add(container.GetInstance<LoginFilter>());
         }
 
         private static void RegisterWebApiFilters(System.Web.Http.Filters.HttpFilterCollection httpFilterCollection, Container container)
@@ -77,8 +79,10 @@ namespace Landlord.Site.App_Start
                 Lifestyle.Singleton);
 
             // WCF
-            container.RegisterSingleton<ILandlordService>(() => new ChannelFactory<ILandlordService>("*").CreateChannel());
+            container.Register<ILandlordService>(() => new ChannelFactory<ILandlordService>("*").CreateChannel());
 
+            //container.RegisterSingleton(() => ILandlordService_Channel.Create());
+            //container.Register<ILandlordService, LandlordService>(Lifestyle.Singleton);
         }
     }
 }

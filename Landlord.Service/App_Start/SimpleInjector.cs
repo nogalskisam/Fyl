@@ -1,4 +1,5 @@
-﻿using Fyl.DataLayer.Repositories;
+﻿using Fyl.DataLayer;
+using Fyl.DataLayer.Repositories;
 using Fyl.Entities;
 using Fyl.Managers;
 using Fyl.Session;
@@ -42,6 +43,8 @@ namespace Landlord.Service.App_Start
             container.RegisterPerWcfOperation<IUserManager, UserManager>();
             container.RegisterPerWcfOperation<IPropertyRepository, PropertyRepository>();
             container.RegisterPerWcfOperation<IPropertyManager, PropertyManager>();
+            container.RegisterPerWcfOperation<IPropertySignRequestManager, PropertySignRequestManager>();
+            container.RegisterPerWcfOperation<IPropertySignRequestRepository, PropertySignRequestRepository>();
 
             container.RegisterPerWcfOperation<IPasswordHasher, PasswordHasher>();
             //container.RegisterPerWcfOperation<IHasher, Hasher>();
