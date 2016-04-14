@@ -154,7 +154,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>62659</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:25080/FylServices/LandlordService</IISUrl>
+          <IISUrl>http://localhost:25090/FylServices/LandlordService</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

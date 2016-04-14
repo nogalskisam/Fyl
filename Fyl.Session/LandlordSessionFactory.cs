@@ -4,28 +4,22 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web.Mvc;
 
 namespace Fyl.Session
 {
-    public class LandlordSessionFactory : ISessionFactory
+    public static class LandlordSessionFactory
     {
-        private readonly ILandlordService _landlordService;
-        private readonly ISessionHelper _sessionHelper;
-
-        public LandlordSessionFactory(ISessionHelper sessionHelper, ILandlordService landlordService)
+        public static ISessionDetails GetSession()
         {
-            _landlordService = landlordService;
-            _sessionHelper = sessionHelper;
-        }
-
-        public ISessionDetails GetSession()
-        {
-            var sessionTicket = _sessionHelper.GetSessionTicketFromCookie();
+            var service = DependencyResolver.Current.GetService<ILandlordService>();
+            var sessionHelper = DependencyResolver.Current.GetService<ISessionHelper>();
+            var sessionTicket = sessionHelper.GetSessionTicketFromCookie();
 
             if (sessionTicket != null)
             {
                 // Validate session ID
-                var session = _landlordService.GetValidSession(sessionTicket.SessionId);
+                var session = service.GetValidSession(sessionTicket.SessionId);
 
                 if (session != null)
                 {

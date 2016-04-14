@@ -11,13 +11,18 @@ namespace Fyl.Utilities
     {
         private readonly HttpContextBase _httpContext;
 
-        public HttpContextHelper(HttpContextBase httpContext)
+        public HttpContextHelper()
         {
-            _httpContext = httpContext;
+            _httpContext = new HttpContextWrapper(HttpContext.Current);
         }
 
         public string GetVisitorIpAddress()
         {
+            if (_httpContext.Request.Cookies["fyl-session-ticket"] == null)
+            {
+                throw new ArgumentNullException("sso_sessionticket Cookie", "The user had no session ticket cookie set");
+            }
+
             if (_httpContext.Request != null)
             {
                 return _httpContext.Request.UserHostAddress;
@@ -30,6 +35,11 @@ namespace Fyl.Utilities
 
         public void SetHttpCookie(HttpCookie cookie)
         {
+            if (_httpContext.Request.Cookies["fyl-session-ticket"] == null)
+            {
+                throw new ArgumentNullException("sso_sessionticket Cookie", "The user had no session ticket cookie set");
+            }
+
             if (_httpContext.Request != null)
             {
                 _httpContext.Response.Cookies.Set(cookie);
@@ -38,6 +48,11 @@ namespace Fyl.Utilities
 
         public HttpCookie GetHttpCookie(string name)
         {
+            if (_httpContext.Request.Cookies["fyl-session-ticket"] == null)
+            {
+                throw new ArgumentNullException("sso_sessionticket Cookie", "The user had no session ticket cookie set");
+            }
+
             if (_httpContext.Request != null)
             {
                 return _httpContext.Request.Cookies[name];
@@ -50,6 +65,11 @@ namespace Fyl.Utilities
 
         public void RemoveHttpCookie(string name)
         {
+            if (_httpContext.Request.Cookies["fyl-session-ticket"] == null)
+            {
+                throw new ArgumentNullException("sso_sessionticket Cookie", "The user had no session ticket cookie set");
+            }
+
             if (_httpContext.Request != null)
             {
                 _httpContext.Request.Cookies.Remove(name);

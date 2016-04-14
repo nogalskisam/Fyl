@@ -9,17 +9,16 @@ namespace Landlord.Site.Filters
 {
     public class LoginFilter : IAuthorizationFilter
     {
-        internal readonly ISessionFactory _sessionFactory;
+        internal readonly ISessionDetails _session;
 
-        public LoginFilter(ISessionFactory sessionFactory)
+        public LoginFilter(ISessionDetails sessionFactory)
         {
-            _sessionFactory = sessionFactory;
+            _session = sessionFactory;
         }
 
         public void OnAuthorization(AuthorizationContext filterContext)
         {
-            var session = _sessionFactory.GetSession();
-            if (_sessionFactory.GetSession().IsValid)
+            if (_session.IsValid)
             {
                 // Redirect
                 //filterContext.Result = new RedirectToRouteResult(
@@ -30,8 +29,8 @@ namespace Landlord.Site.Filters
                 //    });
 
                 // Set ViewData values
-                filterContext.Controller.ViewData.Add(SessionDataKeys.USER_DISPLAY_NAME, string.Format("{0} {1}", session.User.FirstName, session.User.LastName));
-                filterContext.Controller.ViewData.Add(SessionDataKeys.USER, session.User);
+                filterContext.Controller.ViewData.Add(SessionDataKeys.USER_DISPLAY_NAME, string.Format("{0} {1}", _session.User.FirstName, _session.User.LastName));
+                filterContext.Controller.ViewData.Add(SessionDataKeys.USER, _session.User);
             }
         }
     }

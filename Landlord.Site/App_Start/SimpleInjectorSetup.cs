@@ -69,9 +69,8 @@ namespace Landlord.Site.App_Start
 
         private static void RegisterServices(Container container)
         {
-            container.RegisterPerWebRequest<ISessionDetails, SessionDetails>();
+            container.RegisterPerWebRequest<ISessionDetails>(() => LandlordSessionFactory.GetSession());
             container.RegisterPerWebRequest<ISessionHelper, SessionHelper>();
-            container.RegisterPerWebRequest<ISessionFactory, LandlordSessionFactory>();
             container.RegisterPerWebRequest<IHttpContextHelper, HttpContextHelper>();
             container.RegisterPerWebRequest<IEncryptionHelper, EncryptionHelper>();
             container.Register<HttpContextBase>(() =>
