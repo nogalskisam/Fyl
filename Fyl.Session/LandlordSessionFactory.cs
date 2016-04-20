@@ -8,9 +8,9 @@ using System.Web.Mvc;
 
 namespace Fyl.Session
 {
-    public static class LandlordSessionFactory
+    public class LandlordSessionFactory : ISessionFactory
     {
-        public static ISessionDetails GetSession()
+        public ISessionDetails GetSession()
         {
             var service = DependencyResolver.Current.GetService<ILandlordService>();
             var sessionHelper = DependencyResolver.Current.GetService<ISessionHelper>();

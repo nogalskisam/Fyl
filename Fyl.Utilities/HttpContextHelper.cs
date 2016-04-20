@@ -9,7 +9,7 @@ namespace Fyl.Utilities
 {
     public class HttpContextHelper : IHttpContextHelper
     {
-        private readonly HttpContextBase _httpContext;
+        private HttpContextBase _httpContext;
 
         public HttpContextHelper()
         {
@@ -18,62 +18,22 @@ namespace Fyl.Utilities
 
         public string GetVisitorIpAddress()
         {
-            if (_httpContext.Request.Cookies["fyl-session-ticket"] == null)
-            {
-                throw new ArgumentNullException("sso_sessionticket Cookie", "The user had no session ticket cookie set");
-            }
-
-            if (_httpContext.Request != null)
-            {
-                return _httpContext.Request.UserHostAddress;
-            }
-            else
-            {
-                return "";
-            }
+            return _httpContext.Request.UserHostAddress;
         }
 
         public void SetHttpCookie(HttpCookie cookie)
         {
-            if (_httpContext.Request.Cookies["fyl-session-ticket"] == null)
-            {
-                throw new ArgumentNullException("sso_sessionticket Cookie", "The user had no session ticket cookie set");
-            }
-
-            if (_httpContext.Request != null)
-            {
-                _httpContext.Response.Cookies.Set(cookie);
-            }
+            _httpContext.Response.Cookies.Set(cookie);
         }
 
         public HttpCookie GetHttpCookie(string name)
         {
-            if (_httpContext.Request.Cookies["fyl-session-ticket"] == null)
-            {
-                throw new ArgumentNullException("sso_sessionticket Cookie", "The user had no session ticket cookie set");
-            }
-
-            if (_httpContext.Request != null)
-            {
-                return _httpContext.Request.Cookies[name];
-            }
-            else
-            {
-                return new HttpCookie(name);
-            }
+            return _httpContext.Request.Cookies[name];
         }
 
         public void RemoveHttpCookie(string name)
         {
-            if (_httpContext.Request.Cookies["fyl-session-ticket"] == null)
-            {
-                throw new ArgumentNullException("sso_sessionticket Cookie", "The user had no session ticket cookie set");
-            }
-
-            if (_httpContext.Request != null)
-            {
-                _httpContext.Request.Cookies.Remove(name);
-            }
+            _httpContext.Request.Cookies.Remove(name);
         }
     }
 }

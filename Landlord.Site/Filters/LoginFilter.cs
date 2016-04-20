@@ -9,28 +9,36 @@ namespace Landlord.Site.Filters
 {
     public class LoginFilter : IAuthorizationFilter
     {
-        internal readonly ISessionDetails _session;
+        internal readonly ISessionFactory _session;
 
-        public LoginFilter(ISessionDetails sessionFactory)
+        public LoginFilter(ISessionFactory sessionFactory)
         {
             _session = sessionFactory;
         }
 
         public void OnAuthorization(AuthorizationContext filterContext)
         {
-            if (_session.IsValid)
+            try
             {
-                // Redirect
-                //filterContext.Result = new RedirectToRouteResult(
-                //    new RouteValueDictionary
-                //    {
-                //        { "controller", "User" },
-                //        { "action", "Login" }
-                //    });
+                var session = _session.GetSession();
+                if (_session.GetSession().IsValid)
+                {
+                    // Redirect
+                    //filterContext.Result = new RedirectToRouteResult(
+                    //    new RouteValueDictionary
+                    //    {
+                    //        { "controller", "User" },
+                    //        { "action", "Login" }
+                    //    });
 
-                // Set ViewData values
-                filterContext.Controller.ViewData.Add(SessionDataKeys.USER_DISPLAY_NAME, string.Format("{0} {1}", _session.User.FirstName, _session.User.LastName));
-                filterContext.Controller.ViewData.Add(SessionDataKeys.USER, _session.User);
+                    // Set ViewData values
+                    filterContext.Controller.ViewData.Add(SessionDataKeys.USER_DISPLAY_NAME, string.Format("{0} {1}", session.User.FirstName, session.User.LastName));
+                    filterContext.Controller.ViewData.Add(SessionDataKeys.USER, session.User);
+                }
+            }
+            catch (Exception)
+            {
+                // user might not be logged in
             }
         }
     }
