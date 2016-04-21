@@ -28,6 +28,51 @@ namespace Landlord.Site.Controllers
             _landlordService = landlordService;
         }
 
+        [HttpGet]
+        [Unsecured]
+        public ActionResult Register()
+        {
+            var model = new RegisterModel();
+
+            return View("Register", model);
+        }
+
+        [HttpPost]
+        [Unsecured]
+        public async Task<ActionResult> Register(RegisterModel model)
+        {
+            if (model.Password != model.PasswordConfirm)
+            {
+                model.Password = null;
+                model.PasswordConfirm = null;
+
+                ModelState.AddModelError("", "Passwords do not match!");
+            }
+
+            if (ModelState.IsValid)
+            {
+                RegistrationResponseDto response = await _landlordService.RegisterUser(model.ToLandlordDto());
+
+                if (response.Success)
+                {
+                    return RedirectToAction("Success", "User");
+                }
+
+                if (response.EmailExists)
+                {
+                    ModelState.AddModelError("EmailAddress", "Email address already exists");
+                }
+            }
+
+            return View(model);
+        }
+
+        [Unsecured]
+        public ViewResult Success()
+        {
+            return View("Success");
+        }
+
         [Unsecured]
         [HttpGet]
         public ActionResult Login()

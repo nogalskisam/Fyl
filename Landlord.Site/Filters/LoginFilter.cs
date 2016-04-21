@@ -22,7 +22,7 @@ namespace Landlord.Site.Filters
         {
             try
             {
-                if (_session.User.Role != RoleEnum.Landlord)
+                if (_session.IsAuthenticated && _session.User.Role != RoleEnum.Landlord)
                 {
                     filterContext.Result = new RedirectToRouteResult(
                         new RouteValueDictionary

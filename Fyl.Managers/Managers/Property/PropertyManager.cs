@@ -34,6 +34,20 @@ namespace Fyl.Managers
             return result;
         }
 
+        public LandlordPropertyListResponseDto GetPropertiesForLandlordList(Guid userId)
+        {
+            var items = _propertyRepository.GetPropertiesForLandlordListItems(userId);
+            var count = _propertyRepository.GetPropertiesForLandlordListCount(userId);
+
+            var result = new LandlordPropertyListResponseDto()
+            {
+                Items = items,
+                Count = count
+            };
+
+            return result;
+        }
+
         public PropertyBasicDetailsDto GetPropertyDetails(Guid propertyId)
         {
             var dto = _propertyRepository.GetPropertyDetails(propertyId);

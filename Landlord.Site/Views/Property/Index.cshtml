@@ -1,3 +1,25 @@
-﻿@model PropertyListModel
+﻿@using Fyl.Library.Dto
 
-<h1>Properties</h1>
+@model PropertyListModel
+
+<div class="container">
+    <h1>Properties</h1>
+
+    @(Html.Kendo().Grid<LandlordPropertyListItemDto>()
+        .Name("PropertyList")
+        .DataSource(dataSource => dataSource
+            .Ajax()
+            .PageSize(20)
+            .Read(r => r.Action("Index_GetProperties", "Property"))
+        )
+        .Columns(c =>
+        {
+            c.Bound(b => b.Beds);
+            c.Bound(b => b.Address.HouseName);
+            c.Bound(b => b.Address.Address1);
+            c.Bound(b => b.Address.Area);
+            c.Bound(b => b.Address.City);
+        })
+    )
+
+</div>

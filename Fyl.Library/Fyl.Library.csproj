@@ -66,6 +66,8 @@
     <Compile Include="Dto\Login\LoginResponseDto.cs" />
     <Compile Include="Dto\PropertyImage\PropertyImageAddDto.cs" />
     <Compile Include="Dto\PropertyImage\PropertyImageDto.cs" />
+    <Compile Include="Dto\Property\List\LandlordPropertyListItemDto.cs" />
+    <Compile Include="Dto\Property\List\LandlordPropertyListResponseDto.cs" />
     <Compile Include="Dto\Property\List\PropertyListRequestDto.cs" />
     <Compile Include="Dto\Property\List\PropertyListItemDto.cs" />
     <Compile Include="Dto\Property\List\PropertyListResponseDto.cs" />

@@ -46,5 +46,19 @@ namespace Landlord.Service
 
             return propertyId;
         }
+
+        public async Task<RegistrationResponseDto> RegisterUser(RegistrationRequestDto dto)
+        {
+            var result = await _userManager.RegisterUser(dto);
+
+            return result;
+        }
+
+        public LandlordPropertyListResponseDto GetPropertiesForLandlordList(Guid userId)
+        {
+            var dtos = _propertyManager.GetPropertiesForLandlordList(userId);
+
+            return dtos;
+        }
     }
 }

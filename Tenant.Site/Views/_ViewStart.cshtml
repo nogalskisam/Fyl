@@ -3,7 +3,9 @@
     {
         Layout = "~/Views/Shared/_LayoutLoggedIn.cshtml";
     }
-    else if (HttpContext.Current.Request.Url.AbsolutePath.Contains("User/Login"))
+    else if (HttpContext.Current.Request.Url.AbsolutePath.Contains("User/Login") ||
+        HttpContext.Current.Request.Url.AbsolutePath.Contains("User/Register") ||
+        HttpContext.Current.Request.Url.AbsolutePath.Contains("User/Success"))
     {
         Layout = "~/Views/Shared/_LayoutNoMenu.cshtml";
     }

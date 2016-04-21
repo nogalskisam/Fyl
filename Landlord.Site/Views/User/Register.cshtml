@@ -1,0 +1,71 @@
+﻿@model Landlord.Site.Models.RegisterModel
+
+@{
+    ViewBag.Title = "Register";
+}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 login-content">
+            <h2>Register</h2>
+            @using (Html.BeginForm("Register", "User", FormMethod.Post))
+            {
+                @Html.CustomValidationSummary().PropertyErrors(false)
+
+                @(Html.CustomTextBoxFor(m => m.EmailAddress)
+                .InputAttributes(new { @class = "sc-transparent" })
+                .Label(false)
+                .Placeholder()
+                .Icon("fa fa-fw fa-at")
+                );
+
+                @(Html.CustomTextBoxFor(m => m.FirstName)
+                .InputAttributes(new { @class = "sc-transparent" })
+                .Label(false)
+                .Placeholder()
+                .Icon("fa fa-fw fa-user")
+                );
+
+                @(Html.CustomTextBoxFor(m => m.LastName)
+                .InputAttributes(new { @class = "sc-transparent" })
+                .Label(false)
+                .Placeholder()
+                .Icon("fa fa-fw fa-user")
+                );
+
+                @(Html.CustomTextBoxFor(m => m.ContactNumber)
+                .InputAttributes(new { @class = "sc-transparent" })
+                .Label(false)
+                .Placeholder()
+                .Icon("fa fa-fw fa-phone")
+                );
+
+                @*@(Html.CustomTextBoxFor(m => m.DateOfBirth)
+                        .InputAttributes(new { @class = "sc-transparent" })
+                        .Label(false)
+                        .Placeholder()
+                        .Icon("fa fa-fw fa-calendar")
+                    );*@
+
+                @(Html.CustomTextBoxFor(m => m.Password)
+                .Password()
+                .InputAttributes(new { @class = "sc-transparent" })
+                .Label(false)
+                .Placeholder()
+                .Icon("fa fa-fw fa-key")
+                );
+
+                @(Html.CustomTextBoxFor(m => m.PasswordConfirm)
+                .Password()
+                .InputAttributes(new { @class = "sc-transparent" })
+                .Label(false)
+                .Placeholder()
+                .Icon("fa fa-fw fa-key")
+                );
+
+                <button type="submit" class="btn btn-default"><i class="fa fa-arrow-circle-right"></i> Register</button>
+            }
+        </div>
+    </div>
+</div>

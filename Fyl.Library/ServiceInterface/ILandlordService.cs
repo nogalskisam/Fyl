@@ -19,5 +19,11 @@ namespace Fyl.Library
 
         [OperationContract]
         Guid AddProperty(PropertyAddDto dto);
+
+        [OperationContract]
+        Task<RegistrationResponseDto> RegisterUser(RegistrationRequestDto dto);
+
+        [OperationContract]
+        LandlordPropertyListResponseDto GetPropertiesForLandlordList(Guid userId);
     }
 }

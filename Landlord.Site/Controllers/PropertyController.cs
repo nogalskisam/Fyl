@@ -1,6 +1,7 @@
 ﻿using Fyl.Library;
 using Fyl.Library.Dto;
 using Fyl.Session;
+using Kendo.Mvc.UI;
 using Landlord.Site.Models;
 using System;
 using System.Collections.Generic;
@@ -24,18 +25,22 @@ namespace Landlord.Site.Controllers
 
         public ActionResult Index()
         {
-            var user = _sessionDetails.User;
+            return View("Index", new PropertyListModel());
+        }
 
-            if (user.Role == Fyl.Library.Enum.RoleEnum.Landlord)
-            {
-                var userId = _sessionDetails.User.UserId;
+        public JsonResult Index_GetProperties()
+        {
+            var userId = _sessionDetails.User.UserId;
 
-                return View("Index", new PropertyListModel());
-            }
-            else
+            var response = _landlordService.GetPropertiesForLandlordList(userId);
+
+            var result = new DataSourceResult()
             {
-                return RedirectToAction(actionName:"Login", controllerName: "User");
-            }
+                Data = response.Items,
+                Total = response.Count
+            };
+
+            return Json(result);
         }
 
         public ActionResult PropertyImages(Guid propertyId)

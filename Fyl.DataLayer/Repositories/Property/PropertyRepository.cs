@@ -63,6 +63,45 @@ namespace Fyl.DataLayer.Repositories
             return GetAvailablePropertiesQuery(request).Count();
         }
 
+        private IQueryable<Property> GetPropertiesForLandlordListQuery(Guid userId)
+        {
+            var query = _entities.Properties
+                .Where(w => w.LandlordId == userId);
+
+            return query;
+        }
+
+        public List<LandlordPropertyListItemDto> GetPropertiesForLandlordListItems(Guid userId)
+        {
+            var query = GetPropertiesForLandlordListQuery(userId);
+
+            var dtos = query.Select(s => new LandlordPropertyListItemDto()
+            {
+                PropertyId = s.PropertyId,
+                Address = new AddressDto()
+                {
+                    AddressId = s.AddressId,
+                    HouseName = s.Address.HouseName,
+                    Address1 = s.Address.Address1,
+                    Address2 = s.Address.Address2,
+                    Area = s.Address.Area,
+                    City = s.Address.City,
+                    Country = s.Address.Country,
+                    County = s.Address.County,
+                    Postcode = s.Address.Postcode
+                },
+                Beds = s.Beds,
+                Postcode = s.Address.Postcode,
+            }).ToList();
+
+            return dtos;
+        }
+
+        public int GetPropertiesForLandlordListCount(Guid userId)
+        {
+            return GetPropertiesForLandlordListQuery(userId).Count();
+        }
+
         public PropertyBasicDetailsDto GetPropertyDetails(Guid propertyId)
         {
             var property = _entities.Properties

@@ -207,6 +207,7 @@
     <Compile Include="Models\User\LoginModel.cs" />
     <Compile Include="Models\PropertyImageAddModel.cs" />
     <Compile Include="Models\PropertyImageModel.cs" />
+    <Compile Include="Models\User\RegisterModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1382,6 +1383,8 @@
     <Content Include="Views\Property\PropertyImages.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\Error\Error.cshtml" />
+    <Content Include="Views\User\Register.cshtml" />
+    <Content Include="Views\User\Success.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

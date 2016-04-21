@@ -13,8 +13,6 @@ body.login{
     position: relative;
 }
 
-
-
 body, html {
     height: 100%;
     overflow-x: hidden;
@@ -69,3 +67,16 @@ img.logo {
     margin-bottom: 10px;
 }
 
+.footer {
+    position: fixed;
+    bottom: 0;
+    padding: 5px;
+    width: 100%;
+    background-color: #070707;
+    border-top: 2px solid;
+    border-color: #1f1f1f;
+    color: #fff;
+    text-align: center;
+    font-size: 8pt;
+    z-index: 1000;
+}

@@ -13,6 +13,10 @@ namespace Fyl.DataLayer.Repositories
 
         int GetAvailablePropertiesForListCount(PropertyListRequestDto request);
 
+        List<LandlordPropertyListItemDto> GetPropertiesForLandlordListItems(Guid userId);
+
+        int GetPropertiesForLandlordListCount(Guid userId);
+
         PropertyBasicDetailsDto GetPropertyDetails(Guid propertyId);
 
         Guid AddNewProperty(PropertyAddBasicDto dto);
