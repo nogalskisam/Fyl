@@ -10,6 +10,10 @@ namespace Fyl.Entities
     public interface IFylEntities
     {
         // Users
+        IDbSet<Tenant> Tenants { get; set; }
+
+        IDbSet<Landlord> Landlords { get; set; }
+
         IDbSet<User> Users { get; set; }
 
         IDbSet<Session> Sessions { get; set; }

@@ -2,6 +2,7 @@
 using Fyl.Library.Dto;
 using Fyl.Session;
 using Fyl.Utilities;
+using Landlord.Site.Attributes;
 using Landlord.Site.Models;
 using System;
 using System.Collections.Generic;
@@ -27,12 +28,14 @@ namespace Landlord.Site.Controllers
             _landlordService = landlordService;
         }
 
+        [Unsecured]
         [HttpGet]
         public ActionResult Login()
         {
             return View("Login");
         }
 
+        [Unsecured]
         [HttpPost]
         public async Task<ActionResult> Login(LoginModel model)
         {
@@ -53,7 +56,7 @@ namespace Landlord.Site.Controllers
                     if (response.IsSuccess)
                     {
                         _sessionHelper.SetSessionTicketCookie(response.Session.SessionId);
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Index", "Property");
                     }
 
                     ModelState.AddModelError("", "Invalid Credentials");
@@ -61,6 +64,7 @@ namespace Landlord.Site.Controllers
                 catch (Exception)
                 {
                     ModelState.AddModelError("", "Invalid Credentials");
+                    throw;
                 }
             }
 

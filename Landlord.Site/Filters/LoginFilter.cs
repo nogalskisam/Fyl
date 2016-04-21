@@ -1,17 +1,19 @@
-﻿using Fyl.Session;
+﻿using Fyl.Library.Enum;
+using Fyl.Session;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Routing;
 
 namespace Landlord.Site.Filters
 {
     public class LoginFilter : IAuthorizationFilter
     {
-        internal readonly ISessionFactory _session;
+        internal readonly ISessionDetails _session;
 
-        public LoginFilter(ISessionFactory sessionFactory)
+        public LoginFilter(ISessionDetails sessionFactory)
         {
             _session = sessionFactory;
         }
@@ -20,25 +22,31 @@ namespace Landlord.Site.Filters
         {
             try
             {
-                var session = _session.GetSession();
-                if (_session.GetSession().IsValid)
+                if (_session.User.Role != RoleEnum.Landlord)
+                {
+                    filterContext.Result = new RedirectToRouteResult(
+                        new RouteValueDictionary
+                        {
+                            { "controller", "Error" },
+                            { "action", "ErrorTenant" }
+                        });
+                }
+                else if (!_session.IsAuthenticated)
                 {
                     // Redirect
-                    //filterContext.Result = new RedirectToRouteResult(
-                    //    new RouteValueDictionary
-                    //    {
-                    //        { "controller", "User" },
-                    //        { "action", "Login" }
-                    //    });
+                    filterContext.Result = new RedirectToRouteResult(
+                        new RouteValueDictionary
+                        {
+                            { "controller", "User" },
+                            { "action", "Login" }
+                        });
 
-                    // Set ViewData values
-                    filterContext.Controller.ViewData.Add(SessionDataKeys.USER_DISPLAY_NAME, string.Format("{0} {1}", session.User.FirstName, session.User.LastName));
-                    filterContext.Controller.ViewData.Add(SessionDataKeys.USER, session.User);
                 }
             }
             catch (Exception)
             {
                 // user might not be logged in
+                throw;
             }
         }
     }

@@ -17,6 +17,7 @@ namespace Landlord.Service
         private IUserManager _userManager;
         private IPropertyManager _propertyManager;
         private IPropertySignRequestManager _propertySignRequestManager;
+        
 
         public LandlordService(IAddressRepository addressRepository, IUserRepository accountRepository, IUserManager userManager, IPropertyManager propertyManager, IPropertySignRequestManager propertySignRequestManager)
         {

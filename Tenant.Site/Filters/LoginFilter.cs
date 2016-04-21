@@ -10,29 +10,33 @@ namespace Tenant.Site.Filters
 {
     public class LoginFilter : IAuthorizationFilter
     {
-        internal readonly ISessionFactory _sessionFactory;
+        internal readonly ISessionDetails _session;
 
-        public LoginFilter(ISessionFactory sessionFactory)
+        public LoginFilter(ISessionDetails session)
         {
-            _sessionFactory = sessionFactory;
+            _session = session;
         }
 
         public void OnAuthorization(AuthorizationContext filterContext)
         {
-            var session = _sessionFactory.GetSession();
-            if (_sessionFactory.GetSession().IsValid)
+            try
             {
-                // Redirect
-                //filterContext.Result = new RedirectToRouteResult(
-                //    new RouteValueDictionary
-                //    {
-                //        { "controller", "User" },
-                //        { "action", "Login" }
-                //    });
+                if (!_session.IsAuthenticated)
+                {
+                    // Redirect
+                    filterContext.Result = new RedirectToRouteResult(
+                        new RouteValueDictionary
+                        {
+                            { "controller", "User" },
+                            { "action", "Login" }
+                        });
 
-                // Set ViewData values
-                filterContext.Controller.ViewData.Add(SessionDataKeys.USER_DISPLAY_NAME, string.Format("{0} {1}", session.User.FirstName, session.User.LastName));
-                filterContext.Controller.ViewData.Add(SessionDataKeys.USER, session.User);
+                }
+            }
+            catch (Exception)
+            {
+                // user might not be logged in
+                throw;
             }
         }
     }

@@ -18,6 +18,10 @@ namespace Fyl.Entities
         private ILog _Logger;
 
         // User Stuff
+        public IDbSet<Tenant> Tenants { get; set; }
+
+        public IDbSet<Landlord> Landlords { get; set; }
+
         public IDbSet<User> Users { get; set; }
 
         public IDbSet<Session> Sessions { get; set; }

@@ -39,11 +39,11 @@ namespace Fyl.Entities
         public List<PropertySignRequest> MyProperty { get; set; }
 
         // People
-        //[ForeignKey("Landlord")]
-        //public virtual User Landlord { get; set; }
+        [ForeignKey("LandlordId")]
+        public virtual Landlord Landlord { get; set; }
 
-        //public Guid LandlordId { get; set; }
+        public Guid LandlordId { get; set; }
 
-        public virtual List<User> Tenants { get; set; }
+        public virtual List<Tenant> Tenants { get; set; }
     }
 }

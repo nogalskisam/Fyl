@@ -1,7 +1,7 @@
-[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(Landlord.Site.App_Start.NinjectWebCommon), "Start")]
-[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(Landlord.Site.App_Start.NinjectWebCommon), "Stop")]
+[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(Tenant.Site.App_Start.NinjectWebCommon), "Start")]
+[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(Tenant.Site.App_Start.NinjectWebCommon), "Stop")]
 
-namespace Landlord.Site.App_Start
+namespace Tenant.Site.App_Start
 {
     using System;
     using System.Web;
@@ -10,12 +10,13 @@ namespace Landlord.Site.App_Start
 
     using Ninject;
     using Ninject.Web.Common;
-    using Fyl.Session;
-    using Fyl.Utilities;
     using Fyl.Library;
-    using Ninject.Web.Mvc.FilterBindingSyntax;
     using Filters;
     using Attributes;
+    using Fyl.Session;
+    using Fyl.Utilities;
+    using Fyl.Library.ServiceInterface;
+    using Ninject.Web.Mvc.FilterBindingSyntax;
     using System.Web.Mvc;
 
     public static class NinjectWebCommon 
@@ -68,13 +69,13 @@ namespace Landlord.Site.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind<ISessionFactory>().To<LandlordSessionFactory>();
+            kernel.Bind<ISessionFactory>().To<TenantSessionFactory>();
             kernel.Bind<ISessionDetails>().ToMethod(c =>
             {
                 ISessionDetails sessionDetails = null;
                 try
                 {
-                    var sessionFactory = new LandlordSessionFactory();
+                    var sessionFactory = new TenantSessionFactory();
                     sessionDetails = sessionFactory.GetSession();
                 }
                 catch (Exception)
@@ -88,7 +89,7 @@ namespace Landlord.Site.App_Start
             kernel.Bind<IEncryptionHelper>().To<EncryptionHelper>();
             kernel.BindFilter<SetSessionDetailViewDataFilter>(FilterScope.Global, null).When(r => true);
 
-            kernel.Bind<ILandlordService>().ToMethod(c => ILandlordService_Channel.Create());
+            kernel.Bind<ITenantService>().ToMethod(c => ITenantService_Channel.Create());
 
             kernel.BindFilter<LoginFilter>(System.Web.Mvc.FilterScope.Action, 0).WhenActionMethodHasNo<UnsecuredAttribute>();
         }        

@@ -16,12 +16,16 @@ namespace Fyl.Managers
     public class UserManager : IUserManager
     {
         private IUserRepository _userRepository;
+        private ILandlordRepository _landlordRepository;
+        private ITenantRepository _tenantRepository;
         private readonly IPasswordHasher _passwordHasher;
 
-        public UserManager(IUserRepository userRepository, IPasswordHasher passwordHasher)
+        public UserManager(IUserRepository userRepository, ILandlordRepository landlordRepository, ITenantRepository tenantRepository, IPasswordHasher passwordHasher)
         {
             _userRepository = userRepository;
             _passwordHasher = passwordHasher;
+            _landlordRepository = landlordRepository;
+            _tenantRepository = tenantRepository;
         }
 
         public async Task<RegistrationResponseDto> RegisterUser(RegistrationRequestDto dto)
@@ -37,7 +41,14 @@ namespace Fyl.Managers
 
                 try
                 {
-                    await _userRepository.RegisterUser(dto, authentication);
+                    if (dto.IsLandlord)
+                    {
+                        _landlordRepository.Register(dto, authentication);
+                    }
+                    else
+                    {
+                        _tenantRepository.Register(dto, authentication);
+                    }
                     response.Success = true;
                 }
                 catch (Exception)

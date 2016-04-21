@@ -9,6 +9,7 @@ using System.Configuration;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Tenant.Site.Attributes;
 using Tenant.Site.Models;
 
 namespace Tenant.Site.Controllers
@@ -24,11 +25,13 @@ namespace Tenant.Site.Controllers
             _sessionDetails = sessionDetails;
         }
 
+        [Unsecured]
         public ActionResult Index()
         {
             return View();
         }
 
+        [Unsecured]
         public ActionResult List()
         {
             var model = new PropertyListSearchModel()
@@ -38,6 +41,7 @@ namespace Tenant.Site.Controllers
             return View("List", model);
         }
 
+        [Unsecured]
         public ActionResult List_GetProperties([DataSourceRequest]DataSourceRequest datarequest, string postCode, int? beds)
         {
             var request = new PropertyListRequestDto()
@@ -71,6 +75,7 @@ namespace Tenant.Site.Controllers
             //return Json(result);
         }
 
+        [Unsecured]
         public List<PropertyListModel> Properties()
         {
             return new List<PropertyListModel>()
@@ -150,6 +155,7 @@ namespace Tenant.Site.Controllers
             };
         }
 
+        [Unsecured]
         public ActionResult View(Guid id)
         {
             var dto = _tenantService.GetPropertyDetails(id);
@@ -191,6 +197,7 @@ namespace Tenant.Site.Controllers
         }
 
         [HttpGet]
+        [Unsecured]
         public ActionResult RequestSign(Guid id)
         {
             var dto = _tenantService.GetPropertyDetails(id);
@@ -212,6 +219,7 @@ namespace Tenant.Site.Controllers
         }
 
         [HttpPost]
+        [Unsecured]
         public ActionResult RequestSign(PropertySignRequestModel model)
         {
             if (model.AcceptTermsAndConditions)

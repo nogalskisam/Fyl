@@ -8,7 +8,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
-using Tenant.Service;
 using Tenant.Site.Attributes;
 using Tenant.Site.Models;
 
@@ -113,6 +112,12 @@ namespace Tenant.Site.Controllers
             }
 
             return View(model);
+        }
+
+        [HttpGet]
+        public ActionResult Logout()
+        {
+            return RedirectToAction("Login");
         }
     }
 }

@@ -27,6 +27,8 @@ namespace Fyl.Library.Dto
 
         public RoleEnum Role { get; set; }
 
+        public bool IsLandlord { get; set; }
+
         public Guid? PasswordAuthorisationId { get; set; }
     }
 }

@@ -10,24 +10,24 @@ namespace Tenant.Site.Helpers
 {
     public static class SessionDataHelpers
     {
-        public static object GetSessionData(this HtmlHelper html, string key)
+        public static object GetSessionData(this HtmlHelper html)
         {
-            if (!html.ViewContext.ViewData.ContainsKey(key))
+            if (html.ViewBag.SessionDetails == null)
             {
-                throw new ArgumentException(string.Format("Cannot retrieve value {0} from session/viewdata as no item exists with this key", key));
+                throw new ArgumentException("Cannot retrieve session/viewdata as no item exists with this key");
             }
 
-            return html.ViewContext.ViewData[key];
+            return html.ViewBag.SessionDetails;
         }
 
         public static UserDto GetSessionUser(this HtmlHelper html)
         {
-            return (UserDto)GetSessionData(html, SessionDataKeys.USER);
+            return ((ISessionDetails)GetSessionData(html)).User;
         }
 
         public static bool UserIsLoggedIn(this HtmlHelper html)
         {
-            return html.ViewContext.ViewData.ContainsKey(SessionDataKeys.USER);
+            return ((ISessionDetails)GetSessionData(html)).IsAuthenticated;
         }
     }
 }

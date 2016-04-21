@@ -32,8 +32,6 @@ namespace Fyl.Entities
 
         public DateTime DateRegistered { get; set; }
 
-        public virtual List<Property> Properties { get; set; }
-
         public UserDto ToDto()
         {
             return new UserDto()

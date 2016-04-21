@@ -1,1 +1,1 @@
-﻿<%@ ServiceHost Language="C#" Debug="true" Service="Landlord.Service.LandlordService" CodeBehind="LandlordService.svc.cs" Factory="SimpleInjector.Integration.Wcf.SimpleInjectorServiceHostFactory,SimpleInjector.Integration.Wcf" %>
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="Landlord.Service.LandlordService" CodeBehind="LandlordService.svc.cs" Factory="Ninject.Extensions.Wcf.NinjectServiceHostFactory"%>

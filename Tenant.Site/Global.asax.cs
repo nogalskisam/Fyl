@@ -14,7 +14,6 @@ namespace Tenant.Site
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             MapperConfig.RegisterMaps();
-            SimpleInjectorSetup.Start();
         }
     }
 }

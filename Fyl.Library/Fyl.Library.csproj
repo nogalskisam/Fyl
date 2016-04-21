@@ -87,6 +87,7 @@
     <Compile Include="ServiceInterface\ILandlordService.cs" />
     <Compile Include="ServiceInterface\ILandlordService_Channel.cs" />
     <Compile Include="ServiceInterface\ITenantService.cs" />
+    <Compile Include="ServiceInterface\ITenantService_Channel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

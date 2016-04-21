@@ -81,70 +81,24 @@
     <Compile Include="Context\FylEntities.cs" />
     <Compile Include="Context\IFylEntities.cs" />
     <Compile Include="Entities\Address.cs" />
+    <Compile Include="Entities\Landlord.cs" />
     <Compile Include="Entities\Property.cs" />
     <Compile Include="Entities\PropertyFeature.cs" />
     <Compile Include="Entities\PropertyImage.cs" />
     <Compile Include="Entities\PropertyRating.cs" />
     <Compile Include="Entities\PropertySignRequest.cs" />
     <Compile Include="Entities\Session.cs" />
+    <Compile Include="Entities\Tenant.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Entities\UserAuthentication.cs" />
     <Compile Include="Mappings\AddressMappings.cs" />
-    <Compile Include="Migrations\201507281703141_Initial.cs" />
-    <Compile Include="Migrations\201507281703141_Initial.Designer.cs">
-      <DependentUpon>201507281703141_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201604211921301_Initial.cs" />
+    <Compile Include="Migrations\201604211921301_Initial.Designer.cs">
+      <DependentUpon>201604211921301_Initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201507281811149_AddBasicEntities.cs" />
-    <Compile Include="Migrations\201507281811149_AddBasicEntities.Designer.cs">
-      <DependentUpon>201507281811149_AddBasicEntities.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201512141358552_AddUserRoleAndDateRegistered.cs" />
-    <Compile Include="Migrations\201512141358552_AddUserRoleAndDateRegistered.Designer.cs">
-      <DependentUpon>201512141358552_AddUserRoleAndDateRegistered.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201512231325336_AddPasswordAuthorisationField.cs" />
-    <Compile Include="Migrations\201512231325336_AddPasswordAuthorisationField.Designer.cs">
-      <DependentUpon>201512231325336_AddPasswordAuthorisationField.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201601141215156_RemoveUsersAndPasswordAuthEntities.cs" />
-    <Compile Include="Migrations\201601141215156_RemoveUsersAndPasswordAuthEntities.Designer.cs">
-      <DependentUpon>201601141215156_RemoveUsersAndPasswordAuthEntities.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201601301906516_Entities_AddSessionsUserAuthAndChangeUsers.cs" />
-    <Compile Include="Migrations\201601301906516_Entities_AddSessionsUserAuthAndChangeUsers.Designer.cs">
-      <DependentUpon>201601301906516_Entities_AddSessionsUserAuthAndChangeUsers.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201603141308322_Property_AddPropertyImages.cs" />
-    <Compile Include="Migrations\201603141308322_Property_AddPropertyImages.Designer.cs">
-      <DependentUpon>201603141308322_Property_AddPropertyImages.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201603141511597_PropertyImages_AddPrimaryAndInactiveFlags.cs" />
-    <Compile Include="Migrations\201603141511597_PropertyImages_AddPrimaryAndInactiveFlags.Designer.cs">
-      <DependentUpon>201603141511597_PropertyImages_AddPrimaryAndInactiveFlags.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201603142238224_Properties_ChangeAvailableFlag.cs" />
-    <Compile Include="Migrations\201603142238224_Properties_ChangeAvailableFlag.Designer.cs">
-      <DependentUpon>201603142238224_Properties_ChangeAvailableFlag.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201603251659422_AddEntitiesForProperties.cs" />
-    <Compile Include="Migrations\201603251659422_AddEntitiesForProperties.Designer.cs">
-      <DependentUpon>201603251659422_AddEntitiesForProperties.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201603251850135_RemoveUnnecessaryPropertiesFromPropertyImageEntity.cs" />
-    <Compile Include="Migrations\201603251850135_RemoveUnnecessaryPropertiesFromPropertyImageEntity.Designer.cs">
-      <DependentUpon>201603251850135_RemoveUnnecessaryPropertiesFromPropertyImageEntity.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201603251851347_PropertyImage_GivePrimaryKey.cs" />
-    <Compile Include="Migrations\201603251851347_PropertyImage_GivePrimaryKey.Designer.cs">
-      <DependentUpon>201603251851347_PropertyImage_GivePrimaryKey.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201603261204469_AddPropertyRequestEntity.cs" />
-    <Compile Include="Migrations\201603261204469_AddPropertyRequestEntity.Designer.cs">
-      <DependentUpon>201603261204469_AddPropertyRequestEntity.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201604120702526_Property_AddRentDeposit.cs" />
-    <Compile Include="Migrations\201604120702526_Property_AddRentDeposit.Designer.cs">
-      <DependentUpon>201604120702526_Property_AddRentDeposit.cs</DependentUpon>
+    <Compile Include="Migrations\201604212041490_Tenant_MakePropertyIdNullable.cs" />
+    <Compile Include="Migrations\201604212041490_Tenant_MakePropertyIdNullable.Designer.cs">
+      <DependentUpon>201604212041490_Tenant_MakePropertyIdNullable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -156,54 +110,18 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201507281703141_Initial.resx">
-      <DependentUpon>201507281703141_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201507281811149_AddBasicEntities.resx">
-      <DependentUpon>201507281811149_AddBasicEntities.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201512141358552_AddUserRoleAndDateRegistered.resx">
-      <DependentUpon>201512141358552_AddUserRoleAndDateRegistered.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201512231325336_AddPasswordAuthorisationField.resx">
-      <DependentUpon>201512231325336_AddPasswordAuthorisationField.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601141215156_RemoveUsersAndPasswordAuthEntities.resx">
-      <DependentUpon>201601141215156_RemoveUsersAndPasswordAuthEntities.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201601301906516_Entities_AddSessionsUserAuthAndChangeUsers.resx">
-      <DependentUpon>201601301906516_Entities_AddSessionsUserAuthAndChangeUsers.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603141308322_Property_AddPropertyImages.resx">
-      <DependentUpon>201603141308322_Property_AddPropertyImages.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603141511597_PropertyImages_AddPrimaryAndInactiveFlags.resx">
-      <DependentUpon>201603141511597_PropertyImages_AddPrimaryAndInactiveFlags.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603142238224_Properties_ChangeAvailableFlag.resx">
-      <DependentUpon>201603142238224_Properties_ChangeAvailableFlag.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603251659422_AddEntitiesForProperties.resx">
-      <DependentUpon>201603251659422_AddEntitiesForProperties.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603251850135_RemoveUnnecessaryPropertiesFromPropertyImageEntity.resx">
-      <DependentUpon>201603251850135_RemoveUnnecessaryPropertiesFromPropertyImageEntity.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603251851347_PropertyImage_GivePrimaryKey.resx">
-      <DependentUpon>201603251851347_PropertyImage_GivePrimaryKey.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201603261204469_AddPropertyRequestEntity.resx">
-      <DependentUpon>201603261204469_AddPropertyRequestEntity.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201604120702526_Property_AddRentDeposit.resx">
-      <DependentUpon>201604120702526_Property_AddRentDeposit.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Fyl.Library\Fyl.Library.csproj">
       <Project>{6cb997c6-ec24-48c6-bcd8-11adc23c71e9}</Project>
       <Name>Fyl.Library</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201604211921301_Initial.resx">
+      <DependentUpon>201604211921301_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604212041490_Tenant_MakePropertyIdNullable.resx">
+      <DependentUpon>201604212041490_Tenant_MakePropertyIdNullable.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets" Condition="Exists('..\packages\AutoMapper.3.3.1\tools\AutoMapper.targets')" />

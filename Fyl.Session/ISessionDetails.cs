@@ -9,7 +9,7 @@ namespace Fyl.Session
 {
     public interface ISessionDetails
     {
-        bool IsValid { get; }
+        bool IsAuthenticated { get; }
 
         UserDto User { get; }
     }

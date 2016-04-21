@@ -7,16 +7,16 @@ using System.ServiceModel.Description;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Fyl.Library
+namespace Fyl.Library.ServiceInterface
 {
-    public static class ILandlordService_Channel
+    public static class ITenantService_Channel
     {
-        public static ILandlordService Create(Uri endpoint = null, Binding binding = null, List<IEndpointBehavior> behaviors = null)
+        public static ITenantService Create(Uri endpoint = null, Binding binding = null, List<IEndpointBehavior> behaviors = null)
         {
             endpoint = endpoint ?? GetUri();
             binding = binding ?? GetBinding(endpoint);
 
-            var factory = new ChannelFactory<ILandlordService>(binding);
+            var factory = new ChannelFactory<ITenantService>(binding);
 
             if (behaviors != null && behaviors.Any())
             {
@@ -49,6 +49,6 @@ namespace Fyl.Library
                     throw new Exception("Having a few issues here, Mr Landlord! Please contact support.");
             }
         }
-        public static Uri LocalEndpoint { get { return new Uri("http://localhost:25090/FylServices/LandlordService/LandlordService.svc"); } }
+        public static Uri LocalEndpoint { get { return new Uri("http://localhost:25090/FylServices/TenantService/TenantService.svc"); } }
     }
 }

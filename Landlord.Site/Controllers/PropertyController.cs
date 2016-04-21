@@ -34,7 +34,7 @@ namespace Landlord.Site.Controllers
             }
             else
             {
-                return RedirectToAction("User/Login");
+                return RedirectToAction(actionName:"Login", controllerName: "User");
             }
         }
 

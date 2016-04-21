@@ -1,9 +1,9 @@
 ﻿using Ninject.Syntax;
 
-[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(Landlord.Service.App_Start.NinjectWebCommon), "Start")]
-[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(Landlord.Service.App_Start.NinjectWebCommon), "Stop")]
+[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(Tenant.Service.App_Start.NinjectWebCommon), "Start")]
+[assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(Tenant.Service.App_Start.NinjectWebCommon), "Stop")]
 
-namespace Landlord.Service.App_Start
+namespace Tenant.Service.App_Start
 {
     using Ninject;
     using Ninject.Web.Common;
