@@ -115,8 +115,11 @@ namespace Tenant.Site.Controllers
         }
 
         [HttpGet]
+        [Unsecured]
         public ActionResult Logout()
         {
+            _sessionHelper.RemoveSessionTicketCookie();
+
             return RedirectToAction("Login");
         }
     }

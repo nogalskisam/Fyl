@@ -16,7 +16,7 @@ namespace Landlord.Site.Controllers
         [Unsecured]
         public ActionResult Error()
         {
-            string model = "An error was found";
+            object model = "An error was found";
 
             return View("Error", model);
         }
@@ -24,7 +24,7 @@ namespace Landlord.Site.Controllers
         [Unsecured]
         public ActionResult ErrorTenant()
         {
-            string model = "You tried to access the Landlord site when you are a Tenant.";
+            object model = "You tried to access the Landlord site when you are a Tenant.";
 
             return View("Error", model);
         }

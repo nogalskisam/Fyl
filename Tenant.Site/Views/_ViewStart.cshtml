@@ -1,5 +1,5 @@
 ﻿@{
-    if (Html.ViewBag.SessionDetails.IsAuthenticated)
+    if (Html.UserIsLoggedIn())
     {
         Layout = "~/Views/Shared/_LayoutLoggedIn.cshtml";
     }

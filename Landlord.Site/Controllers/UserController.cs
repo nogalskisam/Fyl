@@ -70,5 +70,14 @@ namespace Landlord.Site.Controllers
 
             return View(model);
         }
+
+        [HttpGet]
+        [Unsecured]
+        public ActionResult Logout()
+        {
+            _sessionHelper.RemoveSessionTicketCookie();
+
+            return RedirectToAction("Login");
+        }
     }
 }

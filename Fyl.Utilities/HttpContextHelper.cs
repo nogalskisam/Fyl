@@ -33,7 +33,12 @@ namespace Fyl.Utilities
 
         public void RemoveHttpCookie(string name)
         {
-            _httpContext.Request.Cookies.Remove(name);
+            var cookie = new HttpCookie(name)
+            {
+                Expires = DateTime.Now.AddDays(-1)
+            };
+
+            SetHttpCookie(cookie);
         }
     }
 }
