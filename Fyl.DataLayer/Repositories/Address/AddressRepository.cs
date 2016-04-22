@@ -55,6 +55,7 @@ namespace Fyl.DataLayer.Repositories
             };
 
             _entities.Addresses.Add(address);
+            _entities.SaveChanges();
 
             return address.AddressId;
         }

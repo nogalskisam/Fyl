@@ -4,6 +4,9 @@
 
 <div class="container">
     <h1>Properties</h1>
+    <div class="buttonPanel margin-bottom-big">
+        @Html.ActionLink("Add New Property", "Add", "Property", null, new { @class = "btn btn-success btn-fyl" })
+    </div>
 
     @(Html.Kendo().Grid<LandlordPropertyListItemDto>()
         .Name("PropertyList")

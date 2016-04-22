@@ -40,9 +40,9 @@ namespace Landlord.Service
             return _userManager.GetValidSession(sessionId);
         }
 
-        public Guid AddProperty(PropertyAddDto dto)
+        public Guid AddProperty(Guid userId, PropertyAddDto dto)
         {
-            var propertyId = _propertyManager.AddProperty(dto);
+            var propertyId = _propertyManager.AddProperty(userId, dto);
 
             return propertyId;
         }

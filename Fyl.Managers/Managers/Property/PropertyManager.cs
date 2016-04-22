@@ -55,13 +55,13 @@ namespace Fyl.Managers
             return dto;
         }
 
-        public Guid AddProperty(PropertyAddDto dto)
+        public Guid AddProperty(Guid userId, PropertyAddDto dto)
         {
             var addressId = _addressRepository.AddAddress(dto.Address);
 
             dto.Property.AddressId = addressId;
 
-            var propertyId = _propertyRepository.AddNewProperty(dto.Property);
+            var propertyId = _propertyRepository.AddNewProperty(userId, dto.Property);
 
             return propertyId;
         }

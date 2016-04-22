@@ -18,7 +18,7 @@ namespace Fyl.Library
         SessionDetailDto GetValidSession(Guid sessionId);
 
         [OperationContract]
-        Guid AddProperty(PropertyAddDto dto);
+        Guid AddProperty(Guid userId, PropertyAddDto dto);
 
         [OperationContract]
         Task<RegistrationResponseDto> RegisterUser(RegistrationRequestDto dto);

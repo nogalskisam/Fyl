@@ -78,5 +78,44 @@ namespace Landlord.Site.Controllers
 
             return RedirectToAction("PropertyImages");
         }
+
+        [HttpGet]
+        public ActionResult Add()
+        {
+            var model = new PropertyAddEditModel()
+            {
+                Property = new PropertyModel(),
+                Address = new AddressModel()
+            };
+
+            return View("AddProperty", model);
+        }
+
+        [HttpPost]
+        public ActionResult Add(PropertyAddEditModel model)
+        {
+
+            if (ModelState.IsValid)
+            {
+                var dto = model.ToDto();
+                try
+                {
+                    var userId = _sessionDetails.User.UserId;
+                    var id = _landlordService.AddProperty(userId, dto);
+
+                    return RedirectToAction("", id);
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("", ex.Message);
+
+                    return View("AddProperty", model);
+                }
+            }
+            else
+            {
+                return View("AddProperty", model);
+            }
+        }
     }
 }

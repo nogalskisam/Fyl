@@ -1,5 +1,11 @@
 ﻿body {
+    font-family: 'Raleway', sans-serif;
+    font-size: 18px;
     background-image: url("img/wet_snow.png");
+}
+
+body h1, h2, h3, h4, h5, p, span {
+    font-family: 'Raleway', sans-serif;
 }
 
 body.login{
@@ -79,4 +85,42 @@ img.logo {
     text-align: center;
     font-size: 8pt;
     z-index: 1000;
+}
+
+/* Buttons */
+.btn-fyl {
+    border-radius: 0;
+}
+
+/* Margins */
+.margin-top-small {
+    margin-top: 5px !important;
+}
+
+.margin-right-small {
+    margin-right: 5px !important;
+}
+
+.margin-bottom-small {
+    margin-bottom: 5px !important;
+}
+
+.margin-left-small {
+    margin-left: 5px !important;
+}
+
+.margin-top-big {
+    margin-top: 15px !important;
+}
+
+.margin-right-big {
+    margin-right: 15px !important;
+}
+
+.margin-bottom-big {
+    margin-bottom: 15px !important;
+}
+
+.margin-left-big {
+    margin-left: 15px !important;
 }

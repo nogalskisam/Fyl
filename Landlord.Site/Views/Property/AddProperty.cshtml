@@ -1,0 +1,68 @@
+﻿@model PropertyAddEditModel
+
+<div class="container">
+    <h1>Add New Property</h1>
+    @using (Html.BeginForm("Add", "Property", FormMethod.Post))
+    {
+        <div class="row">
+            <div class="col-md-6">
+                @*@Html.Partial("_AddressModel", Model.Address)*@
+                @(Html.CustomTextBoxFor(m => m.Address.HouseName)
+                    .Label(true)
+                    .Placeholder())
+
+                @(Html.CustomTextBoxFor(m => m.Address.Address1)
+                    .Label(true)
+                    .Placeholder())
+
+                @(Html.CustomTextBoxFor(m => m.Address.Address2)
+                    .Label(true)
+                    .Placeholder())
+
+                @(Html.CustomTextBoxFor(m => m.Address.Area)
+                    .Label(true)
+                    .Placeholder())
+
+                @(Html.CustomTextBoxFor(m => m.Address.City)
+                    .Label(true)
+                    .Placeholder())
+
+                @(Html.CustomTextBoxFor(m => m.Address.County)
+                    .Label(true)
+                    .Placeholder())
+
+                @(Html.CustomTextBoxFor(m => m.Address.Country)
+                    .Label(true)
+                    .Placeholder())
+
+                @(Html.CustomTextBoxFor(m => m.Address.PostCode)
+                    .Label(true)
+                    .Placeholder())
+            </div>
+            <div class="col-md-6">
+                @*@Html.Partial("_PropertyModel", Model.Property)*@
+                @(Html.CustomTextBoxFor(m => m.Property.Beds)
+                    .Label(true)
+                    .Placeholder())
+
+
+                @(Html.CustomTextBoxFor(m => m.Property.Deposit)
+                    .Label(true)
+                    .Placeholder())
+
+                @(Html.CustomTextBoxFor(m => m.Property.Rent)
+                    .Label(true)
+                    .Placeholder())
+
+                <div class="form-group">
+                    @Html.LabelFor(m => m.Property.StartDate)<br />
+                    @(Html.Kendo().DatePickerFor(m => m.Property.StartDate)
+                        .Min(DateTime.Today))
+                </div>
+            </div>
+        </div>
+        <div class="buttonPanel right">
+            <input class="btn btn-success btn-fyl" type="submit" value="Create" />
+        </div>
+    }
+</div>

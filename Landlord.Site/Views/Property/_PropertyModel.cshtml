@@ -1,0 +1,20 @@
+﻿@model PropertyModel
+
+@(Html.CustomTextBoxFor(m => m.Beds)
+    .Label(true)
+    .Placeholder())
+
+
+@(Html.CustomTextBoxFor(m => m.Deposit)
+    .Label(true)
+    .Placeholder())
+
+@(Html.CustomTextBoxFor(m => m.Rent)
+    .Label(true)
+    .Placeholder())
+
+<div class="form-group">
+    @Html.LabelFor(m => m.StartDate)<br />
+    @(Html.Kendo().DatePickerFor(m => m.StartDate)
+        .Min(DateTime.Today))
+</div>

@@ -128,10 +128,11 @@ namespace Fyl.DataLayer.Repositories
             return property;
         }
 
-        public Guid AddNewProperty(PropertyAddBasicDto dto)
+        public Guid AddNewProperty(Guid userId, PropertyAddBasicDto dto)
         {
             var property = new Property()
             {
+                LandlordId = userId,
                 Beds = dto.Beds,
                 StartDate = dto.StartTime,
                 Deposit = dto.Deposit,
@@ -140,6 +141,7 @@ namespace Fyl.DataLayer.Repositories
             };
 
             _entities.Properties.Add(property);
+            _entities.SaveChanges();
 
             return property.PropertyId;
         }
