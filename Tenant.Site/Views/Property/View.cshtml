@@ -12,10 +12,13 @@
                         @{
                             int i = 1;
 
-                            while (i <= Model.PropertyImageIds.Count)
+                            if (Model.PropertyImageIds.Count > 0)
                             {
-                                <li data-target="#propertyCarousel" data-slide-to="i"></li>
-                                i++;
+                                while (i <= Model.PropertyImageIds.Count)
+                                {
+                                    <li data-target="#propertyCarousel" data-slide-to="i"></li>
+                                    i++;
+                                }
                             }
                         }
                     </ol>
@@ -23,7 +26,14 @@
                     <!-- Wrapper for slides -->
                     <div class="carousel-inner" role="listbox">
                         <div class="item active">
-                            <img src="@string.Format("{0}{1}/{2}.jpg", ConfigurationManager.AppSettings["CDNPath"], Model.PropertyId, Model.PropertyImageIds.First())">
+                            @if (Model.PropertyImageIds.Count > 0)
+                            {
+                                <img src="@string.Format("{0}{1}/{2}.jpg", ConfigurationManager.AppSettings["CDNPath"], Model.PropertyId, Model.PropertyImageIds.FirstOrDefault())">
+                            }
+                            else
+                            {
+                                <img src="@string.Format("{0}6B1E5AD9-8731-4858-AF3B-07C7B593E905.jpg", ConfigurationManager.AppSettings["CDNPath"])">
+                            }
                         </div>
                         @foreach (var image in Model.PropertyImageIds.Skip(1))
                         {

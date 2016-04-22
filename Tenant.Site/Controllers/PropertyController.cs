@@ -51,6 +51,19 @@ namespace Tenant.Site.Controllers
             };
             
             var response = _tenantService.GetAvailablePropertiesForList(request);
+
+            foreach (var item in response.Items)
+            {
+                if (item.PropertyImageId.HasValue && item.PropertyImageId.Value != Guid.Empty)
+                {
+                    item.ImagePath = $"{ConfigurationManager.AppSettings["CDNPath"]}{item.PropertyId}/{item.PropertyImageId.Value}.jpg";
+                }
+                else
+                {
+                    item.ImagePath = $"{ConfigurationManager.AppSettings["CDNPath"]}/6B1E5AD9-8731-4858-AF3B-07C7B593E905.jpg";
+                }
+            }
+
             var result = new DataSourceResult()
             {
                 Data = response != null ? response.Items : null,
@@ -58,21 +71,6 @@ namespace Tenant.Site.Controllers
             };
 
             return Json(result);
-            //var request = new PropertyListRequestDto()
-            //{
-            //    PostCode = postCode,
-            //    Beds = beds
-            //};
-
-            //var response = _tenantService.GetAvailablePropertiesForList(request);
-
-            //var result = new DataSourceResult()
-            //{
-            //    Data = response != null ? response.Items : null,
-            //    Total = response != null ? response.Count : 0
-            //};
-
-            //return Json(result);
         }
 
         [Unsecured]
