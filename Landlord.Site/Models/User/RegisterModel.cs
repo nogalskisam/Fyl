@@ -42,7 +42,8 @@ namespace Landlord.Site.Models
                 EmailAddress = EmailAddress,
                 DateOfBirth = DateTime.UtcNow,
                 DateRegistered = DateTime.UtcNow,
-                Role = RoleEnum.Landlord
+                Role = RoleEnum.Landlord,
+                IsLandlord = true
             };
         }
     }
