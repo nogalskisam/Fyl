@@ -187,6 +187,7 @@
     <Compile Include="Attributes\UnsecuredAttribute.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\PropertyController.cs" />
+    <Compile Include="Controllers\PropertyImageController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Filters\LoginFilter.cs" />
     <Compile Include="Filters\SetSessionDetailViewDataFilter.cs" />
@@ -204,6 +205,8 @@
     <Compile Include="Helpers\HtmlHelpers.cs" />
     <Compile Include="Helpers\SessionDataHelpers.cs" />
     <Compile Include="Models\Address\AddressModel.cs" />
+    <Compile Include="Models\PropertyImage\ImageUploadModel.cs" />
+    <Compile Include="Models\PropertyImage\PropertyImageListModel.cs" />
     <Compile Include="Models\Property\PropertyAddEditModel.cs" />
     <Compile Include="Models\Property\PropertyListModel.cs" />
     <Compile Include="Models\Property\PropertyModel.cs" />
@@ -1391,6 +1394,8 @@
     <Content Include="Views\Property\_PropertyModel.cshtml" />
     <Content Include="Views\Property\AddProperty.cshtml" />
     <Content Include="Views\Shared\_AddressModel.cshtml" />
+    <Content Include="Views\PropertyImage\PropertyImage.cshtml" />
+    <Content Include="Views\PropertyImage\_ImageUpload.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1412,6 +1417,10 @@
     <ProjectReference Include="..\Fyl.Library\Fyl.Library.csproj">
       <Project>{6cb997c6-ec24-48c6-bcd8-11adc23c71e9}</Project>
       <Name>Fyl.Library</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Fyl.Resources\Fyl.Resources.csproj">
+      <Project>{13687350-ae5e-4704-8ec9-fb07e13877f7}</Project>
+      <Name>Fyl.Resources</Name>
     </ProjectReference>
     <ProjectReference Include="..\Fyl.Session\Fyl.Session.csproj">
       <Project>{75b00dff-aa12-4392-8358-2bdac30302b9}</Project>

@@ -1,0 +1,101 @@
+﻿@model PropertyImageModel
+
+<div class="container">
+    <div class="row margin-bottom-big">
+        <div class="col-md-3">
+            <div class="row control-group display-group">
+                <div class="col-md-4">
+                    @Html.LabelFor(m => m.Address1)
+                </div>
+                <div class="col-md-8">
+                    @Html.DisplayFor(m => m.Address1)
+                </div>
+            </div>
+            <div class="row control-group display-group">
+                <div class="col-md-4">
+                    @Html.LabelFor(m => m.Area)
+                </div>
+                <div class="col-md-8">
+                    @Html.DisplayFor(m => m.Area)
+                </div>
+            </div>
+            <div class="row control-group display-group">
+                <div class="col-md-4">
+                    @Html.LabelFor(m => m.City)
+                </div>
+                <div class="col-md-8">
+                    @Html.DisplayFor(m => m.City)
+                </div>
+            </div>
+            <div class="row control-group display-group">
+                <div class="col-md-4">
+                    @Html.LabelFor(m => m.PostCode)
+                </div>
+                <div class="col-md-8">
+                    @Html.DisplayFor(m => m.PostCode)
+                </div>
+            </div>
+        </div>
+        <div class="col-md-3">
+            <div class="row control-group display-group">
+                <div class="col-md-4">
+                    @Html.LabelFor(m => m.Beds)
+                </div>
+                <div class="col-md-8">
+                    @Html.DisplayFor(m => m.Beds)
+                </div>
+            </div>
+            <div class="row control-group display-group">
+                <div class="col-md-4">
+                    @Html.LabelFor(m => m.DepositDisplay)
+                </div>
+                <div class="col-md-8">
+                    @Html.DisplayFor(m => m.DepositDisplay)
+                </div>
+            </div>
+            <div class="row control-group display-group">
+                <div class="col-md-4">
+                    @Html.LabelFor(m => m.RentDisplay)
+                </div>
+                <div class="col-md-8">
+                    @Html.DisplayFor(m => m.RentDisplay)
+                </div>
+            </div>
+            <div class="row control-group display-group">
+                <div class="col-md-4">
+                    @Html.LabelFor(m => m.StartDateDisplay)
+                </div>
+                <div class="col-md-8">
+                    @Html.DisplayFor(m => m.StartDateDisplay)
+                </div>
+            </div>
+            </div>
+    </div>
+
+    <script type="text/x-kendo-tmpl" id="Images">
+        <div class="Property">
+            <img src="@Url.Content(ConfigurationManager.AppSettings["CDNPath"] + "#= PropertyId #" + "/" + "#= PropertyImageId #" + ".jpg")" alt="image" />
+            <a href="@(Url.Content(ConfigurationManager.AppSettings["SitePath"]+"PropertyImage/Delete/#= PropertyImageId #"))">Delete Image</a>
+        </div>
+    </script>
+
+    @(Html.Kendo().ListView<PropertyImageListModel>()
+        .Name("PropertyList")
+        .TagName("div")
+        .ClientTemplateId("Images")
+        .DataSource(data =>
+        {
+            data.Read(read => read.Action("GetPropertyImages", "PropertyImage").Data("getData"));
+            data.PageSize(21);
+        })
+        .Pageable()
+    )
+</div>
+
+<script type="text/javascript">
+    function getData() {
+        return {
+            PropertyId: '@Model.PropertyId'
+        }
+    }
+</script>

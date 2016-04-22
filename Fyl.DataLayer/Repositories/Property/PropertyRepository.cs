@@ -119,9 +119,12 @@ namespace Fyl.DataLayer.Repositories
                     PostCode = t.Address.Postcode,
                     PropertyImageIds = t.Images
                         .Where(pi => pi.PropertyId == propertyId)
+                        .Where(pi => !pi.Inactive)
                         .Select(pi => pi.PropertyImageId)
                         .ToList(),
-                    Beds = t.Beds
+                    Beds = t.Beds,
+                    Rent = t.Rent,
+                    Deposit = t.Deposit
                 })
                 .FirstOrDefault();
 

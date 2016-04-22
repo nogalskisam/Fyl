@@ -25,5 +25,14 @@ namespace Fyl.Library
 
         [OperationContract]
         LandlordPropertyListResponseDto GetPropertiesForLandlordList(Guid userId);
+
+        [OperationContract]
+        PropertyBasicDetailsDto GetPropertyDetails(Guid propertyId);
+
+        [OperationContract]
+        List<PropertyImageDto> GetPropertyImagesForProperty(Guid propertyId);
+
+        [OperationContract]
+        Guid AddPropertyImage(Guid propertyId);
     }
 }

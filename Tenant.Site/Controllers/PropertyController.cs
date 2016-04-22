@@ -198,22 +198,33 @@ namespace Tenant.Site.Controllers
         [Unsecured]
         public ActionResult RequestSign(Guid id)
         {
-            var dto = _tenantService.GetPropertyDetails(id);
+            var userId = _sessionDetails.User.UserId;
+            var requestExists = _tenantService.PropertySignRequestExists(id, userId);
 
-            var model = new PropertySignRequestModel()
+            if (!requestExists)
             {
-                PropertyId = dto.PropertyId,
-                Address1 = dto.Address1,
-                Area = dto.Area,
-                City = dto.City,
-                PostCode = dto.PostCode,
-                Beds = dto.Beds,
-                Deposit = dto.Deposit,
-                Rent = dto.Rent,
-                StartDate = dto.StartDate
-            };
+                var dto = _tenantService.GetPropertyDetails(id);
 
-            return View("Sign/Request", model);
+                var model = new PropertySignRequestModel()
+                {
+                    PropertyId = dto.PropertyId,
+                    Address1 = dto.Address1,
+                    Area = dto.Area,
+                    City = dto.City,
+                    PostCode = dto.PostCode,
+                    Beds = dto.Beds,
+                    Deposit = dto.Deposit,
+                    Rent = dto.Rent,
+                    StartDate = dto.StartDate
+                };
+
+                return View("Sign/Request", model);
+            }
+            else
+            {
+                var status = _tenantService.GetPropertySignRequestForIdAndUser(id, userId);
+                return View("Sign/RequestStatus", status);
+            }
         }
 
         [HttpPost]

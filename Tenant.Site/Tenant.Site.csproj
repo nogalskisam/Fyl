@@ -1381,6 +1381,7 @@
     <Content Include="Scripts\kendo\kendo.window.min.js.map" />
     <Content Include="Views\Shared\_LayoutLoggedOut.cshtml" />
     <Content Include="Views\Property\Sign\Request.cshtml" />
+    <Content Include="Views\Property\Sign\RequestStatus.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

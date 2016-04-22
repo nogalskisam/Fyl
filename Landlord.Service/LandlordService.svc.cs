@@ -4,6 +4,7 @@ using Fyl.Library;
 using Fyl.Library.Dto;
 using Fyl.Managers;
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Landlord.Service
@@ -17,15 +18,16 @@ namespace Landlord.Service
         private IUserManager _userManager;
         private IPropertyManager _propertyManager;
         private IPropertySignRequestManager _propertySignRequestManager;
-        
+        private IPropertyImageManager _propertyImageManager;
 
-        public LandlordService(IAddressRepository addressRepository, IUserRepository accountRepository, IUserManager userManager, IPropertyManager propertyManager, IPropertySignRequestManager propertySignRequestManager)
+        public LandlordService(IAddressRepository addressRepository, IUserRepository accountRepository, IUserManager userManager, IPropertyManager propertyManager, IPropertySignRequestManager propertySignRequestManager, IPropertyImageManager propertyImageManager)
         {
             _addressRepository = addressRepository;
             _accountRepository = accountRepository;
             _userManager = userManager;
             _propertyManager = propertyManager;
             _propertySignRequestManager = propertySignRequestManager;
+            _propertyImageManager = propertyImageManager;
         }
 
         public async Task<LoginResponseDto> LoginUser(LoginRequestDto dto)
@@ -59,6 +61,25 @@ namespace Landlord.Service
             var dtos = _propertyManager.GetPropertiesForLandlordList(userId);
 
             return dtos;
+        }
+        
+        public PropertyBasicDetailsDto GetPropertyDetails(Guid propertyId)
+        {
+            var dto = _propertyManager.GetPropertyDetails(propertyId);
+
+            return dto;
+        }
+
+        public List<PropertyImageDto> GetPropertyImagesForProperty(Guid propertyId)
+        {
+            var dtos = _propertyImageManager.GetPropertyImagesForProperty(propertyId);
+
+            return dtos;
+        }
+
+        public Guid AddPropertyImage(Guid propertyId)
+        {
+            return _propertyImageManager.AddPropertyImage(propertyId);
         }
     }
 }

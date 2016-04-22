@@ -71,6 +71,8 @@ namespace Tenant.Service.App_Start
             kernel.Bind<IUserManager>().To<UserManager>();
             kernel.Bind<ILandlordRepository>().To<LandlordRepository>();
             kernel.Bind<ITenantRepository>().To<TenantRepository>();
+            kernel.Bind<IPropertyImageRepository>().To<PropertyImageRepository>();
+            kernel.Bind<IPropertyImageManager>().To<PropertyImageManager>();
 
             kernel.Bind<IPasswordHasher>().To<PasswordHasher>();
 

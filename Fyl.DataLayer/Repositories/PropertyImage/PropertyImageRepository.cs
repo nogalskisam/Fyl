@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Fyl.DataLayer.Repositories
 {
-    public class PropertyImageRepository
+    public class PropertyImageRepository : IPropertyImageRepository
     {
         private IFylEntities _entities;
 
@@ -18,26 +18,32 @@ namespace Fyl.DataLayer.Repositories
             _entities = entities;
         }
 
-        public void AddPropertyImages(List<PropertyImageAddDto> images)
+        public Guid AddPropertyImage(Guid propertyId)
         {
-            string path = @"C:\Fyl\Images\Properties\";
-            if (!Directory.Exists(path))
+            var entity = new PropertyImage()
             {
-                Directory.CreateDirectory(path);
-            }
+                PropertyId = propertyId
+            };
 
-            foreach (var image in images)
-            {
-                var propertyImage = new PropertyImage()
-                {
-                    PropertyId = image.PropertyId,
-                    Primary = image.Primary
-                };
-
-                _entities.PropertyImages.Add(propertyImage);
-            }
-
+            _entities.PropertyImages.Add(entity);
             _entities.SaveChanges();
+
+            return entity.PropertyImageId;
+        }
+
+        public List<PropertyImageDto> GetPropertyImagesForProperty(Guid propertyId)
+        {
+            var dtos = _entities.PropertyImages
+                .Where(w => w.PropertyId == propertyId)
+                .Where(w => !w.Inactive)
+                .Select(s => new PropertyImageDto()
+                {
+                    PropertyImageId = s.PropertyImageId,
+                    PropertyId = s.PropertyId
+                })
+                .ToList();
+
+            return dtos;
         }
     }
 }
