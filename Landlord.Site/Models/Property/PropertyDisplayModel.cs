@@ -7,7 +7,7 @@ using System.Web;
 
 namespace Landlord.Site.Models
 {
-    public class PropertyImageModel
+    public class PropertyDisplayModel
     {
         public Guid PropertyId { get; set; }
 

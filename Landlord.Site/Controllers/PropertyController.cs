@@ -43,42 +43,6 @@ namespace Landlord.Site.Controllers
             return Json(result);
         }
 
-        public ActionResult PropertyImages(Guid propertyId)
-        {
-            return View("PropertyImages", new PropertyImageModel());
-        }
-
-        public ActionResult AddPropertyImages(PropertyImageAddModel model)
-        {
-            List<PropertyImageAddDto> dtos = new List<PropertyImageAddDto>();
-
-            if (model.PrimaryImage.ContentLength > 0)
-            {
-                dtos.Add(new PropertyImageAddDto()
-                {
-                    PropertyId = model.PropertyId,
-                    FileName = Path.GetFileNameWithoutExtension(model.PrimaryImage.FileName),
-                    FileExtension = Path.GetExtension(model.PrimaryImage.FileName),
-                    Primary = true
-                });
-            }
-
-            foreach (var image in model.RegularImages)
-            {
-                dtos.Add(new PropertyImageAddDto()
-                {
-                    PropertyId = model.PropertyId,
-                    FileName = Path.GetFileNameWithoutExtension(model.PrimaryImage.FileName),
-                    FileExtension = Path.GetExtension(model.PrimaryImage.FileName),
-                    Primary = false
-                });
-            }
-
-            // do work
-
-            return RedirectToAction("PropertyImages");
-        }
-
         [HttpGet]
         public ActionResult Add()
         {
@@ -116,6 +80,39 @@ namespace Landlord.Site.Controllers
             {
                 return View("AddProperty", model);
             }
+        }
+
+        public ActionResult View(Guid id)
+        {
+            var dto = _landlordService.GetPropertyDetails(id);
+
+            var model = new PropertyDisplayModel()
+            {
+                PropertyId = dto.PropertyId,
+                Address1 = dto.Address1,
+                Area = dto.Area,
+                City = dto.City,
+                PostCode = dto.PostCode,
+                Rent = dto.Rent,
+                StartDate = dto.StartDate,
+                Beds = dto.Beds,
+                Deposit = dto.Deposit
+            };
+
+            return View("View", model);
+        }
+
+        public JsonResult GetPropertyImages(Guid propertyId)
+        {
+            var dtos = _landlordService.GetPropertyImagesForProperty(propertyId);
+
+            var result = new DataSourceResult()
+            {
+                Data = dtos,
+                Total = dtos.Count
+            };
+
+            return Json(result);
         }
     }
 }

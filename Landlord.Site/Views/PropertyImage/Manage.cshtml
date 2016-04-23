@@ -1,0 +1,40 @@
+﻿@model PropertyImageDetailModel
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-offset-3 col-md-4 margin-top-big margin-bottom-big">
+            <img src="@Url.Content(ConfigurationManager.AppSettings["CDNPath"] + Model.PropertyId + "/" + Model.PropertyImageId + ".jpg")" class="img-thumbnail img-responsive thumb" alt="image" />
+        </div>
+    </div>
+    <div class="row">
+        <p>You are currently editing the above image. Please select whether you want to make the image primary or to delete it.</p>
+    </div>
+    <div class="row">
+        @using (Html.BeginForm("Manage", "PropertyImage", FormMethod.Post))
+        {
+            @Html.HiddenFor(m => m.PropertyImageId)
+            @Html.HiddenFor(m => m.PropertyId)
+
+            <div class="row control-group display-group">
+                <div class="col-md-4">
+                    @Html.LabelFor(m => m.Primary)
+                </div>
+                <div class="col-md-8">
+                    @Html.Kendo().CheckBoxFor(m => m.Primary)
+                </div>
+            </div>
+            <div class="row control-group display-group">
+                <div class="col-md-4">
+                    @Html.LabelFor(m => m.Inactive)
+                </div>
+                <div class="col-md-8">
+                    @Html.Kendo().CheckBoxFor(m => m.Inactive).Label("")
+                </div>
+            </div>
+            <div class="buttonPanel">
+                @Html.ActionLink("Cancel", "View", "Property", new { id = Model.PropertyId }, new { @class = "btn btn-danger btn-fyl" })
+                <input type="submit" class="btn btn-success btn-fyl" value="Save" />
+            </div>
+        }
+    </div>
+</div>

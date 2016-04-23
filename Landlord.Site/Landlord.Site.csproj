@@ -206,13 +206,14 @@
     <Compile Include="Helpers\SessionDataHelpers.cs" />
     <Compile Include="Models\Address\AddressModel.cs" />
     <Compile Include="Models\PropertyImage\ImageUploadModel.cs" />
+    <Compile Include="Models\PropertyImage\PropertyImageDetailModel.cs" />
     <Compile Include="Models\PropertyImage\PropertyImageListModel.cs" />
     <Compile Include="Models\Property\PropertyAddEditModel.cs" />
     <Compile Include="Models\Property\PropertyListModel.cs" />
     <Compile Include="Models\Property\PropertyModel.cs" />
     <Compile Include="Models\User\LoginModel.cs" />
     <Compile Include="Models\PropertyImageAddModel.cs" />
-    <Compile Include="Models\PropertyImageModel.cs" />
+    <Compile Include="Models\Property\PropertyDisplayModel.cs" />
     <Compile Include="Models\User\RegisterModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -1394,8 +1395,9 @@
     <Content Include="Views\Property\_PropertyModel.cshtml" />
     <Content Include="Views\Property\AddProperty.cshtml" />
     <Content Include="Views\Shared\_AddressModel.cshtml" />
-    <Content Include="Views\PropertyImage\PropertyImage.cshtml" />
+    <Content Include="Views\Property\View.cshtml" />
     <Content Include="Views\PropertyImage\_ImageUpload.cshtml" />
+    <Content Include="Views\PropertyImage\Manage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

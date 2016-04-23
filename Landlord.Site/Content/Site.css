@@ -199,3 +199,7 @@ img.logo {
 .margin-left-big {
     margin-left: 15px !important;
 }
+
+img.thumb {
+    max-width: 600px;
+}

@@ -34,5 +34,11 @@ namespace Fyl.Library
 
         [OperationContract]
         Guid AddPropertyImage(Guid propertyId);
+
+        [OperationContract]
+        PropertyImageDetailDto GetPropertyImage(Guid propertyImageId);
+
+        [OperationContract]
+        bool UpdatePropertyImage(PropertyImageDetailDto dto);
     }
 }

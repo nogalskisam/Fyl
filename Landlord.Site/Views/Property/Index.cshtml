@@ -17,12 +17,15 @@
         )
         .Columns(c =>
         {
+            c.Bound(b => b.PropertyId)
+                .ClientTemplate(Html.ActionLink("View", "View", "Property", new { id = "#= PropertyId #" }, new { @class = "btn btn-info btn-fyl" }).ToString())
+                .Title("");
             c.Bound(b => b.Beds);
             c.Bound(b => b.Address.HouseName);
             c.Bound(b => b.Address.Address1);
             c.Bound(b => b.Address.Area);
             c.Bound(b => b.Address.City);
         })
-    )
+    ))
 
 </div>

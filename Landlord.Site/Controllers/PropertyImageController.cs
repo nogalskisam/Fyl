@@ -22,25 +22,7 @@ namespace Landlord.Site.Controllers
             _landlordService = landlordService;
         }
         
-        public ActionResult Index(Guid id)
-        {
-            var dto = _landlordService.GetPropertyDetails(id);
-
-            var model = new PropertyImageModel()
-            {
-                PropertyId = dto.PropertyId,
-                Address1 = dto.Address1,
-                Area = dto.Area,
-                City = dto.City,
-                PostCode = dto.PostCode,
-                Rent = dto.Rent,
-                StartDate = dto.StartDate,
-                Beds = dto.Beds,
-                Deposit = dto.Deposit
-            };
-
-            return View("PropertyImage", model);
-        }
+        
 
         public JsonResult GetPropertyImages(Guid propertyId)
         {
@@ -55,7 +37,7 @@ namespace Landlord.Site.Controllers
             return Json(result);
         }
 
-        public ActionResult UploadImages(Guid id)
+        public ActionResult Upload(Guid id)
         {
             var model = new ImageUploadModel()
             {
@@ -66,7 +48,7 @@ namespace Landlord.Site.Controllers
         }
 
         [HttpPost]
-        public ActionResult UploadImages(ImageUploadModel model)
+        public ActionResult Upload(ImageUploadModel model)
         {
             if (ModelState.IsValid)
             {
@@ -95,7 +77,7 @@ namespace Landlord.Site.Controllers
                     }
                 }
 
-                return RedirectToAction("Index", new { id = model.PropertyId });
+                return RedirectToAction("View", "Property", new { id = model.PropertyId });
             }
             else
             {
@@ -103,5 +85,32 @@ namespace Landlord.Site.Controllers
             }
         }
 
+        [HttpGet]
+        public ActionResult Manage(Guid id)
+        {
+            var dto = _landlordService.GetPropertyImage(id);
+
+            var model = new PropertyImageDetailModel(dto);
+
+            return View("Manage", model);
+        }
+
+        [HttpPost]
+        public ActionResult Manage(PropertyImageDetailModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var dto = model.ToDto();
+
+                var edited = _landlordService.UpdatePropertyImage(dto);
+
+                return RedirectToAction("View", "Property", new { id = dto.PropertyId });
+            }
+            else
+            {
+                return View("Manage", model);
+            }
+            
+        }
     }
 }

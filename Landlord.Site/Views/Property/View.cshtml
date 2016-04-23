@@ -1,6 +1,7 @@
-﻿@model PropertyImageModel
+﻿@model PropertyDisplayModel
 
 <div class="container">
+    <h1>View Property</h1>
     <div class="row margin-bottom-big">
         <div class="col-md-3">
             <div class="row control-group display-group">
@@ -36,7 +37,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-3">
+        <div class="col-md-4">
             <div class="row control-group display-group">
                 <div class="col-md-4">
                     @Html.LabelFor(m => m.Beds)
@@ -75,7 +76,7 @@
     <script type="text/x-kendo-tmpl" id="Images">
         <div class="Property">
             <img src="@Url.Content(ConfigurationManager.AppSettings["CDNPath"] + "#= PropertyId #" + "/" + "#= PropertyImageId #" + ".jpg")" alt="image" />
-            <a href="@(Url.Content(ConfigurationManager.AppSettings["SitePath"]+"PropertyImage/Delete/#= PropertyImageId #"))">Delete Image</a>
+            <a href="@(Url.Content(ConfigurationManager.AppSettings["LandlordSiteUrl"]+"PropertyImage/Manage/#= PropertyImageId #"))">Manage</a>
         </div>
     </script>
 
@@ -85,8 +86,8 @@
         .ClientTemplateId("Images")
         .DataSource(data =>
         {
-            data.Read(read => read.Action("GetPropertyImages", "PropertyImage").Data("getData"));
-            data.PageSize(21);
+            data.Read(read => read.Action("GetPropertyImages", "Property").Data("getData"));
+            data.PageSize(11);
         })
         .Pageable()
     )

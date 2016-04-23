@@ -45,5 +45,55 @@ namespace Fyl.DataLayer.Repositories
 
             return dtos;
         }
+
+        public PropertyImageDetailDto GetPropertyImage(Guid propertyImageId)
+        {
+            var dto = _entities.PropertyImages
+                .Where(w => w.PropertyImageId == propertyImageId)
+                .Select(s => new PropertyImageDetailDto()
+                {
+                    PropertyImageId = s.PropertyImageId,
+                    PropertyId = s.PropertyId,
+                    Primary = s.Primary,
+                    Inactive = s.Inactive
+                })
+                .SingleOrDefault();
+
+            return dto;
+        }
+
+        public bool UpdatePropertyImage(PropertyImageDetailDto dto)
+        {
+            var entity = _entities.PropertyImages
+                .Where(w => w.PropertyImageId == dto.PropertyImageId)
+                .SingleOrDefault();
+
+            var oldPrimary = _entities.PropertyImages
+                .Where(w => w.PropertyId == dto.PropertyId)
+                .Where(w => w.Primary)
+                .SingleOrDefault();
+
+            bool edited = false;
+
+            if (entity != null)
+            {
+                if (oldPrimary != null && dto.Primary)
+                {
+                    oldPrimary.Primary = false;
+
+                    //_entities.SetModified(oldPrimary);
+                }
+
+                entity.Primary = dto.Primary;
+                entity.Inactive = dto.Inactive;
+
+                //_entities.SetModified(entity);
+                _entities.SaveChanges();
+
+                edited = true;
+            }
+
+            return edited;
+        }
     }
 }

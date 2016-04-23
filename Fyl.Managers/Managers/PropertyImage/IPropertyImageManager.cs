@@ -12,5 +12,9 @@ namespace Fyl.Managers
         Guid AddPropertyImage(Guid propertyId);
 
         List<PropertyImageDto> GetPropertyImagesForProperty(Guid propertyId);
+
+        PropertyImageDetailDto GetPropertyImage(Guid propertyImageId);
+
+        bool UpdatePropertyImage(PropertyImageDetailDto dto);
     }
 }

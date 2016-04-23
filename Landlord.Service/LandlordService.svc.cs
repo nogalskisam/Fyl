@@ -81,5 +81,19 @@ namespace Landlord.Service
         {
             return _propertyImageManager.AddPropertyImage(propertyId);
         }
+
+        public PropertyImageDetailDto GetPropertyImage(Guid propertyImageId)
+        {
+            var dto = _propertyImageManager.GetPropertyImage(propertyImageId);
+
+            return dto;
+        }
+
+        public bool UpdatePropertyImage(PropertyImageDetailDto dto)
+        {
+            var edited = _propertyImageManager.UpdatePropertyImage(dto);
+
+            return edited;
+        }
     }
 }

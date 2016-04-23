@@ -129,6 +129,9 @@
   <data name="City" xml:space="preserve">
     <value>City</value>
   </data>
+  <data name="Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
   <data name="Deposit" xml:space="preserve">
     <value>Deposit</value>
   </data>
