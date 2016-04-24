@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Fyl.Library.Dto
 {
-    public class PropertyAddDto
+    public class PropertyAddEditDto
     {
         public virtual PropertyAddBasicDto Property { get; set; }
 

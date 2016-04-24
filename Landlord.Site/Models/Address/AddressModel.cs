@@ -21,6 +21,19 @@ namespace Landlord.Site.Models
             PostCode = dto.PostCode;
         }
 
+        public AddressModel(PropertyDetailedDto dto)
+        {
+            AddressId = dto.AddressId;
+            HouseName = dto.HouseName;
+            Address1 = dto.Address1;
+            Address2 = dto.Address2;
+            Area = dto.Area;
+            City = dto.City;
+            County = dto.County;
+            Country = dto.Country;
+            PostCode = dto.PostCode;
+        }
+
         public Guid? AddressId { get; set; }
 
         [Required]

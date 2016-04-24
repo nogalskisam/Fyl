@@ -55,7 +55,7 @@ namespace Fyl.Managers
             return dto;
         }
 
-        public Guid AddProperty(Guid userId, PropertyAddDto dto)
+        public Guid AddProperty(Guid userId, PropertyAddEditDto dto)
         {
             var addressId = _addressRepository.AddAddress(dto.Address);
 
@@ -64,6 +64,24 @@ namespace Fyl.Managers
             var propertyId = _propertyRepository.AddNewProperty(userId, dto.Property);
 
             return propertyId;
+        }
+
+        public Guid EditProperty(Guid userId, PropertyAddEditDto dto)
+        {
+            var addressId = _addressRepository.EditAddress(dto.Address);
+
+            dto.Property.AddressId = addressId;
+
+            var propertyId = _propertyRepository.EditProperty(userId, dto.Property);
+
+            return propertyId;
+        }
+
+        public PropertyDetailedDto GetPropertyDetails(Guid propertyId)
+        {
+            var dto = _propertyRepository.GetPropertyDetails(propertyId);
+
+            return dto;
         }
     }
 }

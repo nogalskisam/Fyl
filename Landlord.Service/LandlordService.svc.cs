@@ -42,7 +42,7 @@ namespace Landlord.Service
             return _userManager.GetValidSession(sessionId);
         }
 
-        public Guid AddProperty(Guid userId, PropertyAddDto dto)
+        public Guid AddProperty(Guid userId, PropertyAddEditDto dto)
         {
             var propertyId = _propertyManager.AddProperty(userId, dto);
 
@@ -108,6 +108,20 @@ namespace Landlord.Service
             var result = _propertySignRequestManager.SetPropertySignRequest(propertySignRequestId, propertyId, accepted);
 
             return result;
+        }
+
+        public PropertyDetailedDto GetPropertyDetails(Guid propertyId)
+        {
+            var dto = _propertyManager.GetPropertyDetails(propertyId);
+
+            return dto;
+        }
+
+        public Guid EditProperty(Guid userId, PropertyAddEditDto dto)
+        {
+            var propertyId = _propertyManager.EditProperty(userId, dto);
+
+            return propertyId;
         }
     }
 }

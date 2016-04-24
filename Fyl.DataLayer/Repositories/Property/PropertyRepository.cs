@@ -155,35 +155,55 @@ namespace Fyl.DataLayer.Repositories
             return property.PropertyId;
         }
 
-        //public PropertyBasicDetailsDto GetPropertyDetails(Guid propertyId)
-        //{
-        //    var property = _entities.Properties
-        //        .Include(i => i.Address)
-        //        .Include(i => i.Images)
-        //        .Include(i => i.Ratings)
-        //        .Include(i => i.SignRequests)
-        //        .Where(w => w.PropertyId == propertyId)
-        //        .Select(t => new PropertyBasicDetailsDto()
-        //        {
-        //            PropertyId = t.PropertyId,
-        //            StartDate = t.StartDate,
-        //            Address1 = t.Address.Address1,
-        //            Area = t.Address.Area,
-        //            City = t.Address.City,
-        //            PostCode = t.Address.Postcode,
-        //            PropertyImageIds = t.Images
-        //                .Where(pi => pi.PropertyId == propertyId)
-        //                .Where(pi => !pi.Inactive)
-        //                .Select(pi => pi.PropertyImageId)
-        //                .ToList(),
-        //            Beds = t.Beds,
-        //            Rent = t.Rent,
-        //            Deposit = t.Deposit,
-        //            SignRequestCount = t.SignRequests.Count
-        //        })
-        //        .FirstOrDefault();
+        public Guid EditProperty(Guid userId, PropertyAddBasicDto dto)
+        {
+            var property = _entities.Properties
+                .Where(w => w.PropertyId == dto.PropertyId.Value)
+                .SingleOrDefault();
 
-        //    return property;
-        //}
+            if (property != null)
+            {
+                property.PropertyId = dto.PropertyId.Value;
+                property.Rent = dto.Rent;
+                property.StartDate = dto.StartTime;
+                property.Deposit = dto.Deposit;
+                property.Beds = dto.Beds;
+                property.AddressId = dto.AddressId.Value;
+            }
+
+            _entities.SaveChanges();
+
+            return property.PropertyId;
+        }
+
+        public PropertyDetailedDto GetPropertyDetails(Guid propertyId)
+        {
+            var property = _entities.Properties
+                .Include(i => i.Address)
+                .Include(i => i.Images)
+                .Include(i => i.Ratings)
+                .Include(i => i.SignRequests)
+                .Where(w => w.PropertyId == propertyId)
+                .Select(t => new PropertyDetailedDto()
+                {
+                    PropertyId = t.PropertyId,
+                    Beds = t.Beds,
+                    Rent = t.Rent,
+                    Deposit = t.Deposit,
+                    StartDate = t.StartDate,
+                    HouseName = t.Address.HouseName,
+                    AddressId = t.Address.AddressId,
+                    Address1 = t.Address.Address1,
+                    Address2 = t.Address.Address2,
+                    Area = t.Address.Area,
+                    City = t.Address.City,
+                    County = t.Address.County,
+                    Country = t.Address.Country,
+                    PostCode = t.Address.Postcode
+                })
+                .FirstOrDefault();
+
+            return property;
+        }
     }
 }

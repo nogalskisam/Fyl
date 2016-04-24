@@ -12,5 +12,7 @@ namespace Fyl.DataLayer.Repositories
         List<AddressDto> GetAllAddresses();
 
         Guid AddAddress(AddressAddDto dto);
+
+        Guid EditAddress(AddressAddDto dto);
     }
 }

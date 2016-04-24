@@ -18,7 +18,10 @@
         .Columns(c =>
         {
             c.Bound(b => b.PropertyId)
-                .ClientTemplate(Html.ActionLink("View", "View", "Property", new { id = "#= PropertyId #" }, new { @class = "btn btn-info btn-fyl" }).ToString())
+                .ClientTemplate(
+                    Html.ActionLink("View", "View", "Property", new { id = "#= PropertyId #" }, new { @class = "btn btn-info btn-fyl margin-right-small" }).ToString() +
+                    Html.ActionLink("Edit", "Edit", "Property", new { id = "#= PropertyId #" }, new { @class = "btn btn-info btn-fyl" }).ToString()
+                )
                 .Title("");
             c.Bound(b => b.Beds);
             c.Bound(b => b.Address.HouseName);

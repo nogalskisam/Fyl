@@ -97,7 +97,6 @@ namespace Tenant.Site.Controllers
         }
 
         [HttpGet]
-        [Unsecured]
         public ActionResult RequestSign(Guid id)
         {
             var userId = _sessionDetails.User.UserId;
@@ -130,7 +129,6 @@ namespace Tenant.Site.Controllers
         }
 
         [HttpPost]
-        [Unsecured]
         public ActionResult RequestSign(PropertySignRequestModel model)
         {
             if (model.AcceptTermsAndConditions)

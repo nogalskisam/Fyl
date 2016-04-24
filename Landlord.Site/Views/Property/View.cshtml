@@ -78,6 +78,8 @@
             </div>
     </div>
 
+    @Html.ActionLink("Upload Images", "Upload", "PropertyImage", new { id = Model.PropertyId }, new { @class = "btn btn-info btn-fyl" })
+
     <script type="text/x-kendo-tmpl" id="Images">
         <div class="Property">
             <img src="@Url.Content(ConfigurationManager.AppSettings["CDNPath"] + "#= PropertyId #" + "/" + "#= PropertyImageId #" + ".jpg")" alt="image" />

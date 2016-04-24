@@ -1400,6 +1400,7 @@
     <Content Include="Views\PropertyImage\_ImageUpload.cshtml" />
     <Content Include="Views\PropertyImage\Manage.cshtml" />
     <Content Include="Views\Property\SignRequests.cshtml" />
+    <Content Include="Views\Property\EditProperty.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

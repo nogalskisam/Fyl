@@ -15,6 +15,10 @@ namespace Fyl.Managers
 
         PropertyBasicDetailsDto GetPropertyBasicDetails(Guid propertyId);
 
-        Guid AddProperty(Guid userId, PropertyAddDto dto);
+        Guid AddProperty(Guid userId, PropertyAddEditDto dto);
+
+        Guid EditProperty(Guid userId, PropertyAddEditDto dto);
+
+        PropertyDetailedDto GetPropertyDetails(Guid propertyId);
     }
 }

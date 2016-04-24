@@ -8,6 +8,8 @@ namespace Fyl.Library.Dto
 {
     public class PropertyAddBasicDto
     {
+        public Guid? PropertyId { get; set; }
+
         public int Beds { get; set; }
 
         public decimal Rent { get; set; }

@@ -18,7 +18,7 @@ namespace Fyl.Library
         SessionDetailDto GetValidSession(Guid sessionId);
 
         [OperationContract]
-        Guid AddProperty(Guid userId, PropertyAddDto dto);
+        Guid AddProperty(Guid userId, PropertyAddEditDto dto);
 
         [OperationContract]
         Task<RegistrationResponseDto> RegisterUser(RegistrationRequestDto dto);
@@ -46,5 +46,11 @@ namespace Fyl.Library
 
         [OperationContract]
         bool SetPropertySignRequest(Guid propertySignRequestId, Guid propertyId, bool accepted);
+
+        [OperationContract]
+        PropertyDetailedDto GetPropertyDetails(Guid propertyId);
+
+        [OperationContract]
+        Guid EditProperty(Guid userId, PropertyAddEditDto dto);
     }
 }

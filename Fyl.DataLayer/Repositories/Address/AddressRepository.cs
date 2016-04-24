@@ -59,5 +59,30 @@ namespace Fyl.DataLayer.Repositories
 
             return address.AddressId;
         }
+
+        public Guid EditAddress(AddressAddDto dto)
+        {
+            var address = _entities.Addresses
+                .Where(w => w.AddressId == dto.AddressId)
+                .SingleOrDefault();
+
+            if (address != null)
+            {
+                address.AddressId = dto.AddressId.Value;
+                address.HouseName = dto.HouseName;
+                address.Address1 = dto.Address1;
+                address.Address2 = dto.Address2;
+                address.Area = dto.Area;
+                address.City = dto.City;
+                address.County = dto.County;
+                address.Country = dto.Country;
+                address.Postcode = dto.PostCode;
+
+                _entities.SaveChanges();
+            }
+
+
+            return address.AddressId;
+        }
     }
 }

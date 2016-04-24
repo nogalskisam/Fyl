@@ -66,7 +66,7 @@ namespace Landlord.Site.Controllers
                     var userId = _sessionDetails.User.UserId;
                     var id = _landlordService.AddProperty(userId, dto);
 
-                    return RedirectToAction("", id);
+                    return RedirectToAction("View", id);
                 }
                 catch (Exception ex)
                 {
@@ -84,11 +84,37 @@ namespace Landlord.Site.Controllers
         [HttpGet]
         public ActionResult Edit(Guid id)
         {
-            var property = _landlordService.GetPropertyBasicDetails(id);
+            var property = _landlordService.GetPropertyDetails(id);
 
             var model = new PropertyAddEditModel(property);
 
-            return View("AddProperty", model);
+            return View("EditProperty", model);
+        }
+
+        [HttpPost]
+        public ActionResult Edit(PropertyAddEditModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var dto = model.ToDto();
+
+                try
+                {
+                    var id = _landlordService.EditProperty(_sessionDetails.User.UserId, dto);
+
+                    return RedirectToAction("View", new { id = id });
+                }
+                catch (Exception ex)
+                {
+                    ModelState.AddModelError("", ex.Message);
+
+                    return View("EditProperty", model);
+                }
+            }
+            else
+            {
+                return View("EditProperty", model);
+            }
         }
 
         public ActionResult View(Guid id)

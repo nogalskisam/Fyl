@@ -22,6 +22,17 @@ namespace Landlord.Site.Models
             StartDate = dto.StartDate;
         }
 
+        public PropertyModel(PropertyDetailedDto dto)
+        {
+            PropertyId = dto.PropertyId;
+            Beds = dto.Beds;
+            Rent = dto.Rent;
+            Deposit = dto.Deposit;
+            StartDate = dto.StartDate;
+        }
+
+        public Guid? PropertyId { get; set; }
+
         [Required]
         public int Beds { get; set; }
 
@@ -34,6 +45,6 @@ namespace Landlord.Site.Models
         [Required]
         public DateTime StartDate { get; set; }
 
-        public List<PropertyFeatureEnum> Features { get; set; }
+        //public List<PropertyFeatureEnum> Features { get; set; }
     }
 }

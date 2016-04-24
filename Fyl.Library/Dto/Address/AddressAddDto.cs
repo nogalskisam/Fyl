@@ -8,7 +8,7 @@ namespace Fyl.Library.Dto
 {
     public class AddressAddDto
     {
-        public Guid PropertyId { get; set; }
+        public Guid? AddressId { get; set; }
 
         public string HouseName { get; set; }
 

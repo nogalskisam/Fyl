@@ -19,16 +19,23 @@ namespace Landlord.Site.Models
             Address = new AddressModel(dto);            
         }
 
+        public PropertyAddEditModel(PropertyDetailedDto dto)
+        {
+            Property = new PropertyModel(dto);
+            Address = new AddressModel(dto);
+        }
+
         public PropertyModel Property { get; set; }
 
         public AddressModel Address { get; set; }
 
-        public PropertyAddDto ToDto()
+        public PropertyAddEditDto ToDto()
         {
-            return new PropertyAddDto()
+            return new PropertyAddEditDto()
             {
                 Address = new AddressAddDto()
                 {
+                    AddressId = Address.AddressId,
                     HouseName = Address.HouseName,
                     Address1 = Address.Address1,
                     Address2 = Address.Address2,
@@ -40,6 +47,8 @@ namespace Landlord.Site.Models
                 },
                 Property = new PropertyAddBasicDto()
                 {
+                    PropertyId = Property.PropertyId,
+                    AddressId = Address.AddressId,
                     Beds = Property.Beds,
                     Deposit = Property.Deposit,
                     Rent = Property.Rent,
