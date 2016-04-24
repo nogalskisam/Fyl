@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Fyl.Library.Enum;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -32,11 +33,11 @@ namespace Fyl.Entities
 
         public List<PropertyImage> Images { get; set; }
 
-        public List<PropertyFeature> PropertyFeatures { get; set; }
+        //public List<PropertyFeatureEnum> Features { get; set; }
 
-        public List<PropertyRating> PropertyRatings { get; set; }
+        public List<PropertyRating> Ratings { get; set; }
 
-        public List<PropertySignRequest> MyProperty { get; set; }
+        public List<PropertySignRequest> SignRequests { get; set; }
 
         // People
         [ForeignKey("LandlordId")]

@@ -64,5 +64,7 @@ namespace Landlord.Site.Models
         public string PostCode { get; set; }
 
         public int RatingAverage { get; set; }
+
+        public int SignRequestCount { get; set; }
     }
 }

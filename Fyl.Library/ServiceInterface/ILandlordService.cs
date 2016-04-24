@@ -27,7 +27,7 @@ namespace Fyl.Library
         LandlordPropertyListResponseDto GetPropertiesForLandlordList(Guid userId);
 
         [OperationContract]
-        PropertyBasicDetailsDto GetPropertyDetails(Guid propertyId);
+        PropertyBasicDetailsDto GetPropertyBasicDetails(Guid propertyId);
 
         [OperationContract]
         List<PropertyImageDto> GetPropertyImagesForProperty(Guid propertyId);
@@ -40,5 +40,11 @@ namespace Fyl.Library
 
         [OperationContract]
         bool UpdatePropertyImage(PropertyImageDetailDto dto);
+
+        [OperationContract]
+        List<SignRequestDetailsDto> GetPropertySignRequestsForPropertyId(Guid propertyId);
+
+        [OperationContract]
+        bool SetPropertySignRequest(Guid propertySignRequestId, Guid propertyId, bool accepted);
     }
 }

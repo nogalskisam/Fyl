@@ -72,7 +72,7 @@ namespace Tenant.Service
 
         public PropertyBasicDetailsDto GetPropertyDetails(Guid propertyId)
         {
-            var dto = _propertyManager.GetPropertyDetails(propertyId);
+            var dto = _propertyManager.GetPropertyBasicDetails(propertyId);
 
             return dto;
         }

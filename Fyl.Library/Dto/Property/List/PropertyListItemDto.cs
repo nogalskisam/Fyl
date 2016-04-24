@@ -18,5 +18,7 @@ namespace Fyl.Library.Dto
         public string Postcode { get; set; }
 
         public string ImagePath { get; set; }
+
+        public int SignRequestCount { get; set; }
     }
 }

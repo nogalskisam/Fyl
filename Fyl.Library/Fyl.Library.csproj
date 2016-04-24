@@ -67,6 +67,7 @@
     <Compile Include="Dto\PropertyImage\PropertyImageAddDto.cs" />
     <Compile Include="Dto\PropertyImage\PropertyImageDetailDto.cs" />
     <Compile Include="Dto\PropertyImage\PropertyImageDto.cs" />
+    <Compile Include="Dto\PropertySignRequest\SignRequestDetailsDto.cs" />
     <Compile Include="Dto\Property\List\LandlordPropertyListItemDto.cs" />
     <Compile Include="Dto\Property\List\LandlordPropertyListResponseDto.cs" />
     <Compile Include="Dto\Property\List\PropertyListRequestDto.cs" />
@@ -74,7 +75,8 @@
     <Compile Include="Dto\Property\List\PropertyListResponseDto.cs" />
     <Compile Include="Dto\Property\PropertyAddBasicDto.cs" />
     <Compile Include="Dto\Property\PropertyAddDto.cs" />
-    <Compile Include="Dto\Property\PropertyDetailsDto.cs" />
+    <Compile Include="Dto\Property\PropertyBasicDetailsDto.cs" />
+    <Compile Include="Dto\Property\PropertyDetailedDto.cs" />
     <Compile Include="Dto\Registration\RegistrationRequestDto.cs" />
     <Compile Include="Dto\Registration\RegistrationResponseDto.cs" />
     <Compile Include="Dto\Session\SessionDetailDto.cs" />

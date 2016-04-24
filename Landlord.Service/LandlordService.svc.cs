@@ -63,9 +63,9 @@ namespace Landlord.Service
             return dtos;
         }
         
-        public PropertyBasicDetailsDto GetPropertyDetails(Guid propertyId)
+        public PropertyBasicDetailsDto GetPropertyBasicDetails(Guid propertyId)
         {
-            var dto = _propertyManager.GetPropertyDetails(propertyId);
+            var dto = _propertyManager.GetPropertyBasicDetails(propertyId);
 
             return dto;
         }
@@ -94,6 +94,20 @@ namespace Landlord.Service
             var edited = _propertyImageManager.UpdatePropertyImage(dto);
 
             return edited;
+        }
+
+        public List<SignRequestDetailsDto> GetPropertySignRequestsForPropertyId(Guid propertyId)
+        {
+            var dtos = _propertySignRequestManager.GetPropertySignRequestsForPropertyId(propertyId);
+
+            return dtos;
+        }
+
+        public bool SetPropertySignRequest(Guid propertySignRequestId, Guid propertyId, bool accepted)
+        {
+            var result = _propertySignRequestManager.SetPropertySignRequest(propertySignRequestId, propertyId, accepted);
+
+            return result;
         }
     }
 }

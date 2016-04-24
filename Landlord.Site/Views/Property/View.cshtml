@@ -1,9 +1,14 @@
 ﻿@model PropertyDisplayModel
 
 <div class="container">
+    <div class="buttonPanel margin-top-big">
+        @Html.ActionLink("Back to List", "Index", "Property", null, new { @class = "btn btn-danger btn-fyl" })
+        @Html.ActionLink("Edit", "Edit", "Property", new { id = Model.PropertyId }, new { @class = "btn btn-warning btn-fyl" })
+        @Html.ActionLink(String.Format("{0} Sign Request(s)", Model.SignRequestCount), "ManageSignRequests", "Property", new { id = Model.PropertyId }, new { @class = "btn btn-info btn-fyl" })
+    </div>
     <h1>View Property</h1>
     <div class="row margin-bottom-big">
-        <div class="col-md-3">
+        <div class="col-md-4">
             <div class="row control-group display-group">
                 <div class="col-md-4">
                     @Html.LabelFor(m => m.Address1)

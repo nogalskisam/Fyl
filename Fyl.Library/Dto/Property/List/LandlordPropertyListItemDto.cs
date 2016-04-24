@@ -15,5 +15,7 @@ namespace Fyl.Library.Dto
         public int Beds { get; set; }
 
         public string Postcode { get; set; }
+
+        public int SignRequestCount { get; set; }
     }
 }

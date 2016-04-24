@@ -100,6 +100,18 @@
     <Compile Include="Migrations\201604212041490_Tenant_MakePropertyIdNullable.Designer.cs">
       <DependentUpon>201604212041490_Tenant_MakePropertyIdNullable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604232235358_Property_UpdateRelationNames.cs" />
+    <Compile Include="Migrations\201604232235358_Property_UpdateRelationNames.Designer.cs">
+      <DependentUpon>201604232235358_Property_UpdateRelationNames.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604241049549_PropertySignRequest_ChangeDateRespondedName.cs" />
+    <Compile Include="Migrations\201604241049549_PropertySignRequest_ChangeDateRespondedName.Designer.cs">
+      <DependentUpon>201604241049549_PropertySignRequest_ChangeDateRespondedName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201604241142228_Property_RemoveFeatureProperty.cs" />
+    <Compile Include="Migrations\201604241142228_Property_RemoveFeatureProperty.Designer.cs">
+      <DependentUpon>201604241142228_Property_RemoveFeatureProperty.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -121,6 +133,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604212041490_Tenant_MakePropertyIdNullable.resx">
       <DependentUpon>201604212041490_Tenant_MakePropertyIdNullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604232235358_Property_UpdateRelationNames.resx">
+      <DependentUpon>201604232235358_Property_UpdateRelationNames.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604241049549_PropertySignRequest_ChangeDateRespondedName.resx">
+      <DependentUpon>201604241049549_PropertySignRequest_ChangeDateRespondedName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604241142228_Property_RemoveFeatureProperty.resx">
+      <DependentUpon>201604241142228_Property_RemoveFeatureProperty.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

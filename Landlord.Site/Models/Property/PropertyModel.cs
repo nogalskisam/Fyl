@@ -1,4 +1,6 @@
-﻿using System;
+﻿using Fyl.Library.Dto;
+using Fyl.Library.Enum;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -8,6 +10,18 @@ namespace Landlord.Site.Models
 {
     public class PropertyModel
     {
+        public PropertyModel()
+        {
+        }
+
+        public PropertyModel(PropertyBasicDetailsDto dto)
+        {
+            Beds = dto.Beds;
+            Rent = dto.Rent;
+            Deposit = dto.Deposit;
+            StartDate = dto.StartDate;
+        }
+
         [Required]
         public int Beds { get; set; }
 
@@ -19,5 +33,7 @@ namespace Landlord.Site.Models
 
         [Required]
         public DateTime StartDate { get; set; }
+
+        public List<PropertyFeatureEnum> Features { get; set; }
     }
 }

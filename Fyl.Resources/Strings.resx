@@ -117,6 +117,9 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Accepted" xml:space="preserve">
+    <value>Accepted</value>
+  </data>
   <data name="Address1" xml:space="preserve">
     <value>Address 1</value>
   </data>
@@ -129,6 +132,9 @@
   <data name="City" xml:space="preserve">
     <value>City</value>
   </data>
+  <data name="Declined" xml:space="preserve">
+    <value>Declined</value>
+  </data>
   <data name="Delete" xml:space="preserve">
     <value>Delete</value>
   </data>
@@ -138,11 +144,17 @@
   <data name="Disclaimer" xml:space="preserve">
     <value>Disclaimer</value>
   </data>
+  <data name="Pending" xml:space="preserve">
+    <value>Pending</value>
+  </data>
   <data name="PostCode" xml:space="preserve">
     <value>Postcode</value>
   </data>
   <data name="PropertyRequestDisclaimer" xml:space="preserve">
     <value>You are requesting to sign for a property. Please read the following Terms and Conditions and ensure they are correct. If so, then please press accept and continue. Your request will be sent to the Landlord of your selected property and they will accept or decline your property. Please note that other students may be requesting to sign for the same property as you and this may affect the Landlord's decision.</value>
+  </data>
+  <data name="Rejected" xml:space="preserve">
+    <value>Rejected</value>
   </data>
   <data name="Rent" xml:space="preserve">
     <value>Rent</value>

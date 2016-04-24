@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Fyl.Library.Dto
 {
-    public class PropertyBasicDetailsDto
+    public class PropertyDetailedDto
     {
         public Guid PropertyId { get; set; }
 
@@ -27,5 +27,7 @@ namespace Fyl.Library.Dto
         public string City { get; set; }
 
         public string PostCode { get; set; }
+
+        public int SignRequestCount { get; set; }
     }
 }

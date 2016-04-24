@@ -211,6 +211,7 @@
     <Compile Include="Models\Property\PropertyAddEditModel.cs" />
     <Compile Include="Models\Property\PropertyListModel.cs" />
     <Compile Include="Models\Property\PropertyModel.cs" />
+    <Compile Include="Models\Property\SignRequestModel.cs" />
     <Compile Include="Models\User\LoginModel.cs" />
     <Compile Include="Models\PropertyImageAddModel.cs" />
     <Compile Include="Models\Property\PropertyDisplayModel.cs" />
@@ -1398,6 +1399,7 @@
     <Content Include="Views\Property\View.cshtml" />
     <Content Include="Views\PropertyImage\_ImageUpload.cshtml" />
     <Content Include="Views\PropertyImage\Manage.cshtml" />
+    <Content Include="Views\Property\SignRequests.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

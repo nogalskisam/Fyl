@@ -13,7 +13,7 @@ namespace Fyl.Managers
 
         LandlordPropertyListResponseDto GetPropertiesForLandlordList(Guid userId);
 
-        PropertyBasicDetailsDto GetPropertyDetails(Guid propertyId);
+        PropertyBasicDetailsDto GetPropertyBasicDetails(Guid propertyId);
 
         Guid AddProperty(Guid userId, PropertyAddDto dto);
     }

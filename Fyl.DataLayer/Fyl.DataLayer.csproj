@@ -73,6 +73,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\Landlord\ILandlordRepository.cs" />
     <Compile Include="Repositories\Landlord\LandlordRepository.cs" />
+    <Compile Include="Repositories\PropertyFeature\IPropertyFeatureRepository.cs" />
+    <Compile Include="Repositories\PropertyFeature\PropertyFeatureRepository.cs" />
     <Compile Include="Repositories\PropertyImage\IPropertyImageRepository.cs" />
     <Compile Include="Repositories\PropertyImage\PropertyImageRepository.cs" />
     <Compile Include="Repositories\PropertySignRequest\IPropertySignRequestRepository.cs" />

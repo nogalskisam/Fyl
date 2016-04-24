@@ -43,6 +43,7 @@ namespace Fyl.DataLayer.Repositories
                 .Include(i => i.Address)
                 .Include(i => i.Tenants)
                 .Include(i => i.Images)
+                .Include(i => i.SignRequests)
                 .Where(p => p.Tenants.Count == 0);
 
             if (!string.IsNullOrWhiteSpace(request.PostCode))
@@ -66,6 +67,8 @@ namespace Fyl.DataLayer.Repositories
         private IQueryable<Property> GetPropertiesForLandlordListQuery(Guid userId)
         {
             var query = _entities.Properties
+                .Include(i => i.Address)
+                .Include(i => i.SignRequests)
                 .Where(w => w.LandlordId == userId);
 
             return query;
@@ -92,6 +95,7 @@ namespace Fyl.DataLayer.Repositories
                 },
                 Beds = s.Beds,
                 Postcode = s.Address.Postcode,
+                SignRequestCount = s.SignRequests.Count
             }).ToList();
 
             return dtos;
@@ -102,12 +106,13 @@ namespace Fyl.DataLayer.Repositories
             return GetPropertiesForLandlordListQuery(userId).Count();
         }
 
-        public PropertyBasicDetailsDto GetPropertyDetails(Guid propertyId)
+        public PropertyBasicDetailsDto GetPropertyBasicDetails(Guid propertyId)
         {
             var property = _entities.Properties
                 .Include(i => i.Address)
                 .Include(i => i.Images)
-                .Include(i => i.PropertyRatings)
+                .Include(i => i.Ratings)
+                .Include(i => i.SignRequests)
                 .Where(w => w.PropertyId == propertyId)
                 .Select(t => new PropertyBasicDetailsDto()
                 {
@@ -124,7 +129,8 @@ namespace Fyl.DataLayer.Repositories
                         .ToList(),
                     Beds = t.Beds,
                     Rent = t.Rent,
-                    Deposit = t.Deposit
+                    Deposit = t.Deposit,
+                    SignRequestCount = t.SignRequests.Count
                 })
                 .FirstOrDefault();
 
@@ -148,5 +154,36 @@ namespace Fyl.DataLayer.Repositories
 
             return property.PropertyId;
         }
+
+        //public PropertyBasicDetailsDto GetPropertyDetails(Guid propertyId)
+        //{
+        //    var property = _entities.Properties
+        //        .Include(i => i.Address)
+        //        .Include(i => i.Images)
+        //        .Include(i => i.Ratings)
+        //        .Include(i => i.SignRequests)
+        //        .Where(w => w.PropertyId == propertyId)
+        //        .Select(t => new PropertyBasicDetailsDto()
+        //        {
+        //            PropertyId = t.PropertyId,
+        //            StartDate = t.StartDate,
+        //            Address1 = t.Address.Address1,
+        //            Area = t.Address.Area,
+        //            City = t.Address.City,
+        //            PostCode = t.Address.Postcode,
+        //            PropertyImageIds = t.Images
+        //                .Where(pi => pi.PropertyId == propertyId)
+        //                .Where(pi => !pi.Inactive)
+        //                .Select(pi => pi.PropertyImageId)
+        //                .ToList(),
+        //            Beds = t.Beds,
+        //            Rent = t.Rent,
+        //            Deposit = t.Deposit,
+        //            SignRequestCount = t.SignRequests.Count
+        //        })
+        //        .FirstOrDefault();
+
+        //    return property;
+        //}
     }
 }

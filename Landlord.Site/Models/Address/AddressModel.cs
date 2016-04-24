@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Fyl.Library.Dto;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
@@ -8,6 +9,18 @@ namespace Landlord.Site.Models
 {
     public class AddressModel
     {
+        public AddressModel()
+        {
+        }
+
+        public AddressModel(PropertyBasicDetailsDto dto)
+        {
+            Address1 = dto.Address1;
+            Area = dto.Area;
+            City = dto.City;
+            PostCode = dto.PostCode;
+        }
+
         public Guid? AddressId { get; set; }
 
         [Required]

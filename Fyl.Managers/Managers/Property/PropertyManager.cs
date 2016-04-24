@@ -48,9 +48,9 @@ namespace Fyl.Managers
             return result;
         }
 
-        public PropertyBasicDetailsDto GetPropertyDetails(Guid propertyId)
+        public PropertyBasicDetailsDto GetPropertyBasicDetails(Guid propertyId)
         {
-            var dto = _propertyRepository.GetPropertyDetails(propertyId);
+            var dto = _propertyRepository.GetPropertyBasicDetails(propertyId);
 
             return dto;
         }

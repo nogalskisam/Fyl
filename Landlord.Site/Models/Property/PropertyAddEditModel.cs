@@ -9,6 +9,16 @@ namespace Landlord.Site.Models
 {
     public class PropertyAddEditModel
     {
+        public PropertyAddEditModel()
+        {
+        }
+
+        public PropertyAddEditModel(PropertyBasicDetailsDto dto)
+        {
+            Property = new PropertyModel(dto);
+            Address = new AddressModel(dto);            
+        }
+
         public PropertyModel Property { get; set; }
 
         public AddressModel Address { get; set; }

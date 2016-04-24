@@ -1,17 +1,14 @@
 ﻿using Fyl.Library.Enum;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Fyl.Entities
+namespace Fyl.Library.Dto
 {
-    public class PropertySignRequest
+    public class SignRequestDetailsDto
     {
-        [Key, DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public Guid PropertySignRequestId { get; set; }
 
         public Guid PropertyId { get; set; }

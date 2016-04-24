@@ -58,7 +58,6 @@ namespace Landlord.Site.Controllers
         [HttpPost]
         public ActionResult Add(PropertyAddEditModel model)
         {
-
             if (ModelState.IsValid)
             {
                 var dto = model.ToDto();
@@ -82,9 +81,19 @@ namespace Landlord.Site.Controllers
             }
         }
 
+        [HttpGet]
+        public ActionResult Edit(Guid id)
+        {
+            var property = _landlordService.GetPropertyBasicDetails(id);
+
+            var model = new PropertyAddEditModel(property);
+
+            return View("AddProperty", model);
+        }
+
         public ActionResult View(Guid id)
         {
-            var dto = _landlordService.GetPropertyDetails(id);
+            var dto = _landlordService.GetPropertyBasicDetails(id);
 
             var model = new PropertyDisplayModel()
             {
@@ -96,7 +105,8 @@ namespace Landlord.Site.Controllers
                 Rent = dto.Rent,
                 StartDate = dto.StartDate,
                 Beds = dto.Beds,
-                Deposit = dto.Deposit
+                Deposit = dto.Deposit,
+                SignRequestCount = dto.SignRequestCount
             };
 
             return View("View", model);
@@ -113,6 +123,24 @@ namespace Landlord.Site.Controllers
             };
 
             return Json(result);
+        }
+
+        public ActionResult ManageSignRequests(Guid id)
+        {
+            var dtos = _landlordService.GetPropertySignRequestsForPropertyId(id);
+
+            var model = dtos
+                .Select(s => new SignRequestModel(s))
+                .ToList();
+
+            return View("SignRequests", model);
+        }
+
+        public ActionResult RequestRespond(Guid id, Guid propertyId, bool accept)
+        {
+            var result = _landlordService.SetPropertySignRequest(id, propertyId, accept);
+
+            return RedirectToAction("ManageSignRequests", new { id = propertyId });
         }
     }
 }
