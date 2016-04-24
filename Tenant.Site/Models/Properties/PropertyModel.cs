@@ -1,4 +1,5 @@
-﻿using Fyl.Resources;
+﻿using Fyl.Library.Dto;
+using Fyl.Resources;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -9,6 +10,29 @@ namespace Tenant.Site.Models
 {
     public class PropertyModel
     {
+        public PropertyModel()
+        {
+        }
+
+        public PropertyModel(PropertyBasicDetailsDto dto)
+        {
+            PropertyId = dto.PropertyId;
+            Beds = dto.Beds;
+            Rent = dto.Rent;
+            Deposit = dto.Deposit;
+            StartDate = dto.StartDate;
+        }
+
+        public PropertyModel(PropertyDetailedDto dto)
+        {
+            PropertyId = dto.PropertyId;
+            Beds = dto.Beds;
+            Rent = dto.Rent;
+            Deposit = dto.Deposit;
+            StartDate = dto.StartDate;
+            PropertyImageIds = dto.PropertyImageIds;
+        }
+
         public Guid PropertyId { get; set; }
 
         [Display(Name = "Beds", ResourceType = typeof(Strings))]

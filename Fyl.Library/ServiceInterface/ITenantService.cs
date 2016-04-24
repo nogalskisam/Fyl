@@ -37,5 +37,8 @@ namespace Fyl.Library
 
         [OperationContract]
         bool PropertySignRequestExists(Guid propertyId, Guid userId);
+
+        [OperationContract]
+        PropertyDetailedDto GetPropertyForTenantUser(Guid userId);
     }
 }

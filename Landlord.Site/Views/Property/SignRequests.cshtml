@@ -11,8 +11,8 @@
         {
             c.Bound(b => b.PropertySignRequestId)
                 .ClientTemplate(
-                    Html.ActionLink("Accept", "RequestRespond", "Property", new { id = "#= PropertySignRequestId #", propertyId = "#= PropertyId #", accept = true }, new { @class = "btn btn-success btn-fyl margin-right-small" }).ToString() +
-                    Html.ActionLink("Decline", "RequestRespond", "Property", new { id = "#= PropertySignRequestId #", propertyId = "#= PropertyId #", accept = false }, new { @class = "btn btn-danger btn-fyl" }).ToString()
+                    Html.ActionLink("Accept", "RequestRespond", "Property", new { id = "#= PropertySignRequestId #", propertyId = "#= PropertyId #", userId = "#= UserId #", accept = true }, new { @class = "btn btn-success btn-fyl margin-right-small" }).ToString() +
+                    Html.ActionLink("Decline", "RequestRespond", "Property", new { id = "#= PropertySignRequestId #", propertyId = "#= PropertyId #", userId = "#= UserId #", accept = false }, new { @class = "btn btn-danger btn-fyl" }).ToString()
                 ).Title("");
             c.Bound(b => b.Status);
             c.Bound(b => b.DateRequested).Format("{0:dd MMM yyyy HH:mm:ss}").Title("Request Date");

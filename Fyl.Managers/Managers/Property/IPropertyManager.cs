@@ -20,5 +20,7 @@ namespace Fyl.Managers
         Guid EditProperty(Guid userId, PropertyAddEditDto dto);
 
         PropertyDetailedDto GetPropertyDetails(Guid propertyId);
+
+        PropertyDetailedDto GetPropertyForTenantUser(Guid userId);
     }
 }

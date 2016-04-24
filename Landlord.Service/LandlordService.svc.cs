@@ -103,9 +103,9 @@ namespace Landlord.Service
             return dtos;
         }
 
-        public bool SetPropertySignRequest(Guid propertySignRequestId, Guid propertyId, bool accepted)
+        public bool SetPropertySignRequest(Guid propertySignRequestId, Guid propertyId, Guid userId, bool accepted)
         {
-            var result = _propertySignRequestManager.SetPropertySignRequest(propertySignRequestId, propertyId, accepted);
+            var result = _propertySignRequestManager.SetPropertySignRequest(propertySignRequestId, propertyId, userId, accepted);
 
             return result;
         }

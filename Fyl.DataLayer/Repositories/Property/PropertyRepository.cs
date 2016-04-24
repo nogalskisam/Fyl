@@ -199,11 +199,54 @@ namespace Fyl.DataLayer.Repositories
                     City = t.Address.City,
                     County = t.Address.County,
                     Country = t.Address.Country,
-                    PostCode = t.Address.Postcode
+                    PostCode = t.Address.Postcode,
+                    PropertyImageIds = t.Images
+                        .Where(pi => pi.PropertyId == propertyId)
+                        .Where(pi => !pi.Inactive)
+                        .Select(pi => pi.PropertyImageId)
+                        .ToList(),
                 })
                 .FirstOrDefault();
 
             return property;
+        }
+
+        public PropertyDetailedDto GetPropertyForTenantUser(Guid userId)
+        {
+            var entity = _entities.Properties
+                .Where(w => w.Tenants.Any(a => a.TenantId == userId))
+                .Select(s => new PropertyDetailedDto()
+                {
+                    AddressId = s.AddressId,
+                    HouseName = s.Address.HouseName,
+                    Address1 = s.Address.Address1,
+                    Address2 = s.Address.Address2,
+                    Area = s.Address.Area,
+                    City = s.Address.City,
+                    County = s.Address.County,
+                    Country = s.Address.Country,
+                    PostCode = s.Address.Postcode,
+                    PropertyId = s.PropertyId,
+                    Beds = s.Beds,
+                    Deposit = s.Deposit,
+                    Rent = s.Rent,
+                    StartDate = s.StartDate,
+                    PropertyImageIds = s.Images
+                        .Where(pi => pi.PropertyId == s.PropertyId)
+                        .Where(pi => !pi.Inactive)
+                        .Select(pi => pi.PropertyImageId)
+                        .ToList(),
+                    Tenants = s.Tenants
+                        .Select(t => new UserDto()
+                        {
+                            FirstName = t.TenantUser.FirstName,
+                            LastName = t.TenantUser.LastName
+                        })
+                        .ToList()
+                })
+                .SingleOrDefault();
+
+            return entity;
         }
     }
 }

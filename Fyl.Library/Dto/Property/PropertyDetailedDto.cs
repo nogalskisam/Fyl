@@ -35,5 +35,9 @@ namespace Fyl.Library.Dto
         public string Country { get; set; }
 
         public string PostCode { get; set; }
+
+        public List<Guid> PropertyImageIds { get; set; }
+
+        public List<UserDto> Tenants { get; set; }
     }
 }

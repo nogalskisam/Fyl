@@ -24,5 +24,7 @@ namespace Fyl.DataLayer.Repositories
         PropertyDetailedDto GetPropertyDetails(Guid propertyId);
 
         Guid EditProperty(Guid userId, PropertyAddBasicDto dto);
+
+        PropertyDetailedDto GetPropertyForTenantUser(Guid userId);
     }
 }

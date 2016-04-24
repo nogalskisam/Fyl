@@ -198,7 +198,9 @@
     <Compile Include="Helpers\SessionDataHelpers.cs" />
     <Compile Include="Models\Account\LoginModel.cs" />
     <Compile Include="Models\Account\RegisterModel.cs" />
+    <Compile Include="Models\Address\AddressModel.cs" />
     <Compile Include="Models\HomeModel.cs" />
+    <Compile Include="Models\Properties\PropertyDetailedModel.cs" />
     <Compile Include="Models\Properties\PropertyListModel.cs" />
     <Compile Include="Models\Properties\PropertyListSearchModel.cs" />
     <Compile Include="Models\Properties\PropertyModel.cs" />
@@ -1382,6 +1384,8 @@
     <Content Include="Views\Shared\_LayoutLoggedOut.cshtml" />
     <Content Include="Views\Property\Sign\Request.cshtml" />
     <Content Include="Views\Property\Sign\RequestStatus.cshtml" />
+    <Content Include="Views\Property\MyProperty.cshtml" />
+    <Content Include="Views\Property\NoProperty.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

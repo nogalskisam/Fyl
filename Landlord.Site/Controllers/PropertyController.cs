@@ -162,9 +162,9 @@ namespace Landlord.Site.Controllers
             return View("SignRequests", model);
         }
 
-        public ActionResult RequestRespond(Guid id, Guid propertyId, bool accept)
+        public ActionResult RequestRespond(Guid id, Guid propertyId, Guid userId, bool accept)
         {
-            var result = _landlordService.SetPropertySignRequest(id, propertyId, accept);
+            var result = _landlordService.SetPropertySignRequest(id, propertyId, userId, accept);
 
             return RedirectToAction("ManageSignRequests", new { id = propertyId });
         }

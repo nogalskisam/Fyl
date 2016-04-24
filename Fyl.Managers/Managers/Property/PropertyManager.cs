@@ -83,5 +83,12 @@ namespace Fyl.Managers
 
             return dto;
         }
+
+        public PropertyDetailedDto GetPropertyForTenantUser(Guid userId)
+        {
+            var dto = _propertyRepository.GetPropertyForTenantUser(userId);
+
+            return dto;
+        }
     }
 }

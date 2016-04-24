@@ -43,5 +43,19 @@ namespace Fyl.DataLayer.Repositories
 
             return tenant.TenantUser.ToDto();
         }
+
+        public void AssignTenantToProperty(Guid userId, Guid propertyId)
+        {
+            var entity = _entities.Tenants
+                .Where(w => w.TenantId == userId)
+                .SingleOrDefault();
+
+            if (!entity.PropertyId.HasValue || (entity.PropertyId.HasValue && entity.PropertyId.Value != propertyId))
+            {
+                entity.PropertyId = propertyId;
+
+                _entities.SaveChanges();
+            }
+        }
     }
 }

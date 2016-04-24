@@ -160,5 +160,21 @@ namespace Tenant.Site.Controllers
 
             return View("Sign/Request", model);
         }
+
+        public ActionResult MyProperty()
+        {
+            var dto = _tenantService.GetPropertyForTenantUser(_sessionDetails.User.UserId);
+
+            if (dto != null)
+            {
+                var model = new PropertyDetailedModel(dto);
+
+                return View("MyProperty", model);
+            }
+            else
+            {
+                return View("NoProperty");
+            }
+        }
     }
 }

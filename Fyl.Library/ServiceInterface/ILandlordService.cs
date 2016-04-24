@@ -45,7 +45,7 @@ namespace Fyl.Library
         List<SignRequestDetailsDto> GetPropertySignRequestsForPropertyId(Guid propertyId);
 
         [OperationContract]
-        bool SetPropertySignRequest(Guid propertySignRequestId, Guid propertyId, bool accepted);
+        bool SetPropertySignRequest(Guid propertySignRequestId, Guid propertyId, Guid userId, bool accepted);
 
         [OperationContract]
         PropertyDetailedDto GetPropertyDetails(Guid propertyId);

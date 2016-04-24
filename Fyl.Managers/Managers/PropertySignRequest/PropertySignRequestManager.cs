@@ -12,10 +12,12 @@ namespace Fyl.Managers
     public class PropertySignRequestManager : IPropertySignRequestManager
     {
         private IPropertySignRequestRepository _repository;
+        private ITenantRepository _tenantRepository;
 
-        public PropertySignRequestManager(IPropertySignRequestRepository repository)
+        public PropertySignRequestManager(IPropertySignRequestRepository repository, ITenantRepository tenantRepository)
         {
             _repository = repository;
+            _tenantRepository = tenantRepository;
         }
 
         public void AddNewPropertySignRequest(Guid propertyId, Guid userId)
@@ -49,12 +51,13 @@ namespace Fyl.Managers
             return dtos;
         }
 
-        public bool SetPropertySignRequest(Guid propertySignRequestId, Guid propertyId, bool accepted)
+        public bool SetPropertySignRequest(Guid propertySignRequestId, Guid propertyId, Guid userId, bool accepted)
         {
             var result = false;
             if (accepted)
             {
                 result = _repository.SetPropertySignRequestAsAccepted(propertySignRequestId, propertyId);
+                _tenantRepository.AssignTenantToProperty(userId, propertyId);
             }
             else
             {

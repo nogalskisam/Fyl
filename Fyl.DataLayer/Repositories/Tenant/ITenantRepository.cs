@@ -11,5 +11,7 @@ namespace Fyl.DataLayer.Repositories
     public interface ITenantRepository
     {
         UserDto Register(RegistrationRequestDto dto, SaltedHashResult auth);
+
+        void AssignTenantToProperty(Guid userId, Guid propertyId);
     }
 }

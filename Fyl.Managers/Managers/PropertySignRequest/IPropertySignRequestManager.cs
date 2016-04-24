@@ -18,6 +18,6 @@ namespace Fyl.Managers
 
         List<SignRequestDetailsDto> GetPropertySignRequestsForPropertyId(Guid propertyId);
 
-        bool SetPropertySignRequest(Guid propertySignRequestId, Guid propertyId, bool accepted);
+        bool SetPropertySignRequest(Guid propertySignRequestId, Guid propertyId, Guid userId, bool accepted);
     }
 }
